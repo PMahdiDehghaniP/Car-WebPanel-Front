@@ -1,3 +1,4 @@
+import ApolloClientProvider from '@/providers/ApolloClientProvider';
 import StoreProvider from '@/providers/StoreProvider';
 
 export const metadata = {
@@ -9,7 +10,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <StoreProvider> {children}</StoreProvider>
+        <ApolloClientProvider>
+          <StoreProvider> {children}</StoreProvider>
+        </ApolloClientProvider>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import ApolloClientProvider from '@/providers/ApolloClientProvider';
 import StoreProvider from '@/providers/StoreProvider';
+import { SessionProvider } from 'next-auth/react';
 
 export const metadata = {
   title: 'Create Next App',
@@ -10,9 +11,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ApolloClientProvider>
-          <StoreProvider> {children}</StoreProvider>
-        </ApolloClientProvider>
+        <SessionProvider>
+          <ApolloClientProvider>
+            <StoreProvider> {children}</StoreProvider>
+          </ApolloClientProvider>
+        </SessionProvider>
       </body>
     </html>
   );

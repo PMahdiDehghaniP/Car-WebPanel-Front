@@ -1,5 +1,8 @@
 import ApolloClientProvider from '@/providers/ApolloClientProvider';
+import DirectionProvider from '@/providers/DirectionProvider';
 import StoreProvider from '@/providers/StoreProvider';
+import { CssBaseline } from '@mui/material';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { SessionProvider } from 'next-auth/react';
 
 export const metadata = {
@@ -9,13 +12,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <body>
-        <SessionProvider>
-          <ApolloClientProvider>
-            <StoreProvider> {children}</StoreProvider>
-          </ApolloClientProvider>
-        </SessionProvider>
+        <AppRouterCacheProvider>
+          <SessionProvider>
+            <ApolloClientProvider>
+              <DirectionProvider>
+                <StoreProvider>
+                  <CssBaseline />
+                  {children}
+                </StoreProvider>
+              </DirectionProvider>
+            </ApolloClientProvider>
+          </SessionProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

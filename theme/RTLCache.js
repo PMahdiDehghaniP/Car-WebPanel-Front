@@ -4,7 +4,7 @@ import stylisRTLPlugin from 'stylis-plugin-rtl';
 
 const createRtlCache = () =>
   createCache({
-    key: 'rtl mui',
+    key: 'rtl-mui',
     stylisPlugins: [prefixer, stylisRTLPlugin]
   });
 

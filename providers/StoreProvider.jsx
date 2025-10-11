@@ -4,7 +4,7 @@ import makeStore from '@/lib/store/store';
 import { createContext, useRef } from 'react';
 
 export const StoreContext = createContext();
-const StoreProvider = () => {
+const StoreProvider = ({ children }) => {
   const store = useRef(null);
   if (!store.current) {
     store.current = makeStore();

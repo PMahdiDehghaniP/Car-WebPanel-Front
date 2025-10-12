@@ -46,11 +46,6 @@ const LoginForm = () => {
       }}
     >
       <TextField
-        sx={{
-          '& .MuiOutlinedInput-root': {
-            borderRadius: '10px'
-          }
-        }}
         label="نام کاربری"
         placeholder="نام کاربری خود را وارد کنید"
         name="email"
@@ -60,11 +55,6 @@ const LoginForm = () => {
 
       <TextField
         type={showPassword ? 'text' : 'password'}
-        sx={{
-          '& .MuiOutlinedInput-root': {
-            borderRadius: '10px'
-          }
-        }}
         label="رمز عبور"
         placeholder="رمز عبور خود را وارد کنید"
         name="password"
@@ -92,12 +82,6 @@ const LoginForm = () => {
 
       <Button
         type="submit"
-        sx={{
-          height: '58px',
-          fontSize: '20px',
-          fontWeight: '700',
-          borderRadius: '10px'
-        }}
         color="primary"
         variant="contained"
       >

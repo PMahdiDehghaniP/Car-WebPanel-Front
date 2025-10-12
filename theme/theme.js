@@ -1,4 +1,3 @@
-'use client';
 import { createTheme } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
 
@@ -44,13 +43,11 @@ const baseThemeOptions = {
             borderWidth: '1px',
             borderRadius: '10px',
             padding: '14px 10px',
-            height: '54px',
-            width: '410px'
+            height: '54px'
           },
           '& .MuiInputLabel-root': {
             fontSize: '20px',
-            fontWeight: 500,
-            marginBottom: '5px'
+            fontWeight: 500
           },
           '& .MuiInputBase-input::placeholder': {
             fontSize: '16px',
@@ -67,7 +64,6 @@ const baseThemeOptions = {
         },
         contained: {
           height: '58px',
-          width: '410px',
           fontSize: '20px',
           fontWeight: 700
         },

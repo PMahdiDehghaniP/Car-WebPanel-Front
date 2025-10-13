@@ -6,6 +6,7 @@ import {
 import { ArrowCircleRightOutlined } from '@mui/icons-material';
 import AuthFormsHeader from '../components/AuthFormsHeader';
 import LoginForm from './components/Loginform';
+import AuthLogo from '../components/AuthLogo';
 
 const LoginPage = () => {
   return (
@@ -18,7 +19,7 @@ const LoginPage = () => {
         gap="1.5rem"
         size={authPagesFormBreakpoints}
       >
-        <img src="/garajinoLogoLight.png" alt="Logo" />
+        <AuthLogo />
 
         <AuthFormsHeader
           title="ورود"

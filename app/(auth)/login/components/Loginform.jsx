@@ -16,6 +16,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
+import { loginPageValidationSchema } from '@/validation/authPagesValidationsSchema';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,6 +26,7 @@ const LoginForm = () => {
       email: '',
       password: ''
     },
+    validationSchema: loginPageValidationSchema,
     onSubmit: async (values) => {
       const { password, email } = values;
       await signIn('credentials', {
@@ -51,6 +53,9 @@ const LoginForm = () => {
         name="email"
         value={formik.values.email}
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.email && formik.errors.email}
+        helperText={formik.touched.email && formik.errors.email}
       />
 
       <TextField
@@ -58,6 +63,9 @@ const LoginForm = () => {
         label="رمز عبور"
         placeholder="رمز عبور خود را وارد کنید"
         name="password"
+        onBlur={formik.handleBlur}
+        error={formik.touched.password && formik.errors.password}
+        helperText={formik.touched.password && formik.errors.password}
         value={formik.values.password}
         onChange={formik.handleChange}
         slotProps={{
@@ -80,11 +88,7 @@ const LoginForm = () => {
         }}
       />
 
-      <Button
-        type="submit"
-        color="primary"
-        variant="contained"
-      >
+      <Button type="submit" color="primary" variant="contained">
         ورود
       </Button>
 

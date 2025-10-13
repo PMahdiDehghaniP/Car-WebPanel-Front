@@ -17,12 +17,14 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
+import { signupPageValidationSchema } from '@/validation/authPagesValidationsSchema';
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const formik = useFormik({
     initialValues: { username: '', email: '', password: '' },
+    validationSchema: signupPageValidationSchema,
     onSubmit: async (values) => {
       const { password, email } = values;
       await signIn('credentials', {
@@ -49,6 +51,9 @@ const SignupForm = () => {
         name="username"
         value={formik.values.username}
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.username && formik.errors.username}
+        helperText={formik.touched.username && formik.errors.username}
       />
       <TextField
         label="ایمیل"
@@ -56,6 +61,9 @@ const SignupForm = () => {
         name="email"
         value={formik.values.email}
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.email && formik.errors.email}
+        helperText={formik.touched.email && formik.errors.email}
       />
 
       <TextField
@@ -65,6 +73,9 @@ const SignupForm = () => {
         name="password"
         value={formik.values.password}
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.password && formik.errors.password}
+        helperText={formik.touched.password && formik.errors.password}
         slotProps={{
           input: {
             endAdornment: (

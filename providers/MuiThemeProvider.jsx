@@ -8,8 +8,12 @@ import { useMemo } from 'react';
 
 export default function MuiThemeProvider({ children }) {
   const { theme } = useAppSelector((state) => state.theme);
+  const { direction } = useAppSelector((state) => state.systemSetting);
   const muiTheme = useMemo(
-    () => (theme === 'dark' ? darkTheme : lightTheme),
+    () =>
+      theme === 'dark'
+        ? darkTheme(direction === 'rtl')
+        : lightTheme(direction === 'rtl'),
     [theme]
   );
   return (

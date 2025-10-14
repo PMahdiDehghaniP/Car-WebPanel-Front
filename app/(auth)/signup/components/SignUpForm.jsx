@@ -44,10 +44,11 @@ const SignupForm = () => {
   });
 
   return (
-    <form
+    <Box
+      component="form"
       onSubmit={formik.handleSubmit}
-      style={{
-        width: '50%',
+      sx={{
+        width: { xs: '80%', md: '50%' },
         display: 'flex',
         flexDirection: 'column',
         gap: '1.5rem'
@@ -123,7 +124,7 @@ const SignupForm = () => {
           وارد شوید
         </Typography>
       </Box>
-    </form>
+    </Box>
   );
 };
 

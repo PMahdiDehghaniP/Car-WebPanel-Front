@@ -49,10 +49,11 @@ const LoginForm = () => {
   });
 
   return (
-    <form
+    <Box
+      component="form"
       onSubmit={formik.handleSubmit}
-      style={{
-        width: '50%',
+      sx={{
+        width: { xs: '80%', md: '50%' },
         display: 'flex',
         flexDirection: 'column',
         gap: '1.5rem'
@@ -68,7 +69,6 @@ const LoginForm = () => {
         error={formik.touched.email && formik.errors.email}
         helperText={formik.touched.email && formik.errors.email}
       />
-
       <TextField
         type={showPassword ? 'text' : 'password'}
         label="رمز عبور"
@@ -98,7 +98,6 @@ const LoginForm = () => {
           }
         }}
       />
-
       <LoadingButton
         loading={loading}
         type="submit"
@@ -107,7 +106,6 @@ const LoginForm = () => {
       >
         ورود
       </LoadingButton>
-
       <Divider sx={{ fontSize: '20px' }}>یا</Divider>
       <Box alignSelf="center" display="flex" gap="6px">
         <Typography>حساب کاربری ندارید ؟</Typography>
@@ -129,7 +127,7 @@ const LoginForm = () => {
       >
         رمز عبور خود را فراموش کردم
       </Typography>
-    </form>
+    </Box>
   );
 };
 

@@ -4,7 +4,7 @@ const AuthFormsHeader = ({ title, headerIcon }) => (
   <Box
     sx={{
       position: 'relative',
-      width: '50%',
+      width: { xs: '80%', md: '50%' },
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center'

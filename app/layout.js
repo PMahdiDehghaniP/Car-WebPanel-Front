@@ -2,7 +2,6 @@ import DirectionProvider from '@/providers/DirectionProvider';
 import StoreProvider from '@/providers/StoreProvider';
 import MuiThemeProvider from '@/providers/MuiThemeProvider';
 import { SessionProvider } from 'next-auth/react';
-import ApolloClientProvider from '@/providers/ApolloClientProvider';
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,12 +13,12 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body>
         <StoreProvider>
-          <SessionProvider>
-            <ApolloClientProvider>
-              <DirectionProvider>
-                <MuiThemeProvider>{children}</MuiThemeProvider>
-              </DirectionProvider>
-            </ApolloClientProvider>
+          <SessionProvider
+            refetchInterval={process.env.REFETCH_SESSION_INTERVAL_TIME}
+          >
+            <DirectionProvider>
+              <MuiThemeProvider>{children}</MuiThemeProvider>
+            </DirectionProvider>
           </SessionProvider>
         </StoreProvider>
       </body>

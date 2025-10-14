@@ -14,7 +14,7 @@ export default function MuiThemeProvider({ children }) {
       theme === 'dark'
         ? darkTheme(direction === 'rtl')
         : lightTheme(direction === 'rtl'),
-    [theme]
+    [theme, direction]
   );
   return (
     <AppRouterCacheProvider>

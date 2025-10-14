@@ -10,6 +10,12 @@ export async function middleware(req) {
   ) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
+  if (session && session.accessToken) {
+    if (url.pathname === '/login' || url.pathname === '/signup') {
+      url.pathname = '/dashboard';
+      return NextResponse.redirect(url);
+    }
+  }
   return NextResponse.next();
 }
 

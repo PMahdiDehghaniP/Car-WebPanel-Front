@@ -53,7 +53,7 @@ const SignupForm = () => {
         gap: '1.5rem'
       }}
     >
-      <TextField
+      {/* <TextField
         label="نام کاربری"
         placeholder="نام کاربری خود را وارد کنید"
         name="username"
@@ -62,7 +62,7 @@ const SignupForm = () => {
         onBlur={formik.handleBlur}
         error={formik.touched.username && formik.errors.username}
         helperText={formik.touched.username && formik.errors.username}
-      />
+      /> */}
       <TextField
         label="ایمیل"
         placeholder="ایمیل خود را وارد کنید"

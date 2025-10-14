@@ -1,13 +1,11 @@
 'use client';
 import {
-  Button,
   TextField,
   IconButton,
   InputAdornment,
   Divider,
   Typography,
-  Box,
-  useTheme
+  Box
 } from '@mui/material';
 import {
   RemoveRedEyeOutlined,
@@ -16,22 +14,32 @@ import {
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
 import { signupPageValidationSchema } from '@/validation/authPagesValidationsSchema';
+import axios from 'axios';
+import { LoadingButton } from '@mui/lab';
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const formik = useFormik({
     initialValues: { username: '', email: '', password: '' },
     validationSchema: signupPageValidationSchema,
     onSubmit: async (values) => {
       const { password, email } = values;
-      await signIn('credentials', {
-        redirect: false,
-        email,
-        password
-      });
+      try {
+        setLoading(true);
+        const respose = await axios.post(process.env.NEXT_PUBLIC_SIGNUP_URL, {
+          email,
+          password
+        });
+        if (respose?.data) {
+          router.push('/login');
+        }
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
     }
   });
 
@@ -96,9 +104,14 @@ const SignupForm = () => {
         }}
       />
 
-      <Button type="submit" color="primary" variant="contained">
+      <LoadingButton
+        loading={loading}
+        type="submit"
+        color="primary"
+        variant="contained"
+      >
         ثبت نام
-      </Button>
+      </LoadingButton>
 
       <Divider sx={{ fontSize: '20px' }}>یا</Divider>
       <Box alignSelf="center" display="flex" gap="6px">

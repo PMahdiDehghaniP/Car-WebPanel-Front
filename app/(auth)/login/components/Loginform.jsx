@@ -17,9 +17,11 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { loginPageValidationSchema } from '@/validation/authPagesValidationsSchema';
+import { LoadingButton } from '@mui/lab';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -29,11 +31,20 @@ const LoginForm = () => {
     validationSchema: loginPageValidationSchema,
     onSubmit: async (values) => {
       const { password, email } = values;
-      await signIn('credentials', {
-        redirect: false,
-        email,
-        password
-      });
+      try {
+        setLoading(true);
+        const resp = await signIn('credentials', {
+          redirect: false,
+          email,
+          password
+        });
+        if (!resp?.error) {
+          router.push('/dashboard');
+        }
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
     }
   });
 
@@ -88,9 +99,14 @@ const LoginForm = () => {
         }}
       />
 
-      <Button type="submit" color="primary" variant="contained">
+      <LoadingButton
+        loading={loading}
+        type="submit"
+        color="primary"
+        variant="contained"
+      >
         ورود
-      </Button>
+      </LoadingButton>
 
       <Divider sx={{ fontSize: '20px' }}>یا</Divider>
       <Box alignSelf="center" display="flex" gap="6px">

@@ -14,13 +14,13 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body>
         <StoreProvider>
-          {/* <SessionProvider> */}
-          {/* <ApolloClientProvider> */}
-            <DirectionProvider>
-              <MuiThemeProvider>{children}</MuiThemeProvider>
-            </DirectionProvider>
-          {/* </ApolloClientProvider> */}
-          {/* </SessionProvider> */}
+          <SessionProvider>
+            <ApolloClientProvider>
+              <DirectionProvider>
+                <MuiThemeProvider>{children}</MuiThemeProvider>
+              </DirectionProvider>
+            </ApolloClientProvider>
+          </SessionProvider>
         </StoreProvider>
       </body>
     </html>

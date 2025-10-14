@@ -11,14 +11,10 @@ export const loginPageValidationSchema = yup.object({
     .min(8, 'رمز عبور باید حداقل ۸ کاراکتر باشد')
     .matches(/[A-Z]/, 'رمز عبور باید حداقل یک حرف بزرگ داشته باشد')
     .matches(/[0-9]/, 'رمز عبور باید حداقل یک عدد داشته باشد')
-    .matches(/[^A-Za-z0-9]/, 'رمز عبور باید حداقل یک نماد خاص داشته باشد'),
+    .matches(/[^A-Za-z0-9]/, 'رمز عبور باید حداقل یک نماد خاص داشته باشد')
 });
 
 export const signupPageValidationSchema = yup.object({
-  username: yup
-    .string()
-    .required('نام کاربری الزامی است')
-    .min(4, 'نام کاربری باید حداقل ۴ کاراکتر باشد'),
   email: yup
     .string()
     .required('ایمیل الزامی است')
@@ -29,5 +25,5 @@ export const signupPageValidationSchema = yup.object({
     .min(8, 'رمز عبور باید حداقل ۸ کاراکتر باشد')
     .matches(/[A-Z]/, 'رمز عبور باید حداقل یک حرف بزرگ داشته باشد')
     .matches(/[0-9]/, 'رمز عبور باید حداقل یک عدد داشته باشد')
-    .matches(/[^A-Za-z0-9]/, 'رمز عبور باید حداقل یک نماد خاص داشته باشد'),
+    .matches(/[^A-Za-z0-9]/, 'رمز عبور باید حداقل یک نماد خاص داشته باشد')
 });

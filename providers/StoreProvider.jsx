@@ -1,19 +1,15 @@
 'use client';
 
 import makeStore from '@/lib/store/store';
-import { createContext, useRef } from 'react';
+import { useRef } from 'react';
+import { Provider } from 'react-redux';
 
-export const StoreContext = createContext();
 const StoreProvider = ({ children }) => {
   const store = useRef(null);
   if (!store.current) {
     store.current = makeStore();
   }
-  return (
-    <StoreContext.Provider value={store.current}>
-      {children}
-    </StoreContext.Provider>
-  );
+  return <Provider store={store.current}>{children}</Provider>;
 };
 export default StoreProvider;
 

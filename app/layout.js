@@ -1,8 +1,6 @@
-import ApolloClientProvider from '@/providers/ApolloClientProvider';
 import DirectionProvider from '@/providers/DirectionProvider';
 import StoreProvider from '@/providers/StoreProvider';
-import { CssBaseline } from '@mui/material';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import MuiThemeProvider from '@/providers/MuiThemeProvider';
 import { SessionProvider } from 'next-auth/react';
 
 export const metadata = {
@@ -14,18 +12,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body>
-        <AppRouterCacheProvider>
-          <SessionProvider>
-            <ApolloClientProvider>
-              <DirectionProvider>
-                <StoreProvider>
-                  <CssBaseline />
-                  {children}
-                </StoreProvider>
-              </DirectionProvider>
-            </ApolloClientProvider>
+        <StoreProvider>
+          <SessionProvider
+            refetchInterval={process.env.REFETCH_SESSION_INTERVAL_TIME}
+          >
+            <DirectionProvider>
+              <MuiThemeProvider>{children}</MuiThemeProvider>
+            </DirectionProvider>
           </SessionProvider>
-        </AppRouterCacheProvider>
+        </StoreProvider>
       </body>
     </html>
   );

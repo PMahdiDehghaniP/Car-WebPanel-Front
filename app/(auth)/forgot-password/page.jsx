@@ -4,12 +4,12 @@ import {
   authPagesFormBreakpoints,
   authPagesImagesBreakPoints
 } from '../componentBreakpoints';
-import { ArrowCircleRightOutlined } from '@mui/icons-material';
 import AuthFormsHeader from '../components/AuthFormsHeader';
-import LoginForm from './components/Loginform';
+import { ArrowCircleRightOutlined } from '@mui/icons-material';
 import AuthLogo from '../components/AuthLogo';
+import ForgotPasswordForm from './components/ForgotPasswordForm';
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
   return (
     <Grid container sx={{ width: '100%', height: '100vh' }}>
       <Grid
@@ -23,7 +23,7 @@ const LoginPage = () => {
         <AuthLogo />
 
         <AuthFormsHeader
-          title="ورود"
+          title="فراموشی رمز عبور"
           headerIcon={
             <ArrowCircleRightOutlined
               sx={{
@@ -35,12 +35,12 @@ const LoginPage = () => {
             />
           }
         />
-        <LoginForm />
+        <ForgotPasswordForm />
       </Grid>
 
       <Grid
         sx={{
-          backgroundImage: "url('/loginPageImage.png')",
+          backgroundImage: "url('/forgotPasswordImage.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -50,6 +50,5 @@ const LoginPage = () => {
     </Grid>
   );
 };
-
-export default LoginPage;
+export default ForgotPasswordPage;
 

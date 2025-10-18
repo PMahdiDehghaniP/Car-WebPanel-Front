@@ -17,6 +17,12 @@ const ForgotPasswordForm = () => {
     onSubmit: async (values) => {
       const { email } = values;
       // api call
+      const query = new URLSearchParams({
+        emailSubmitted: 'true',
+        email
+      }).toString();
+
+      router.push(`/forgot-password/password-recovery?${query}`);
     }
   });
   return (

@@ -17,4 +17,3 @@ const DirectionProvider = ({ children }) => {
   return <CacheProvider value={rtlCache}>{children}</CacheProvider>;
 };
 export default DirectionProvider;
-

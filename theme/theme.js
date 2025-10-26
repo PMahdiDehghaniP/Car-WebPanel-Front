@@ -313,6 +313,9 @@ export const lightTheme = (isRtl) =>
         divider: 'rgba(217, 217, 217, 1)',
         action: {
           active: 'rgba(25, 118, 210, 1)'
+        },
+        carLogoCard: {
+          background: '#FFFFFF'
         }
       }
     })
@@ -339,8 +342,10 @@ export const darkTheme = (isRtl) =>
         divider: 'rgba(217, 217, 217, 1)',
         action: {
           active: 'rgba(132, 194, 255, 1)'
+        },
+        carLogoCard: {
+          background: '#36426A'
         }
       }
     })
   );
-

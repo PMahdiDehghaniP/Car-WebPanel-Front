@@ -2,7 +2,7 @@ import DirectionProvider from '@/providers/DirectionProvider';
 import StoreProvider from '@/providers/StoreProvider';
 import MuiThemeProvider from '@/providers/MuiThemeProvider';
 import { SessionProvider } from 'next-auth/react';
-import "./globals.css";
+import './globals.css';
 
 export const metadata = {
   title: 'Create Next App',
@@ -26,4 +26,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

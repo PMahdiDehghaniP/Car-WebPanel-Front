@@ -22,4 +22,3 @@ const SessionControllerProvider = ({ children }) => {
 };
 
 export default SessionControllerProvider;
-

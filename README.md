@@ -9,48 +9,53 @@ This repository contains the **Next.js frontend** of the project.
 ## Overview
 
 ### The platform provides:
-- Detailed car database with specs, performance, and prices  
-- Social feed for posts, likes, and comments  
-- Car comparison and filtering tools  
-- Personal garage for saved or owned cars  
-- Annual cost estimation (fuel, insurance, maintenance)  
-- Achievements and event participation for gamification  
+
+- Detailed car database with specs, performance, and prices
+- Social feed for posts, likes, and comments
+- Car comparison and filtering tools
+- Personal garage for saved or owned cars
+- Annual cost estimation (fuel, insurance, maintenance)
+- Achievements and event participation for gamification
 
 ### Target users include:
-- Car owners  
-- Enthusiasts and racers  
-- Potential buyers  
-- Event organizers  
+
+- Car owners
+- Enthusiasts and racers
+- Potential buyers
+- Event organizers
 
 ### Key Pages:
-- **Home:** car feed, social posts, upcoming events  
-- **Car Details:** specs, reviews, and cost estimation  
-- **Garage:** saved car collections  
-- **Compare:** side-by-side car comparison  
-- **Social Feed:** posts, likes, comments, follow system  
-- **Profile:** user info and owned car  
-- **Achievements:** rewards and badges  
-- **Events:** automotive festivals and contests  
+
+- **Home:** car feed, social posts, upcoming events
+- **Car Details:** specs, reviews, and cost estimation
+- **Garage:** saved car collections
+- **Compare:** side-by-side car comparison
+- **Social Feed:** posts, likes, comments, follow system
+- **Profile:** user info and owned car
+- **Achievements:** rewards and badges
+- **Events:** automotive festivals and contests
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-- Next.js  
-- React.js  
-- NextAuth (Auth.js)  
-- Redux Toolkit  
-- Apollo Client (GraphQL)  
-- WebSocket (Socket.io)  
-- MUI  
+
+- Next.js
+- React.js
+- NextAuth (Auth.js)
+- Redux Toolkit
+- Apollo Client (GraphQL)
+- WebSocket (Socket.io)
+- MUI
 
 ### Backend (for reference)
-- Django + Django Channels  
-- PostgreSQL + Redis  
-- Celery + RabbitMQ  
-- Apollo Server (GraphQL)  
-- JWT, Docker Compose  
+
+- Django + Django Channels
+- PostgreSQL + Redis
+- Celery + RabbitMQ
+- Apollo Server (GraphQL)
+- JWT, Docker Compose
 
 ---
 
@@ -88,11 +93,13 @@ ACCESS_TOKEN_KEY=accessToken
 ## Deployment
 
 **Vercel**
+
 ```bash
 vercel deploy
 ```
 
 **Docker**
+
 ```bash
 docker compose up
 ```
@@ -102,11 +109,13 @@ docker compose up
 ## Team
 
 ### Frontend
-- مهدی دهقانی محمدآبادی  
-- آرین سعیدکندری  
-- عرفان قاسمیان  
-- رامین کلانتری  
+
+- مهدی دهقانی محمدآبادی
+- آرین سعیدکندری
+- عرفان قاسمیان
+- رامین کلانتری
 
 ### Backend
-- ابوالفضل شهسواری  
-- محمد متین نوری  
+
+- ابوالفضل شهسواری
+- محمد متین نوری

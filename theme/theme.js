@@ -315,7 +315,12 @@ export const lightTheme = (isRtl) =>
           active: 'rgba(25, 118, 210, 1)'
         },
         carLogoCard: {
-          background: '#FFFFFF'
+          background: '#FFFFFF',
+          borderColor: '#E9E9E9'
+        },
+        carLogoHeader: {
+          background: '#F9FBFC',
+          allBrandsColor: '#050B20'
         }
       }
     })
@@ -344,7 +349,12 @@ export const darkTheme = (isRtl) =>
           active: 'rgba(132, 194, 255, 1)'
         },
         carLogoCard: {
-          background: '#36426A'
+          background: '#36426A',
+          borderColor: '#333F64'
+        },
+        carLogoHeader: {
+          background: '#29314C',
+          allBrandsColor: '#8DA6FF'
         }
       }
     })

@@ -1,6 +1,6 @@
 'use client';
+import { perfectCentering } from '@/app/constants/Styles';
 import { Box, Typography, useTheme } from '@mui/material';
-import { perfectCentering } from '../constants/Styles';
 
 const CarLogoCard = ({ logoSrc, carName }) => {
   const theme = useTheme();
@@ -9,14 +9,15 @@ const CarLogoCard = ({ logoSrc, carName }) => {
       sx={{
         ...perfectCentering,
         flexDirection: 'column',
-        width: '10rem',
-        height: '10rem',
+        width: '8.5rem',
+        height: '9rem',
         backgroundColor: theme.palette?.carLogoCard?.background,
         borderRadius: '1rem',
-        gap: '0.5rem'
+        gap: '0.5rem',
+        border: `1px solid ${theme.palette?.carLogoCard?.borderColor}`
       }}
     >
-      <Box width="100px" height="100px" sx={{ ...perfectCentering }}>
+      <Box width="90px" height="90px" sx={{ ...perfectCentering }}>
         <img src={logoSrc} />
       </Box>
 

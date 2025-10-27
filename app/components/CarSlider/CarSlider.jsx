@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import CarCard from './CarCard';
-import { Box, IconButton, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { useRef, useEffect, useState } from 'react';
 import { perfectCentering } from '@/app/constants/Styles';
@@ -58,34 +58,42 @@ const CarSlider = () => {
       >
         {cars.map((car, index) => (
           <SwiperSlide key={index}>
-            <CarCard {...car} />
+            <CarCard theme={theme} {...car} />
           </SwiperSlide>
         ))}
       </Swiper>
 
       <Box display="flex" justifyContent="end" gap={2} mt={2}>
-        <IconButton
+        <Box
+          component="button"
           sx={{
             backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
             border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
-            ...perfectCentering
+            ...perfectCentering,
+            borderRadius: '100%',
+            width: '3rem',
+            height: '3rem'
           }}
           ref={nextRef}
         >
           <ArrowForwardIos
             sx={{ color: theme.palette?.carSlider?.iconColor }}
           />
-        </IconButton>
-        <IconButton
+        </Box>
+        <Box
+          component="button"
           sx={{
             backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
             border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
-            ...perfectCentering
+            ...perfectCentering,
+            borderRadius: '100%',
+            width: '3rem',
+            height: '3rem'
           }}
           ref={prevRef}
         >
           <ArrowBackIos sx={{ color: theme.palette?.carSlider?.iconColor }} />
-        </IconButton>
+        </Box>
       </Box>
     </Box>
   );

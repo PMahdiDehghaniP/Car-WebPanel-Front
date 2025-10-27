@@ -12,15 +12,19 @@ import InfoIcon from './InfoIcon';
 import {
   SpeedOutlined,
   LocalGasStationOutlined,
-  CallMadeOutlined
+  CallMadeOutlined,
+  BookmarkBorderOutlined
 } from '@mui/icons-material';
+import { perfectCentering } from '@/app/constants/Styles';
 const CarCard = ({
   imageSrc,
   imageAlt,
   carName,
   description,
   carInformation,
-  price
+  price,
+  theme,
+  onClick
 }) => {
   return (
     <Card
@@ -37,11 +41,29 @@ const CarCard = ({
         sx={{
           height: '220px',
           width: '100%',
-          objectFit: 'cover'
+          objectFit: 'cover',
+          position: 'relative'
         }}
         image={imageSrc}
       />
-
+      <Box
+        component="button"
+        onClick={onClick}
+        sx={{
+          ...perfectCentering,
+          backgroundColor: theme.palette?.carSlider?.iconMediBgColor,
+          position: 'absolute',
+          top: 10,
+          right: 10,
+          borderRadius: '100%',
+          width: '3rem',
+          height: '3rem'
+        }}
+      >
+        <BookmarkBorderOutlined
+          sx={{ color: theme.palette?.carSlider?.iconMediaColor }}
+        />
+      </Box>
       <CardContent
         sx={{
           display: 'flex',

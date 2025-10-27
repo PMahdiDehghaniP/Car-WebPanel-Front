@@ -326,6 +326,13 @@ export const lightTheme = (isRtl) =>
           sliderButtonBgColor: '#FFFFFF',
           iconColor: '#050B20',
           borderColor: '#E9E9E9'
+        },
+        carSlider: {
+          sliderButtonBgColor: '#FFFFFF',
+          iconColor: '#050B20',
+          borderColor: '#E9E9E9',
+          iconMediBgColor: '#FFFFFF',
+          iconMediaColor: '#050B20'
         }
       }
     })
@@ -364,7 +371,9 @@ export const darkTheme = (isRtl) =>
         carSlider: {
           sliderButtonBgColor: '#272F4E',
           iconColor: '#FFFFFF',
-          borderColor: '#272F4E'
+          borderColor: '#272F4E',
+          iconMediBgColor: '#FFFFFF',
+          iconMediaColor: '#050B20'
         }
       }
     })

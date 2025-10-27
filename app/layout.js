@@ -3,6 +3,8 @@ import StoreProvider from '@/providers/StoreProvider';
 import MuiThemeProvider from '@/providers/MuiThemeProvider';
 import { SessionProvider } from 'next-auth/react';
 import './globals.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export const metadata = {
   title: 'Create Next App',

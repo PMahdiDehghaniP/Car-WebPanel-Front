@@ -321,6 +321,11 @@ export const lightTheme = (isRtl) =>
         carLogoHeader: {
           background: '#F9FBFC',
           allBrandsColor: '#050B20'
+        },
+        carSlider: {
+          sliderButtonBgColor: '#FFFFFF',
+          iconColor: '#050B20',
+          borderColor: '#E9E9E9'
         }
       }
     })
@@ -355,6 +360,11 @@ export const darkTheme = (isRtl) =>
         carLogoHeader: {
           background: '#29314C',
           allBrandsColor: '#8DA6FF'
+        },
+        carSlider: {
+          sliderButtonBgColor: '#272F4E',
+          iconColor: '#FFFFFF',
+          borderColor: '#272F4E'
         }
       }
     })

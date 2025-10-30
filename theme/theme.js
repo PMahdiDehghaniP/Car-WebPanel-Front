@@ -378,6 +378,9 @@ export const darkTheme = (isRtl) =>
         familyCard: {
           backgroundColor: '#B66508',
           swiperBackgroundColor: '#848484'
+        },
+        footer: {
+          backgroundColor: '#003597'
         }
       }
     })

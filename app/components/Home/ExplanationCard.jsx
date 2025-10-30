@@ -37,7 +37,7 @@ const ExplanationCard = ({
           alt="explanation gif"
           sx={{
             width: '100%',
-            height: 'auto',
+            height: '100%',
             objectFit: 'cover',
             borderTopRightRadius: '1rem',
             borderTopLeftRadius: {

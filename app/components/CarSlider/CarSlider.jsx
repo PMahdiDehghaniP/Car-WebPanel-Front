@@ -50,9 +50,8 @@ const CarSlider = () => {
         breakpoints={{
           0: { slidesPerView: 1 },
           600: { slidesPerView: 2 },
-          900: { slidesPerView: 2 },
           1200: { slidesPerView: 3 },
-          1400: { slidesPerView: 4 }
+          1500: { slidesPerView: 4 }
         }}
         style={{ width: '100%', paddingLeft: '1rem', paddingRight: '1rem' }}
       >

@@ -10,7 +10,8 @@ const AchivementSection = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '3rem'
+        gap: '3rem',
+        marginBottom: '2rem'
       }}
       data-aos="flip-right"
     >

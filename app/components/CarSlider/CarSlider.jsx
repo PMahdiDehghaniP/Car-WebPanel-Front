@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import CarCard from './CarCard';
-import { Box, useTheme } from '@mui/material';
+import { Box, Tab, Tabs, useTheme } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { useRef, useEffect, useState } from 'react';
 import { perfectCentering } from '@/app/constants/Styles';
@@ -28,6 +28,11 @@ const CarSlider = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const [value, setValue] = useState(2);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
@@ -46,7 +51,18 @@ const CarSlider = () => {
       flexDirection="column"
       alignItems="end"
       data-aos="fade-up-left"
+      gap="1rem"
     >
+      <Tabs
+        sx={{ alignSelf: 'center', marginBottom: '1rem' }}
+        aria-label="disabled tabs example"
+        value={value}
+        onChange={handleChange}
+      >
+        <Tab value={2} label="منتخب" />
+        <Tab value={3} label="جدید" />
+        <Tab value={1} label="همه" />
+      </Tabs>
       <Swiper
         spaceBetween={20}
         loop

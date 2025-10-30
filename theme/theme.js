@@ -4,6 +4,21 @@ import { deepmerge } from '@mui/utils';
 // Base theme options shared between light and dark
 const baseThemeOptions = (isRtl) => {
   return {
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+        mobile: 0,
+        tablet: 768,
+        laptop: 1024,
+        desktop: 1200,
+        largeDesktop: 1440,
+        extraLarge: 1920
+      }
+    },
     typography: {
       fontFamily: '"Vazirmatn", "Poppins", sans-serif',
       h3: {

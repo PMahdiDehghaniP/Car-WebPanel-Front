@@ -5,6 +5,7 @@ import CarSlider from './components/CarSlider/CarSlider';
 import FeatureCardsSection from './components/Home/FeatureCardsSection';
 import AchivementSection from './components/Home/Achivement';
 import Footer from './components/Home/Footer';
+import HomePageHeader from './components/Home/HomePageHeader';
 
 const Home = () => {
   return (
@@ -15,21 +16,23 @@ const Home = () => {
         width: '100vw',
         minHeight: '100vh',
         alignItems: 'center',
-        gap: '2rem',
         boxSizing: 'border-box',
-        overflowX: 'hidden'
+        overflowX: 'hidden',
+        position: 'relative'
       }}
     >
+      <HomePageHeader />
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          minHeight: '100%',
           alignItems: 'center',
           gap: '2rem',
           paddingX: { md: '3rem', sm: '2rem', xs: '1rem' },
-          overflowX: 'hidden'
+          marginTop: '-5rem',
+          zIndex: 900,
+          overflow: 'hidden'
         }}
       >
         <LogoCarsCard />

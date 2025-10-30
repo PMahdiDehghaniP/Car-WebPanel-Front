@@ -5,6 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import './globals.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import AOSProvider from '@/providers/AOSProvider';
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
             refetchInterval={process.env.REFETCH_SESSION_INTERVAL_TIME}
           >
             <DirectionProvider>
-              <MuiThemeProvider>{children}</MuiThemeProvider>
+              <MuiThemeProvider>
+                <AOSProvider>{children}</AOSProvider>
+              </MuiThemeProvider>
             </DirectionProvider>
           </SessionProvider>
         </StoreProvider>

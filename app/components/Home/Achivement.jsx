@@ -12,6 +12,7 @@ const AchivementSection = () => {
         alignItems: 'center',
         gap: '3rem'
       }}
+      data-aos="flip-right"
     >
       <Typography sx={{ fontSize: '4rem', fontWeight: 700 }}>
         دستاوردها

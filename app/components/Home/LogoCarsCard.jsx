@@ -24,6 +24,7 @@ const LogoCarsCard = () => {
         },
         gap: '1.5rem'
       }}
+data-aos="zoom-in-left"
     >
       <LogoCardHeader />
       <CarsLogoSection />

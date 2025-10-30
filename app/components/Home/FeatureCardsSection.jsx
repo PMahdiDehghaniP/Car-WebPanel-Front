@@ -16,6 +16,7 @@ const FeatureCardsSection = () => (
       features={Garagefeatures}
       backgroundStyles={{ backgroundColor: '#546189' }}
       bgImageSrc="/blueLambo.png"
+      dataAos="fade-left"
     />
     <ExplanationCard
       title="در فستیوال ها، ماشینتو به نمایش بذار"
@@ -29,8 +30,9 @@ const FeatureCardsSection = () => (
       bgImageSrc="/redLambo.png"
       gifSrc="festgif.gif"
       features={FestivalFeatures}
+      dataAos="fade-right"
     />
-    <FamilyCard />
+    <FamilyCard dataAos="fade-left" />
   </>
 );
 export default FeatureCardsSection;

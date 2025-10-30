@@ -17,6 +17,7 @@ const Footer = () => {
         height: 'auto',
         display: 'flex'
       }}
+      data-aos="zoom-in"
     >
       <Box
         component="img"

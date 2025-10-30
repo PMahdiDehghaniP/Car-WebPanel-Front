@@ -1,7 +1,7 @@
 'use client';
 import { Button, Grid, Typography, useTheme, Box } from '@mui/material';
 
-const FamilyCard = () => {
+const FamilyCard = ({ dataAos = 'fade-right' }) => {
   const theme = useTheme();
   return (
     <Grid
@@ -9,6 +9,7 @@ const FamilyCard = () => {
       sx={{
         width: '100%'
       }}
+      data-aos={dataAos}
     >
       <Grid
         size={{ xs: 12, sm: 12, md: 12, lg: 6 }}

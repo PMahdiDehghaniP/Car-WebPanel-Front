@@ -40,7 +40,13 @@ const CarSlider = () => {
   }, [swiperInstance]);
 
   return (
-    <Box width="100%" display="flex" flexDirection="column" alignItems="end">
+    <Box
+      width="100%"
+      display="flex"
+      flexDirection="column"
+      alignItems="end"
+      data-aos="fade-up-left"
+    >
       <Swiper
         spaceBetween={20}
         loop

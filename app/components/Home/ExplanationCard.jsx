@@ -9,7 +9,8 @@ const ExplanationCard = ({
   buttonText,
   title,
   description,
-  bgImageSrc
+  bgImageSrc,
+  dataAos = 'fade-right'
 }) => {
   return (
     <Grid
@@ -21,6 +22,7 @@ const ExplanationCard = ({
         overflow: 'hidden',
         height: 'auto'
       }}
+      data-aos={dataAos}
     >
       <Grid
         size={{ xs: 12, sm: 12, md: 12, lg: 6 }}

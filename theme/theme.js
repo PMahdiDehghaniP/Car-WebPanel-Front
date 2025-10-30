@@ -333,6 +333,20 @@ export const lightTheme = (isRtl) =>
           borderColor: '#E9E9E9',
           iconMediBgColor: '#FFFFFF',
           iconMediaColor: '#050B20'
+        },
+        footer: {
+          backgroundColor: '#386BCA'
+        },
+        achivement: {
+          textColor: '#050B20'
+        },
+        homeFeatures: {
+          lightBlue: '#EEF1FB',
+          lightPink: '#FCEAFF'
+        },
+        familyCard: {
+          backgroundColor: '#FFD09A',
+          swiperBackgroundColor: '#FFFFFF'
         }
       }
     })
@@ -381,6 +395,13 @@ export const darkTheme = (isRtl) =>
         },
         footer: {
           backgroundColor: '#003597'
+        },
+        achivement: {
+          textColor: '#000000'
+        },
+        homeFeatures: {
+          lightBlue: '#546189',
+          lightPink: '#814E88'
         }
       }
     })

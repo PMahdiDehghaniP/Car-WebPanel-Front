@@ -59,7 +59,11 @@ const CarSlider = () => {
           1200: { slidesPerView: 3 },
           1500: { slidesPerView: 4 }
         }}
-        style={{ width: '100%', paddingLeft: '1rem', paddingRight: '1rem' }}
+        style={{
+          width: '100%',
+          paddingLeft: '1rem',
+          paddingRight: '1rem'
+        }}
       >
         {cars.map((car, index) => (
           <SwiperSlide key={index}>
@@ -68,7 +72,7 @@ const CarSlider = () => {
         ))}
       </Swiper>
 
-      <Box display="flex" justifyContent="end" gap={2} mt={2}>
+      <Box display="flex" justifyContent="end" gap={2}>
         <Box
           component="button"
           sx={{

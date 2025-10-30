@@ -15,7 +15,8 @@ const Footer = () => {
         position: { lg: 'relative' },
         padding: '2rem 0',
         height: 'auto',
-        display: 'flex'
+        display: 'flex',
+        color: '#FFFFFF'
       }}
       data-aos="zoom-in"
     >

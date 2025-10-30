@@ -23,7 +23,6 @@ const ExplanationCard = ({
       }}
     >
       <Grid
-        item
         size={{ xs: 12, sm: 12, md: 12, lg: 6 }}
         sx={{
           display: 'flex',

@@ -1,25 +1,29 @@
 'use server';
-
 import { Box } from '@mui/material';
 import LogoCarsCard from './components/Home/LogoCarsCard';
 import CarSlider from './components/CarSlider/CarSlider';
 import FeatureCardsSection from './components/Home/FeatureCardsSection';
+import AchivementSection from './components/Home/Achivement';
 
 const Home = () => {
   return (
     <Box
-      display="flex"
-      flexDirection="column"
-      width="100%"
-      height="100%"
-      alignItems="center"
-      gap="0.5rem"
-      paddingRight="1rem"
-      paddingLeft="1rem"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        minHeight: '100vh',
+        alignItems: 'center',
+        gap: '2rem',
+        padding: '1rem',
+        boxSizing: 'border-box',
+        overflowX: 'hidden'
+      }}
     >
       <LogoCarsCard />
       <CarSlider />
       <FeatureCardsSection />
+      <AchivementSection />
     </Box>
   );
 };

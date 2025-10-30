@@ -374,6 +374,10 @@ export const darkTheme = (isRtl) =>
           borderColor: '#272F4E',
           iconMediBgColor: '#FFFFFF',
           iconMediaColor: '#050B20'
+        },
+        familyCard: {
+          backgroundColor: '#B66508',
+          swiperBackgroundColor: '#848484'
         }
       }
     })

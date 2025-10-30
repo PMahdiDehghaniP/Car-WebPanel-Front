@@ -3,6 +3,7 @@ import {
   Garagefeatures
 } from '@/app/constants/Home/HomePageFeatures';
 import ExplanationCard from './ExplanationCard';
+import FamilyCard from './FamilyCard';
 
 const FeatureCardsSection = () => (
   <>
@@ -29,6 +30,7 @@ const FeatureCardsSection = () => (
       gifSrc="festgif.gif"
       features={FestivalFeatures}
     />
+    <FamilyCard />
   </>
 );
 export default FeatureCardsSection;

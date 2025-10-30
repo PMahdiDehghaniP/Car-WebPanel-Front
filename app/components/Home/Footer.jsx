@@ -1,29 +1,10 @@
 'use client';
 import { Box, Grid, useTheme, Typography } from '@mui/material';
 import { LinkedIn, Instagram, Facebook, Twitter } from '@mui/icons-material';
+import { contactItems, linkItems } from '@/app/constants/Home/Footer';
 
 const Footer = () => {
   const theme = useTheme();
-
-  const contactItems = [
-    {
-      title: 'شماره تماس :',
-      content: '09903114568'
-    },
-    {
-      title: 'آدرس:',
-      content:
-        'تهران‌-‌میدان رسالت، خیابان هنگام، خیابان دانشگاه، دانشگاه علم و صنعت ایران‌-‌معاونت دانشجویی‌-‌دبیرخانه معاونت دانشجویی',
-      maxWidth: '80%'
-    },
-    {
-      title: 'ایمیل:',
-      content: 'garajino.itsall200@gmail.com'
-    }
-  ];
-
-  const linkItems = ['انجمن', 'فستیوال', 'درباره ما'];
-
   return (
     <Grid
       container
@@ -37,6 +18,26 @@ const Footer = () => {
         display: 'flex'
       }}
     >
+      <Box
+        component="img"
+        src="/footerBg.png"
+        alt="footer"
+        sx={{
+          display: {
+            xs: 'none',
+            lg: 'block'
+          },
+          position: {
+            lg: 'absolute',
+            md: 'none'
+          },
+          top: '8%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          objectFit: 'cover',
+          opacity: 0.25
+        }}
+      />
       <Grid
         size={{ xs: 12, sm: 4 }}
         sx={{

@@ -1,5 +1,7 @@
 'use client';
 import { Button, Grid, Typography, useTheme, Box } from '@mui/material';
+import InstagramPostCard from '../PostCard';
+import PostSlider from './CarSlider/PostSlider';
 
 const FamilyCard = ({ dataAos = 'fade-right' }) => {
   const theme = useTheme();
@@ -16,7 +18,8 @@ const FamilyCard = ({ dataAos = 'fade-right' }) => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
+          gap: '1rem',
           alignItems: 'center',
           padding: '2rem',
           backgroundColor: theme.palette?.familyCard?.swiperBackgroundColor,
@@ -53,7 +56,8 @@ const FamilyCard = ({ dataAos = 'fade-right' }) => {
         >
           برترین پست های هفته
         </Typography>
-        <Button sx={{ minWidth: '341px' }} variant="contained">
+        <PostSlider />
+        <Button sx={{ minWidth: '300px' }} variant="contained">
           مشاهده همه پست ها
         </Button>
       </Grid>
@@ -72,6 +76,7 @@ const FamilyCard = ({ dataAos = 'fade-right' }) => {
           alt="Family"
           sx={{
             width: '100%',
+            height: '100%',
             objectFit: 'cover',
             backgroundColor: theme.palette?.familyCard?.backgroundColor,
             borderTopLeftRadius: {

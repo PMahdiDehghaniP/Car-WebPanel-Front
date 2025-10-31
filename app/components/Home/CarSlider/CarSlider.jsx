@@ -1,8 +1,6 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import CarCard from './CarCard';
 import { Box, Tab, Tabs, useTheme } from '@mui/material';
@@ -82,7 +80,7 @@ const CarSlider = () => {
         }}
       >
         {cars.map((car, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} style={{ ...perfectCentering }}>
             <CarCard theme={theme} {...car} />
           </SwiperSlide>
         ))}

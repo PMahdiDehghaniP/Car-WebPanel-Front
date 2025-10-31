@@ -2,10 +2,12 @@ import DirectionProvider from '@/providers/DirectionProvider';
 import StoreProvider from '@/providers/StoreProvider';
 import MuiThemeProvider from '@/providers/MuiThemeProvider';
 import { SessionProvider } from 'next-auth/react';
+import AOSProvider from '@/providers/AOSProvider';
 import './globals.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import AOSProvider from '@/providers/AOSProvider';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 export const metadata = {
   title: 'Create Next App',

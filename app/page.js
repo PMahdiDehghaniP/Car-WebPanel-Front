@@ -1,7 +1,7 @@
 'use server';
 import { Box } from '@mui/material';
 import LogoCarsCard from './components/Home/LogoCarsCard';
-import CarSlider from './components/CarSlider/CarSlider';
+import CarSlider from './components/Home/CarSlider/CarSlider';
 import FeatureCardsSection from './components/Home/FeatureCardsSection';
 import AchivementSection from './components/Home/Achivement';
 import Footer from './components/Home/Footer';

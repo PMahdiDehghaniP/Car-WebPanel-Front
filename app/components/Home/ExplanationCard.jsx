@@ -65,7 +65,8 @@ const ExplanationCard = ({
           justifyContent: 'space-around',
           alignItems: 'start',
           padding: '1rem',
-          position: 'relative',height:{lg:"auto",md:"400px",xs:"500px"}
+          position: 'relative',
+          height: { lg: 'auto', md: '400px', xs: '500px' }
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

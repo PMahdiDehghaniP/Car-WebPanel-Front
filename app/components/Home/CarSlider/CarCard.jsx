@@ -55,7 +55,7 @@ const CarCard = ({
           backgroundColor: theme.palette?.carSlider?.iconMediBgColor,
           position: 'absolute',
           top: 10,
-          right: 10,
+          marginRight: '10px',
           borderRadius: '100%',
           width: '3rem',
           height: '3rem'

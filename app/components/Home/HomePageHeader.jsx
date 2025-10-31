@@ -2,9 +2,12 @@
 import { useAppSelector } from '@/hooks/reduxHooks';
 import { Typography } from '@mui/material';
 import { Box, Grid, useTheme } from '@mui/system';
+import SearchBar from './SearchBar';
+import ToggleThemeButton from './ToggleThemeButton';
 
 const HomePageHeader = () => {
   const theme = useTheme();
+
   const { theme: themeStatus } = useAppSelector((state) => state.theme);
   return (
     <Grid
@@ -15,7 +18,8 @@ const HomePageHeader = () => {
           lg: themeStatus === 'light' ? '900px' : '700px',
           md: '550px',
           sm: '550px',
-          xs: '450px' ,laptop:"600px"
+          xs: '450px',
+          laptop: '600px'
         },
         display: 'flex',
         flexDirection: 'column',
@@ -47,7 +51,7 @@ const HomePageHeader = () => {
           zIndex: 1
         }}
       />
-
+      <ToggleThemeButton  />
       <Box
         component="img"
         src={
@@ -75,6 +79,7 @@ const HomePageHeader = () => {
       >
         خودرو ایده‌آل خودتو پیدا کن
       </Typography>
+      <SearchBar />
     </Grid>
   );
 };

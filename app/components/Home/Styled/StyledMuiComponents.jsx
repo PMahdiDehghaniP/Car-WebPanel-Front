@@ -1,25 +1,34 @@
 import { InputBase, Select, styled } from '@mui/material';
 
-export const StyledInputBase = styled(InputBase)(({ theme }) => ({
+export const StyledInputBase = styled(InputBase)(({ theme, isopen }) => ({
   borderRadius: '5rem',
   backgroundColor: '#405FF2',
   color: '#fff',
-  width: '40%',
+  width: isopen ? '90%' : '70%',
   transition: 'all 0.8s ease-in-out',
+  position: 'relative',
+
+  // responsive adjustments
+  [theme.breakpoints.up('lg')]: {
+    width: isopen ? '95%' : '80%'
+  },
+  [theme.breakpoints.down('md')]: {
+    width: isopen ? '85%' : '40%'
+  },
+
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1.2, 2, 1.2, 0),
+    padding: theme.spacing(4, 4, 4, 2),
     borderRadius: '5rem',
+    textAlign: 'right',
     '&::placeholder': {
       color: '#fff',
       opacity: 0.8
     }
   },
   '&:focus-within': {
-    width: '100%',
     backgroundColor: '#3048c5'
   }
 }));
-
 export const NoBorderSelect = styled(Select)({
   '& .MuiOutlinedInput-notchedOutline': {
     border: 'none'

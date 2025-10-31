@@ -51,7 +51,7 @@ const HomePageHeader = () => {
           zIndex: 1
         }}
       />
-      <ToggleThemeButton  />
+      <ToggleThemeButton />
       <Box
         component="img"
         src={

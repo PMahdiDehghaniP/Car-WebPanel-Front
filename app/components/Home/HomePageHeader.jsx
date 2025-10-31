@@ -15,16 +15,16 @@ const HomePageHeader = () => {
       sx={{
         width: '100%',
         minHeight: {
-          lg: themeStatus === 'light' ? '900px' : '700px',
+          lg: themeStatus === 'light' ? '900px' : '550px',
           md: '550px',
-          sm: '550px',
-          xs: '450px',
+          sm: themeStatus === 'light' ? '550px' : '400px',
+          xs: themeStatus === 'light' ? '450px' : '300px',
           laptop: '600px'
         },
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '1rem',
+        gap: { xs: '0px', sm: '1rem' },
         justifyContent: 'start',
         background:
           'linear-gradient(180deg, rgba(254, 254, 254, 0.2) 10.1%, rgba(57, 57, 57, 0.2) 62.5%)',
@@ -44,11 +44,12 @@ const HomePageHeader = () => {
             lg: themeStatus === 'light' ? '-150px' : '-350px',
             md: '-100px',
             sm: '-50px',
-            xs: '13%'
+            xs: '45px'
           },
           left: '50%',
           transform: 'translateX(-50%)',
-          zIndex: 1
+          zIndex: 1,
+          objectFit: 'cover'
         }}
       />
       <ToggleThemeButton />

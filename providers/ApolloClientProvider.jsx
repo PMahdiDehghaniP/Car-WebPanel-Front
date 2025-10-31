@@ -65,4 +65,3 @@ const ApolloClientProvider = ({ children }) => {
 };
 
 export default ApolloClientProvider;
-

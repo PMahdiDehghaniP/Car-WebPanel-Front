@@ -2,7 +2,12 @@ import DirectionProvider from '@/providers/DirectionProvider';
 import StoreProvider from '@/providers/StoreProvider';
 import MuiThemeProvider from '@/providers/MuiThemeProvider';
 import { SessionProvider } from 'next-auth/react';
-import "./globals.css";
+import AOSProvider from '@/providers/AOSProvider';
+import './globals.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 export const metadata = {
   title: 'Create Next App',
@@ -18,7 +23,9 @@ export default function RootLayout({ children }) {
             refetchInterval={process.env.REFETCH_SESSION_INTERVAL_TIME}
           >
             <DirectionProvider>
-              <MuiThemeProvider>{children}</MuiThemeProvider>
+              <MuiThemeProvider>
+                <AOSProvider>{children}</AOSProvider>
+              </MuiThemeProvider>
             </DirectionProvider>
           </SessionProvider>
         </StoreProvider>
@@ -26,4 +33,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

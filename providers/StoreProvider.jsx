@@ -12,4 +12,3 @@ const StoreProvider = ({ children }) => {
   return <Provider store={store.current}>{children}</Provider>;
 };
 export default StoreProvider;
-

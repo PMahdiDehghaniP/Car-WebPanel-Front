@@ -43,11 +43,11 @@ const nextConfig = {
     }
 
     return config;
-  },
-// domains for image optimization
-//   images: {
-//     domains : {}
-//   }
+  }
+  // domains for image optimization
+  //   images: {
+  //     domains : {}
+  //   }
 };
 
 export default nextConfig;

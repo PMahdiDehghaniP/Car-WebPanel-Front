@@ -4,6 +4,21 @@ import { deepmerge } from '@mui/utils';
 // Base theme options shared between light and dark
 const baseThemeOptions = (isRtl) => {
   return {
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+        mobile: 0,
+        tablet: 768,
+        laptop: 1024,
+        desktop: 1200,
+        largeDesktop: 1440,
+        extraLarge: 1920
+      }
+    },
     typography: {
       fontFamily: '"Vazirmatn", "Poppins", sans-serif',
       h3: {
@@ -313,6 +328,40 @@ export const lightTheme = (isRtl) =>
         divider: 'rgba(217, 217, 217, 1)',
         action: {
           active: 'rgba(25, 118, 210, 1)'
+        },
+        carLogoCard: {
+          background: '#FFFFFF',
+          borderColor: '#E9E9E9'
+        },
+        carLogoHeader: {
+          background: '#F9FBFC',
+          allBrandsColor: '#050B20'
+        },
+        carSlider: {
+          sliderButtonBgColor: '#FFFFFF',
+          iconColor: '#050B20',
+          borderColor: '#E9E9E9'
+        },
+        carSlider: {
+          sliderButtonBgColor: '#FFFFFF',
+          iconColor: '#050B20',
+          borderColor: '#E9E9E9',
+          iconMediBgColor: '#FFFFFF',
+          iconMediaColor: '#050B20'
+        },
+        footer: {
+          backgroundColor: '#386BCA'
+        },
+        achivement: {
+          textColor: '#050B20'
+        },
+        homeFeatures: {
+          lightBlue: '#EEF1FB',
+          lightPink: '#FCEAFF'
+        },
+        familyCard: {
+          backgroundColor: '#FFD09A',
+          swiperBackgroundColor: '#FFFFFF'
         }
       }
     })
@@ -339,8 +388,36 @@ export const darkTheme = (isRtl) =>
         divider: 'rgba(217, 217, 217, 1)',
         action: {
           active: 'rgba(132, 194, 255, 1)'
+        },
+        carLogoCard: {
+          background: '#36426A',
+          borderColor: '#333F64'
+        },
+        carLogoHeader: {
+          background: '#29314C',
+          allBrandsColor: '#8DA6FF'
+        },
+        carSlider: {
+          sliderButtonBgColor: '#272F4E',
+          iconColor: '#FFFFFF',
+          borderColor: '#272F4E',
+          iconMediBgColor: '#FFFFFF',
+          iconMediaColor: '#050B20'
+        },
+        familyCard: {
+          backgroundColor: '#B66508',
+          swiperBackgroundColor: '#848484'
+        },
+        footer: {
+          backgroundColor: '#003597'
+        },
+        achivement: {
+          textColor: '#000000'
+        },
+        homeFeatures: {
+          lightBlue: '#546189',
+          lightPink: '#814E88'
         }
       }
     })
   );
-

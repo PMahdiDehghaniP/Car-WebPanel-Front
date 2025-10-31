@@ -21,3 +21,15 @@
   font-weight: 400;
   font-style: normal;
 }
+body {
+  overflow-x: hidden;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}

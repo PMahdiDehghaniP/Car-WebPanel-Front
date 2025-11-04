@@ -52,7 +52,6 @@ const HomePageHeader = () => {
           objectFit: 'cover'
         }}
       />
-      <ToggleThemeButton />
       <Box
         component="img"
         src={

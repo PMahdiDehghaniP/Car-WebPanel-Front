@@ -18,4 +18,3 @@ const AuthFormsHeader = ({ title, headerIcon }) => (
   </Box>
 );
 export default AuthFormsHeader;
-

@@ -34,4 +34,3 @@ export const passwordRecoveryPageValidationSchema = yup.object({
     .oneOf([yup.ref('newPassword')], 'رمز عبور و تکرار آن مطابقت ندارند'),
   recoveryCode: yup.string().required('کدبازیابی الزامی است')
 });
-

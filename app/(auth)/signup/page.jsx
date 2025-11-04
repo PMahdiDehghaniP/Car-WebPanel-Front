@@ -1,3 +1,4 @@
+'use server';
 import { Grid } from '@mui/material';
 import {
   authPagesFormBreakpoints,

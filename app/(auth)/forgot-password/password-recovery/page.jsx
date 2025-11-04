@@ -1,15 +1,28 @@
-'use server';
+'use client';
+
 import { Grid } from '@mui/material';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   authPagesFormBreakpoints,
   authPagesImagesBreakPoints
-} from '../componentBreakpoints';
+} from '../../componentBreakpoints';
+import AuthLogo from '../../components/AuthLogo';
+import AuthFormsHeader from '../../components/AuthFormsHeader';
+import { useEffect } from 'react';
 import { ArrowCircleRightOutlined } from '@mui/icons-material';
-import AuthFormsHeader from '../components/AuthFormsHeader';
-import LoginForm from './components/Loginform';
-import AuthLogo from '../components/AuthLogo';
+import PasswordRecoveryForm from './components/PasswordRecoveryForm';
 
-const LoginPage = () => {
+const PasswordRecoveryPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const emailSubmitted = searchParams.get('emailSubmitted');
+  const email = searchParams.get('email');
+  useEffect(() => {
+    if (emailSubmitted !== 'true' || !email) {
+      router.replace('/forgot-password');
+    }
+  }, [emailSubmitted, email]);
+
   return (
     <Grid container sx={{ width: '100%', height: '100vh' }}>
       <Grid
@@ -23,7 +36,7 @@ const LoginPage = () => {
         <AuthLogo />
 
         <AuthFormsHeader
-          title="ورود"
+          title="بازیابی رمز عبور"
           headerIcon={
             <ArrowCircleRightOutlined
               sx={{
@@ -35,12 +48,12 @@ const LoginPage = () => {
             />
           }
         />
-        <LoginForm />
+        <PasswordRecoveryForm />
       </Grid>
 
       <Grid
         sx={{
-          backgroundImage: "url('/loginPageImage.png')",
+          backgroundImage: "url('/passwordRecoveryPageImage.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -51,4 +64,5 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default PasswordRecoveryPage;
+

@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import Navbar from './components/Bar/Navbar';
 
 export const metadata = {
   title: 'Create Next App',
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
           >
             <DirectionProvider>
               <MuiThemeProvider>
-                <AOSProvider>{children}</AOSProvider>
+                <AOSProvider> 
+                  {children}
+                </AOSProvider>
               </MuiThemeProvider>
             </DirectionProvider>
           </SessionProvider>

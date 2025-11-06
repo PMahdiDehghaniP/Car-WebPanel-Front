@@ -46,11 +46,10 @@ const TimerButton = () => {
       {isTimerStart
         ? `${Math.floor(time / 60)}:${String(time % 60).padStart(2, '0')}`
         : isFirstTimerStart
-        ? 'ارسال کد'
-        : 'ارسال مجدد'}
+          ? 'ارسال کد'
+          : 'ارسال مجدد'}
     </Button>
   );
 };
 
 export default TimerButton;
-

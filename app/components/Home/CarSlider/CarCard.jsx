@@ -33,7 +33,8 @@ const CarCard = ({
         maxHeight: '430px',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: '0.75rem'
+        marginBottom: '0.75rem',
+        position: 'relative'
       }}
     >
       <CardMedia
@@ -42,8 +43,7 @@ const CarCard = ({
         sx={{
           height: '220px',
           width: '100%',
-          objectFit: 'cover',
-          position: 'relative'
+          objectFit: 'cover'
         }}
         image={imageSrc}
       />

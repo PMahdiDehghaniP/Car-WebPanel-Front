@@ -65,4 +65,3 @@ const PasswordRecoveryPage = () => {
 };
 
 export default PasswordRecoveryPage;
-

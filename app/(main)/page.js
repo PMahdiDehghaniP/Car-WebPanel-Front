@@ -4,7 +4,6 @@ import LogoCarsCard from '../components/Home/LogoCarsCard';
 import CarSlider from '../components/Home/CarSlider/CarSlider';
 import FeatureCardsSection from '../components/Home/FeatureCardsSection';
 import AchivementSection from '../components/Home/Achivement';
-import Footer from '../components/Home/Footer';
 import HomePageHeader from '../components/Home/HomePageHeader';
 
 const Home = () => {

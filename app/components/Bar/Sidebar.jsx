@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
-import { closeMenu,setActiveItem } from '@/lib/store/slices/uiSlice';
+import { closeMenu, setActiveItem } from '@/lib/store/slices/uiSlice';
 import {
   MdOutlineHome,
   MdOutlineDirectionsCarFilled,
@@ -10,7 +10,7 @@ import {
   MdOutlineGarage,
   MdOutlineShare,
   MdEmojiEvents,
-  MdOutlinePersonSearch,
+  MdOutlinePersonSearch
 } from 'react-icons/md';
 import Close from './close';
 import ToggleThemeButton from '../Home/ToggleThemeButton';
@@ -21,7 +21,15 @@ const Sidebar = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { theme } = useSelector((state) => state.theme);
   const sidebarItems = isLoggedIn
-    ? ['خانه', 'خودروها', 'داشبورد', 'گاراژ من', 'انجمن', 'رویدادها', 'درباره ما']
+    ? [
+        'خانه',
+        'خودروها',
+        'داشبورد',
+        'گاراژ من',
+        'انجمن',
+        'رویدادها',
+        'درباره ما'
+      ]
     : ['خانه', 'خودروها', 'ورود / ثبت نام', 'انجمن', 'رویدادها', 'درباره ما'];
 
   const handleClick = (label) => {
@@ -30,15 +38,23 @@ const Sidebar = () => {
 
   const getIcon = (label) => {
     switch (label) {
-      case 'خانه': return <MdOutlineHome size={25} />;
-      case 'خودروها': return <MdOutlineDirectionsCarFilled size={25} />;
+      case 'خانه':
+        return <MdOutlineHome size={25} />;
+      case 'خودروها':
+        return <MdOutlineDirectionsCarFilled size={25} />;
       case 'ورود / ثبت نام':
-      case 'داشبورد': return <MdOutlinePersonOutline size={25} />;
-      case 'گاراژ من': return <MdOutlineGarage size={25} />;
-      case 'انجمن': return <MdOutlineShare size={25} />;
-      case 'رویدادها': return <MdEmojiEvents size={25} />;
-      case 'درباره ما': return <MdOutlinePersonSearch size={22} />;
-      default: return null;
+      case 'داشبورد':
+        return <MdOutlinePersonOutline size={25} />;
+      case 'گاراژ من':
+        return <MdOutlineGarage size={25} />;
+      case 'انجمن':
+        return <MdOutlineShare size={25} />;
+      case 'رویدادها':
+        return <MdEmojiEvents size={25} />;
+      case 'درباره ما':
+        return <MdOutlinePersonSearch size={22} />;
+      default:
+        return null;
     }
   };
 

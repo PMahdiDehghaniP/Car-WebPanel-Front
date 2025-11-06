@@ -2,19 +2,19 @@
 
 import CarCard from '@/app/components/Home/CarSlider/CarCard';
 import SearchBar from '@/app/components/Home/SearchBar';
-import { BiSortDown } from 'react-icons/bi';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import {
-  Box,
-  IconButton,
-  Pagination,
-  PaginationItem,
-  useTheme
-} from '@mui/material';
-import { useState } from 'react';
+import { Box, Pagination, PaginationItem, useTheme } from '@mui/material';
+import { useRef, useState } from 'react';
+import FilterButton from '@/app/components/FilterButton';
 
 const SearchCarPage = () => {
   const [page, setPage] = useState(1);
+  const [openFilterList, setOpenFilterList] = useState(false);
+  const handleToggle = () => setOpenFilterList(!openFilterList);
+  const handleSelectFilter = () => {
+    setOpenFilterList(false);
+  };
+  const anchorEl = useRef();
   const theme = useTheme();
   const cars = Array(100).fill({
     description: 'توضیحات تست',
@@ -45,39 +45,17 @@ const SearchCarPage = () => {
         sx={{
           display: 'flex',
           width: '100%',
-          gap: '1rem',
+          gap: '1.5rem',
           justifyContent: 'center'
         }}
       >
-        <IconButton
-          sx={{
-            width: 75,
-            height: 75,
-            backgroundColor: '#ffffff',
-            boxShadow: '0px 4px 4px 0px #00000040',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            '&:hover': {
-              backgroundColor: '#ffffff'
-            }
-          }}
-        >
-          <Box
-            sx={{
-              width: 55,
-              height: 55,
-              borderRadius: '50%',
-              backgroundColor: '#405FF2',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <BiSortDown size={35} color="#fff" />
-          </Box>
-        </IconButton>
-
+        <FilterButton
+          isOpen={openFilterList}
+          anchorRef={anchorEl}
+          handleToggle={handleToggle}
+          handleSelect={handleSelectFilter}
+          handleClose={() => setOpenFilterList(false)}
+        />
         <SearchBar />
       </Box>
       <Box

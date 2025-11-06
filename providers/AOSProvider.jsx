@@ -7,7 +7,7 @@ const AOSProvider = ({ children }) => {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: false,
+      once: true,
       mirror: false,
       offset: 200,
       throttleDelay: 99,

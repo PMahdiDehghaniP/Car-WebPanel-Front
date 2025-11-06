@@ -40,7 +40,6 @@ const Home = () => {
         <FeatureCardsSection />
         <AchivementSection />
       </Box>
-      <Footer />
     </Box>
   );
 };

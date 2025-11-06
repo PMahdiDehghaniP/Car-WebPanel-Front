@@ -1,10 +1,14 @@
+"use server"
 import Navbar from '../components/Bar/Navbar';
+import Footer from '../components/Home/Footer';
 
-export default function MainLayout({ children }) {
+const  MainLayout=({ children }) =>{
   return (
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }
+export default MainLayout

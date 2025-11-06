@@ -3,7 +3,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveItem, toggleMenu } from '@/lib/store/slices/uiSlice';
 import { TiArrowSortedDown } from 'react-icons/ti';
-import { FaRegUser } from 'react-icons/fa6';
 import Sidebar from './Sidebar';
 import HambergerMenu from './HambergerMenu';
 import ToggleThemeButton from '../Home/ToggleThemeButton';
@@ -71,9 +70,6 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-4 md:gap-6">
           <HambergerMenu />
-          <div className="hidden md:flex items-center gap-6 flex-row">
-            <RegisterToggleButten />
-          </div>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">

@@ -68,10 +68,7 @@ const Navbar = () => {
           ))}
         </div>
         <div className="flex items-center gap-4 md:gap-6">
-          <HambergerMenu/>
-          <div className="hidden md:flex items-center gap-6 flex-row">
-            <registerToggleButten/>
-          </div>
+          <HambergerMenu/> 
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">

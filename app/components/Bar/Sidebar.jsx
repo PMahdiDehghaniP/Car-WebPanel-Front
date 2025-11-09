@@ -14,18 +14,41 @@ import {
 } from 'react-icons/md';
 import Close from './close';
 import ToggleThemeButton from '../Home/ToggleThemeButton';
+import { useRouter  } from 'next/navigation';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { menuOpen, activeItem } = useSelector((state) => state.ui);
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { theme } = useSelector((state) => state.theme);
-  const sidebarItems = isLoggedIn
-    ? ['خانه', 'خودروها', 'داشبورد', 'گاراژ من', 'انجمن', 'رویدادها', 'درباره ما']
-    : ['خانه', 'خودروها', 'ورود / ثبت نام', 'انجمن', 'رویدادها', 'درباره ما'];
+  const router = useRouter();
 
-  const handleClick = (label) => {
-    dispatch(setActiveItem(label));
+  const sidebarItems = isLoggedIn
+    ? [
+      { label: 'خانه', path: '/' },
+      { label: 'خودروها', path: '/cars' },
+      { label: 'داشبورد', path: '/dashboard' },
+      { label: 'گاراژ من', path: '/garage' },
+      { label: 'انجمن', path: '/forum' },
+      { label: 'رویدادها', path: '/events' },
+      { label: 'درباره ما', path: '/about' },
+    ]: [
+      { label: 'خانه', path: '/' },
+      { label: 'خودروها', path: '/cars' },
+      { label: 'ورود / ثبت نام', path: '/signup' },
+      { label: 'انجمن', path: '/forum' },
+      { label: 'رویدادها', path: '/events' },
+      { label: 'درباره ما', path: '/about' }
+    ];
+
+  const handleClick = (item) => {
+    dispatch(setActiveItem(item.label));
+    const validPaths = sidebarItems.map((i)=> i.path);
+    if (validPaths.includes(item.path)) {
+      router.push(item.path);
+    } else {
+      router.push('/404');
+    }
   };
 
   const getIcon = (label) => {
@@ -69,18 +92,18 @@ const Sidebar = () => {
               <ToggleThemeButton />
             </div>
 
-            {sidebarItems.map((label) => (
+            {sidebarItems.map((item) => (
               <li
-                key={label}
-                onClick={() => handleClick(label)}
+                key={item.label}
+                onClick={() => handleClick(item)}
                 className={`w-full flex flex-row-reverse items-center justify-start gap-3 px-6 py-4 border-b transition-all duration-200 cursor-pointer ${
-                  activeItem === label
+                  activeItem === item.label
                     ? 'bg-[#2A78ED] text-white'
                     : 'hover:bg-[#2A78ED] hover:text-white border-gray-700'
                 }`}
               >
-                <span className="flex-1 text-right">{label}</span>
-                {getIcon(label)}
+                <span className="flex-1 text-right">{item.label}</span>
+                {getIcon(item.label)}
               </li>
             ))}
           </motion.ul>

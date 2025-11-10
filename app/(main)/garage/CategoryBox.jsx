@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CarCard from "../components/Home/CarSlider/CarCard";
+import CarCard from "../../components/Home/CarSlider/CarCard";
 
 export default function CategoryBox({ cat }) {
   return (

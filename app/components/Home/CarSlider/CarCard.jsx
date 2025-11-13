@@ -7,7 +7,7 @@ import {
   Tooltip,
   Typography
 } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, useTheme } from '@mui/system';
 import InfoIcon from './InfoIcon';
 import {
   SpeedOutlined,
@@ -23,9 +23,9 @@ const CarCard = ({
   description,
   carInformation,
   price,
-  theme,
   onClick
 }) => {
+  const theme = useTheme()
   return (
     <Card
       sx={{

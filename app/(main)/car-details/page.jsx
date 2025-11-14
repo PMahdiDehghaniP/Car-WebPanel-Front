@@ -1,8 +1,9 @@
-import { Box } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import GallarySlider from './components/GallarySlider';
 import CarInformation from './components/CarInformation';
 import MoneyCostSection from './components/MoneyCostSection';
 import RatingDistribution from './components/RatingDistribution';
+import CommentSection from './components/CommentSection';
 
 const CarDetailsPage = () => {
   return (
@@ -18,6 +19,15 @@ const CarDetailsPage = () => {
       <CarInformation />
       <MoneyCostSection />
       <RatingDistribution />
+      <CommentSection />
+      <Divider
+        sx={{
+          backgroundColor: 'c4c4c4',
+          height: '2px',
+          width: '100%',
+          my: 10
+        }}
+      />
     </Box>
   );
 };

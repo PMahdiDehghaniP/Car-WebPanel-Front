@@ -2,10 +2,10 @@
 
 import CarCard from '@/app/components/Home/CarSlider/CarCard';
 import SearchBar from '@/app/components/Home/SearchBar';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import { Box, Pagination, PaginationItem, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import { useRef, useState } from 'react';
 import FilterButton from '@/app/components/FilterButton';
+import GarajinoPagination from '@/app/components/GarajinoPagination';
 
 const SearchCarPage = () => {
   const [page, setPage] = useState(1);
@@ -72,47 +72,10 @@ const SearchCarPage = () => {
           <CarCard key={index} theme={theme} {...car} />
         ))}
       </Box>
-      <Pagination
-        dir="ltr"
-        size="large"
+      <GarajinoPagination
+        handlePageChange={handlePageChange}
         page={page}
-        color="primary"
-        count={Math.ceil(cars.length / 20)}
-        onChange={handlePageChange}
-        renderItem={(item) => (
-          <PaginationItem
-            slots={{ previous: ArrowBackIos, next: ArrowForwardIos }}
-            {...item}
-          />
-        )}
-        shape="rounded"
-        sx={{
-          '& .MuiPaginationItem-root': {
-            color: '#555',
-            fontSize: '1.5rem',
-            fontWeight: 600,
-            width: '3rem',
-            height: '3rem',
-            borderRadius: '16px',
-            border: '1px solid #ccc',
-            transition: 'all 0.2s ease-in-out'
-          },
-          '& .MuiPaginationItem-root:hover': {
-            backgroundColor: '#f5f5f5'
-          },
-          '& .MuiPaginationItem-root.Mui-selected': {
-            color: '#1976D2',
-            border: '1px solid #1976d2',
-            backgroundColor: '#ffffff'
-          },
-          '& .MuiPaginationItem-root.Mui-selected:hover': {
-            backgroundColor: '#ffffff'
-          },
-          '& .MuiPaginationItem-root.Mui-disabled': {
-            backgroundColor: '#919EAB',
-            color: '#C4CDD5'
-          }
-        }}
+        items={cars}
       />
     </Box>
   );

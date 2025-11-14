@@ -1,13 +1,20 @@
-"use client"
+'use client';
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Rating, LinearProgress, Stack, useTheme } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Rating,
+  LinearProgress,
+  Stack,
+  useTheme
+} from '@mui/material';
 
 const ratingsData = [
-  { stars: 5, percentage: 40 ,animationKey:"rate5"},
-  { stars: 4, percentage: 20 ,animationKey:"rate4"},
-  { stars: 3, percentage: 10 ,animationKey:"rate3"},
-  { stars: 2, percentage: 20 ,animationKey:"rate2"},
-  { stars: 1, percentage: 10 ,animationKey:"rate1"}
+  { stars: 5, percentage: 40, animationKey: 'rate5' },
+  { stars: 4, percentage: 20, animationKey: 'rate4' },
+  { stars: 3, percentage: 10, animationKey: 'rate3' },
+  { stars: 2, percentage: 20, animationKey: 'rate2' },
+  { stars: 1, percentage: 10, animationKey: 'rate1' }
 ];
 
 const totalReviews = 34;
@@ -26,11 +33,26 @@ export const RatingDistribution = () => {
   useEffect(() => {
     const raterAnimation = setInterval(() => {
       setRatingValues((old) => ({
-        rate5: Math.min(old.rate5 + Math.random() * 5, ratingsData[0].percentage),
-        rate4: Math.min(old.rate4 + Math.random() * 5, ratingsData[1].percentage),
-        rate3: Math.min(old.rate3 + Math.random() * 5, ratingsData[2].percentage),
-        rate2: Math.min(old.rate2 + Math.random() * 5, ratingsData[3].percentage),
-        rate1: Math.min(old.rate1 + Math.random() * 5, ratingsData[4].percentage)
+        rate5: Math.min(
+          old.rate5 + Math.random() * 5,
+          ratingsData[0].percentage
+        ),
+        rate4: Math.min(
+          old.rate4 + Math.random() * 5,
+          ratingsData[1].percentage
+        ),
+        rate3: Math.min(
+          old.rate3 + Math.random() * 5,
+          ratingsData[2].percentage
+        ),
+        rate2: Math.min(
+          old.rate2 + Math.random() * 5,
+          ratingsData[3].percentage
+        ),
+        rate1: Math.min(
+          old.rate1 + Math.random() * 5,
+          ratingsData[4].percentage
+        )
       }));
     }, 100);
 
@@ -52,7 +74,10 @@ export const RatingDistribution = () => {
     >
       <Typography
         variant="h3"
-        sx={{ flexBasis: { xs: '100%', md: 'auto' }, textAlign: { xs: 'center', md: 'left' } }}
+        sx={{
+          flexBasis: { xs: '100%', md: 'auto' },
+          textAlign: { xs: 'center', md: 'left' }
+        }}
       >
         نظرات کابران
       </Typography>
@@ -72,14 +97,22 @@ export const RatingDistribution = () => {
           width: { xs: '100%', md: 'auto' }
         }}
       >
-        <Typography variant="h4" fontWeight="bold">{averageRating}</Typography>
+        <Typography variant="h4" fontWeight="bold">
+          {averageRating}
+        </Typography>
         <Rating
           value={averageRating}
           precision={0.5}
           readOnly
-          sx={{ '& .MuiRating-iconFilled': { color: '#ffc107' }, '& .MuiRating-iconHover': { color: '#ffc107' }, direction: 'ltr' }}
+          sx={{
+            '& .MuiRating-iconFilled': { color: '#ffc107' },
+            '& .MuiRating-iconHover': { color: '#ffc107' },
+            direction: 'ltr'
+          }}
         />
-        <Typography variant="body2" color="gray">بر اساس {totalReviews} رأی</Typography>
+        <Typography variant="body2" color="gray">
+          بر اساس {totalReviews} رأی
+        </Typography>
       </Box>
       <Box
         sx={{
@@ -91,8 +124,16 @@ export const RatingDistribution = () => {
         }}
       >
         {ratingsData.map((item) => (
-          <Stack key={item.stars} direction="row" alignItems="center" spacing={1} sx={{ width: '100%' }}>
-            <Typography variant="body2" sx={{ minWidth: 20 }}>{item.stars}★</Typography>
+          <Stack
+            key={item.stars}
+            direction="row"
+            alignItems="center"
+            spacing={1}
+            sx={{ width: '100%' }}
+          >
+            <Typography variant="body2" sx={{ minWidth: 20 }}>
+              {item.stars}★
+            </Typography>
             <LinearProgress
               variant="determinate"
               value={ratingValues[item.animationKey]}
@@ -107,7 +148,12 @@ export const RatingDistribution = () => {
                 }
               }}
             />
-            <Typography variant="body2" sx={{ minWidth: 30, textAlign: 'right' }}>{item.percentage}%</Typography>
+            <Typography
+              variant="body2"
+              sx={{ minWidth: 30, textAlign: 'right' }}
+            >
+              {item.percentage}%
+            </Typography>
           </Stack>
         ))}
       </Box>

@@ -4,6 +4,7 @@ import CarInformation from './components/CarInformation';
 import MoneyCostSection from './components/MoneyCostSection';
 import RatingDistribution from './components/RatingDistribution';
 import CommentSection from './components/CommentSection';
+import SubmitCommentSection from './components/SubmitCommentSection';
 
 const CarDetailsPage = () => {
   return (
@@ -28,6 +29,7 @@ const CarDetailsPage = () => {
           my: 10
         }}
       />
+      <SubmitCommentSection />
     </Box>
   );
 };

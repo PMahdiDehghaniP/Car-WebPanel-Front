@@ -1,5 +1,5 @@
 'use client';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import StraightenIcon from '@mui/icons-material/Straighten';
 import SpeedIcon from '@mui/icons-material/Speed';
@@ -12,6 +12,7 @@ import StarIcon from '@mui/icons-material/Star';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
 
 const CarInformation = () => {
+  const theme=useTheme()
   const mockData = [
     { label: 'نوع سوخت:', value: 'بنزین سوپر', icon: <LocalGasStationIcon /> },
     {
@@ -96,7 +97,7 @@ const CarInformation = () => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            backgroundColor: index % 2 === 1 ? '#EDEDED' : '#FFFFFF',
+            backgroundColor: index % 2 === 1 ? theme.palette.colors.colorGrayRow: "transparent",
             width: '100%',
             padding: '12px 16px',
             gap: '0.5rem',

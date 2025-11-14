@@ -37,7 +37,7 @@ const SubmitCommentSection = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
-            width: {xs:'100%',lg:'80%'},
+            width: { xs: '100%', lg: '80%' },
             border: '1px solid #C4C4C4',
             padding: '2rem',
             borderRadius: '0.5rem'
@@ -52,17 +52,17 @@ const SubmitCommentSection = () => {
               gap: '0.5rem'
             }}
           >
-            <Typography variant='body1'>امتیاز</Typography>
-                    <Rating
-          value={3}
-          precision={0.5}
-          readOnly
-          sx={{
-            '& .MuiRating-iconFilled': { color: '#ffc107' },
-            '& .MuiRating-iconHover': { color: '#ffc107' },
-            direction: 'ltr'
-          }}
-        />
+            <Typography variant="body1">امتیاز</Typography>
+            <Rating
+              value={3}
+              precision={0.5}
+              readOnly
+              sx={{
+                '& .MuiRating-iconFilled': { color: '#ffc107' },
+                '& .MuiRating-iconHover': { color: '#ffc107' },
+                direction: 'ltr'
+              }}
+            />
           </Box>
           <input
             placeholder="عنوان نظر"
@@ -74,7 +74,12 @@ const SubmitCommentSection = () => {
             className="border border-[#C4C4C4] rounded-lg focus:border-[#C4C4C4]
              focus:outline-none w-full p-2 max-h-[250px]"
           />
-          <Button variant='contained' sx={{width:'30%',alignSelf:'center'}}>ثبت</Button>
+          <Button
+            variant="contained"
+            sx={{ width: '30%', alignSelf: 'center' }}
+          >
+            ثبت
+          </Button>
         </Box>
       </Box>
       <Box

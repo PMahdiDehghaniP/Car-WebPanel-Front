@@ -5,6 +5,7 @@ import MoneyCostSection from './components/MoneyCostSection';
 import RatingDistribution from './components/RatingDistribution';
 import CommentSection from './components/CommentSection';
 import SubmitCommentSection from './components/SubmitCommentSection';
+import LineChart from './CarChart';
 
 const CarDetailsPage = () => {
   return (
@@ -18,6 +19,7 @@ const CarDetailsPage = () => {
     >
       <GallarySlider />
       <CarInformation />
+      <LineChart />
       <MoneyCostSection />
       <RatingDistribution />
       <CommentSection />

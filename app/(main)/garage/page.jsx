@@ -4,17 +4,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { Box, Button, TextField, useMediaQuery } from "@mui/material";
 import CategoryBox from "./CategoryBox";
 import NewCategory from "./NewCategory";
+import { useSelector } from "react-redux";
+import "./garageAnimations.css";
 
 // ---- Desktop Canvas (FIGMA Desktop)
 const FIGMA_BOX = {
-  width: 716,
-  height: 693.058837890625,
+  width: 700,
+  height: 600,
   borderRadius: 20,
 };
 
 // ---- Mobile Canvas (FIGMA Mobile) - adjusted
 const FIGMA_BOX_MOBILE = {
-  // افزایش عرض موبایل (قابل تنظیم)
   width: 400,
   height: 180,
   borderRadius: 8,
@@ -50,17 +51,16 @@ export default function GaragePage() {
   const [newCategoryModalOpen, setNewCategoryModalOpen] = useState(false);
   const [newCategoryName, setNewCategoryName] = useState("");
 
+  const { theme } = useSelector((state) => state.theme);
+
   // ⭐ Layout
   const layoutItems = (titles = [], mobile = false) => {
     const vSpacing = mobile ? V_SPACING_MOBILE : V_SPACING;
-
-    // برای موبایل عرض باکس را به گونه‌ای محدود می‌کنیم که از کانواس موبایل بیرون نزند
     const mobileBoxWidth = Math.min(
       FIGMA_BOX_MOBILE.width,
-      Math.max(280, MOBILE_CANVAS - 48) // حداقل 280 و حداکثر MOBILE_CANVAS-48
+      Math.max(280, MOBILE_CANVAS - 48)
     );
 
-    // bottoms (شروع y برای ستون‌ها)
     const bottoms = mobile
       ? [START_TOP_MOBILE - vSpacing]
       : [START_TOP - vSpacing, START_TOP - vSpacing];
@@ -69,11 +69,9 @@ export default function GaragePage() {
 
     titles.forEach((title, idx) => {
       const col = mobile ? 0 : bottoms[0] <= bottoms[1] ? 0 : 1;
-
       const left = mobile
         ? Math.max(24, Math.round((MOBILE_CANVAS - mobileBoxWidth) / 2))
         : COLUMN_LEFTS[col];
-
       const top = bottoms[col] + vSpacing;
 
       laid.push({
@@ -93,11 +91,9 @@ export default function GaragePage() {
 
     // new category box
     const col = mobile ? 0 : bottoms[0] <= bottoms[1] ? 0 : 1;
-
     const left = mobile
       ? Math.max(24, Math.round((MOBILE_CANVAS - mobileBoxWidth) / 2))
       : COLUMN_LEFTS[col];
-
     const top = bottoms[col] + (mobile ? V_SPACING_MOBILE : V_SPACING);
 
     laid.push({
@@ -114,7 +110,6 @@ export default function GaragePage() {
 
   useEffect(() => {
     setBoxes(layoutItems(initialTitles, isMobile));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile]);
 
   // ---- measure width for desktop scaling ----
@@ -135,7 +130,6 @@ export default function GaragePage() {
 
   // ---- scaling ----
   const BASE_CANVAS = 1920;
-
   const scale = isMobile
     ? (() => {
         const mobileBase = Math.min(1, (window.innerWidth - 32) / MOBILE_CANVAS);
@@ -148,8 +142,13 @@ export default function GaragePage() {
     ? Math.max(...boxes.map((b) => b.top + b.height))
     : START_TOP;
 
+  // wrapperHeight: ارتفاعِ جعبه‌ای که باکس‌ها داخلش مطلق (absolute) قرار می‌گیرند.
+  // با این کار می‌توانیم تصویر را به‌صورت یک عنصر در جریانِ DOM بلافاصله بعد از wrapper قرار دهیم.
+  const wrapperHeight = Math.round(maxBottom * scale + CAR_MARGIN_TOP);
+
+  // containerMinHeight را هم نگه می‌داریم برای اینکه صفحه حداقل به اندازهٔ صفحهٔ نمایش باشد
   const containerMinHeight = Math.max(
-    Math.round(maxBottom * scale + CAR_MARGIN_TOP + 300),
+    wrapperHeight,
     window.innerHeight
   );
 
@@ -170,7 +169,7 @@ export default function GaragePage() {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        bgcolor: "#fff",
+        bgcolor: theme === "dark" ? "#000000" : "#fff",
         overflowX: "hidden",
         py: 2,
         display: "flex",
@@ -178,7 +177,6 @@ export default function GaragePage() {
       }}
     >
       <Box
-        ref={containerRef}
         sx={{
           width: "100%",
           maxWidth: `${BASE_CANVAS}px`,
@@ -187,78 +185,92 @@ export default function GaragePage() {
           mx: "auto",
         }}
       >
-        {/* Title */}
-        {isMobile ? (
-          <Box
-            sx={{
-              position: "absolute",
-              top: `${Math.round(20 * scale)}px`,
-              transform: "translateX(-50%)",
-              fontSize: `${Math.round(32 * scale)}px`,
-              fontWeight: 800,
-              whiteSpace: "nowrap",
-              zIndex: 5,
-            }}
-          >
-            گاراژ من
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              position: "absolute",
-              top: `${Math.round(20 * scale)}px`,
-              left: `${Math.round(1531.35 * scale)}px`,
-              fontSize: `${Math.round(58 * scale)}px`,
-              fontWeight: 800,
-              zIndex: 5,
-            }}
-          >
-            گاراژ من
-          </Box>
-        )}
-
-        {/* Boxes */}
-        {boxes.map((b) => {
-          const left = Math.round(b.left * scale);
-          const top = Math.round(b.top * scale);
-          const width = Math.round(b.width * scale);
-          const height = Math.round(b.height * scale);
-
-          return (
+        {/* WRAPPER: این wrapper ارتفاع مشخص داره و باکس‌ها داخلش absolute قرار می‌گیرند */}
+        <Box
+          ref={containerRef}
+          sx={{
+            position: "relative",
+            width: "100%",
+            height: `${wrapperHeight}px`, // اینجا ارتفاع wrapper رو قرار میدیم
+            overflow: "visible",
+            mx: "auto",
+          }}
+        >
+          {/* Title (داخل wrapper) */}
+          {isMobile ? (
             <Box
-              key={b.id}
               sx={{
                 position: "absolute",
-                left,
-                top,
-                width,
-                height,
-                cursor: b.isNew ? "default" : "pointer",
+                top: `${Math.round(20 * scale)}px`,
+                left: "50%",
+                transform: "translateX(-50%)",
+                fontSize: `${Math.round(32 * scale)}px`,
+                fontWeight: 800,
+                whiteSpace: "nowrap",
+                zIndex: 5,
               }}
             >
-              {b.isNew ? (
-                <NewCategory onClick={() => setNewCategoryModalOpen(true)} mobile={isMobile} />
-              ) : (
-                <CategoryBox
-                  title={b.title}
-                  cars={b.cars}
-                  id={b.id}
-                  mobile={isMobile}
-                />
-              )}
+              گاراژ من
             </Box>
-          );
-        })}
+          ) : (
+            <Box
+              sx={{
+                position: "absolute",
+                top: `${Math.round(40 * scale)}px`,
+                left: `${Math.round(1600 * scale)}px`,
+                fontSize: `${Math.round(58 * scale)}px`,
+                fontWeight: 800,
+                zIndex: 5,
+              }}
+            >
+              گاراژ من
+            </Box>
+          )}
 
-        {/* Background Car */}
+          {/* Boxes (همه absolute داخل همین wrapper قرار می‌گیرند) */}
+          {boxes.map((b) => {
+            const left = Math.round(b.left * scale);
+            const top = Math.round(b.top * scale);
+            const width = Math.round(b.width * scale);
+            const height = Math.round(b.height * scale);
+
+            return (
+              <Box
+                key={b.id}
+                sx={{
+                  position: "absolute",
+                  left,
+                  top,
+                  width,
+                  height,
+                  cursor: b.isNew ? "default" : "pointer",
+                }}
+              >
+                {b.isNew ? (
+                  <NewCategory onClick={() => setNewCategoryModalOpen(true)} mobile={isMobile} />
+                ) : (
+                  <CategoryBox
+                    title={b.title}
+                    cars={b.cars}
+                    id={b.id}
+                    mobile={isMobile}
+                  />
+                )}
+              </Box>
+            );
+          })}
+        </Box>
+
+        {/* حالا تصویر پس‌زمینه را به‌عنوان یک عنصر در جریانِ صفحه بلافاصله بعد از wrapper قرار می‌دهیم */}
         <Box
           component="img"
-          src="/garageLightback.png"
+          src={theme === "dark" ? "/garageDarkBack.png" : "/garageLightback.png"}
+          className={theme === "dark" ? "car-dark-animation" : "car-light-animation"}
           sx={{
-            position: "absolute",
-            width: `${Math.round(1920 * scale)}px`,
-            left: 0,
-            top: `${Math.round((maxBottom + CAR_MARGIN_TOP) * scale)}px`,
+            display: "block",
+            width: "100%",
+            maxWidth: `${Math.round(1920 * scale)}px`,
+            mt: isMobile ? -10 : -40 ,
           }}
         />
 

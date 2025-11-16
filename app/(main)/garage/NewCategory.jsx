@@ -1,49 +1,102 @@
 "use client";
 import { Box, Typography } from "@mui/material";
 
-export default function NewCategory({ mobile = false }) {
+export default function NewCategory({ onClick, mobile }) {
   if (mobile) {
     return (
       <Box
+        onClick={onClick}
         sx={{
           width: "100%",
-          height: "148px",
+          height: "100%",
           borderRadius: "8px",
-          backgroundImage: "url('/newGarage.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          position: "relative",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.15)",
-          overflow: "hidden",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          flexDirection: "row-reverse",
+          overflow: "hidden",
+          cursor: "pointer",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+          backgroundColor: "#fff",
         }}
       >
-        <Box sx={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.3)" }} />
+        {/* چپ: باکس + با عکس و overlay */}
         <Box
           sx={{
-            position: "relative",
-            zIndex: 2,
-            width: 55,
-            height: 55,
-            borderRadius: "12px",
-            backgroundColor: "#fff",
+            flex: 3,
             display: "flex",
-            justifyContent: "center",
             alignItems: "center",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+            justifyContent: "center",
+            position: "relative",
+            backgroundImage:
+              "linear-gradient(180deg, rgba(249,249,249,0.7) 0%, rgba(233,233,233,0.7) 100%), url('/newGarage.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
-          <Typography sx={{ fontSize: "2rem", fontWeight: 700, color: "#333" }}>+</Typography>
+          {/* Overlay سایه روی تصویر */}
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              backgroundColor: "rgba(0,0,0,0.25)",
+            }}
+          />
+
+          {/* دکمه + */}
+          <Box
+            sx={{
+              width: 55,
+              height: 55,
+              borderRadius: "12px",
+              backgroundColor: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            <Typography sx={{ fontSize: "2rem", fontWeight: 700, color: "#333" }}>+</Typography>
+          </Box>
+        </Box>
+
+        {/* راست: عنوان */}
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderLeft: "1px solid rgba(0,0,0,0.05)",
+            px: 1,
+            backgroundColor: "#fff",
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: 700,
+              fontSize: "0.95rem",
+              color: "#222",
+              textAlign: "center",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            ساخت دسته جدید
+          </Typography>
         </Box>
       </Box>
     );
   }
 
+  // دسکتاپ
   return (
     <Box
+      onClick={onClick}
       sx={{
         width: "100%",
         height: "100%",
@@ -54,21 +107,11 @@ export default function NewCategory({ mobile = false }) {
         backgroundColor: "#FFFFFF",
         boxShadow: "0px 6px 12px rgba(0,0,0,0.08)",
         transition: "box-shadow 0.25s ease, transform 0.25s ease",
-        "&:hover": {
-          boxShadow: "0px 12px 24px rgba(0,0,0,0.12)",
-        },
-        "&:hover .bgImage": {
-          transform: "scale(1.06)",
-        },
-        "&:hover .plusBox": {
-          transform: "translateY(-6px) scale(1.06)",
-          boxShadow: "0 8px 20px rgba(0,0,0,0.28)",
-        },
-        "&:hover .overlay": {
-          backgroundColor: "rgba(0,0,0,0.5)",
-        },
+        cursor: "pointer",
+        "&:hover": { boxShadow: "0px 12px 24px rgba(0,0,0,0.12)" },
       }}
     >
+      {/* عکس با overlay */}
       <Box
         sx={{
           flex: 1,
@@ -77,34 +120,23 @@ export default function NewCategory({ mobile = false }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          backgroundImage:
+              "linear-gradient(180deg, rgba(249,249,249,0.7) 0%, rgba(233,233,233,0.7) 100%), url('/newGarage.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
+        {/* overlay سایه */}
         <Box
-          className="bgImage"
           sx={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "linear-gradient(180deg, rgba(249,249,249,0.7) 0%, rgba(233,233,233,0.7) 100%), url('/newGarage.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            transition: "transform 360ms cubic-bezier(.2,.8,.2,1)",
-            willChange: "transform",
-            zIndex: 0,
+            backgroundColor: "rgba(0,0,0,0.35)",
           }}
         />
+
+        {/* دکمه + */}
         <Box
-          className="overlay"
-          sx={{
-            position: "absolute",
-            inset: 0,
-            backgroundColor: "rgba(0,0,0,0.35)", // حالت عادی
-            transition: "background-color 220ms ease",
-            zIndex: 1,
-          }}
-        />
-        <Box
-          className="plusBox"
           sx={{
             position: "relative",
             zIndex: 2,
@@ -116,12 +148,13 @@ export default function NewCategory({ mobile = false }) {
             justifyContent: "center",
             alignItems: "center",
             boxShadow: "0 4px 10px rgba(0,0,0,0.25)",
-            transition: "transform 260ms cubic-bezier(.2,.8,.2,1), box-shadow 260ms ease",
           }}
         >
           <Typography sx={{ fontSize: "3rem", fontWeight: 700, color: "#333" }}>+</Typography>
         </Box>
       </Box>
+
+      {/* عنوان */}
       <Box
         sx={{
           backgroundColor: "#FFFFFF",

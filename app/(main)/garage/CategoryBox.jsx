@@ -1,139 +1,122 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { Box, Typography, useMediaQuery } from "@mui/material";
-import CategoryBox from "./CategoryBox";
-import NewCategory from "./NewCategory";
+import { Box, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 
-export default function GaragePage() {
-  const isMobile = useMediaQuery("(max-width:900px)");
-  const containerRef = useRef(null);
-  const [containerWidth, setContainerWidth] = useState(1920);
+export default function CategoryBox({ title = "دسته", id, mobile = false }) {
+  const router = useRouter();
 
-  const BASE_CANVAS = 1920;
-
-  const [categories, setCategories] = useState([
-    { title: "لیست خرید" },
-    { title: "قیمت مناسب" },
-    { title: "چینی" },
-  ]);
-
-  const handleAddCategory = (title) => {
-    setCategories([...categories, { title }]);
+  const handleClick = () => {
+    if (id) router.push(`/garage/category/${id}`);
   };
 
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) {
-      setContainerWidth(Math.min(typeof window !== "undefined" ? window.innerWidth : 1920, 1920));
-      return;
-    }
-
-    const measure = () => {
-      const w = Math.min(el.clientWidth || window.innerWidth || 1920, 1920);
-      setContainerWidth(w);
-    };
-    measure();
-
-    let ro;
-    if (typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(() => measure());
-      ro.observe(el);
-    } else {
-      window.addEventListener("resize", measure);
-    }
-
-    return () => {
-      if (ro) ro.disconnect();
-      else window.removeEventListener("resize", measure);
-    };
-  }, []);
-
-  const scale = Math.max(0.5, Math.min(1, containerWidth / BASE_CANVAS));
-  const box_width = 716;
-  const box_height = 693.05;
-  const box_radius = 20;
-
-  const boxesPositions = [
-    { left: 165, top: 349 },
-    { left: 1039, top: 349 },
-    { left: 168, top: 1172 },
-  ];
-
-  const maxBottom = Math.max(...boxesPositions.map((b, i) => b.top + box_height)) * scale;
-  const containerMinHeight = Math.round(maxBottom + 120 * scale);
-
-  return (
-    <Box sx={{ width: "100%", minHeight: "100vh", bgcolor: "#fff", overflowX: "hidden", py: 4, display: "flex", justifyContent: "center" }}>
+  if (mobile) {
+    return (
       <Box
-        ref={containerRef}
+        onClick={handleClick}
         sx={{
           width: "100%",
-          maxWidth: `${BASE_CANVAS}px`,
-          position: "relative",
-          minHeight: `${containerMinHeight}px`,
-          mx: "auto",
-          boxSizing: "border-box",
+          height: "148px",
+          backgroundColor: "#fff",
+          borderRadius: "8px",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.15)",
+          display: "flex",
+          flexDirection: "row",
+          overflow: "hidden",
+          cursor: "pointer",
         }}
       >
+        {/* راست: عنوان */}
         <Box
           sx={{
-            position: "absolute",
-            top: `${Math.round(80 * scale)}px`,
-            left: `${Math.round(1531.35 * scale)}px`,
-            width: `${Math.round(266.305 * scale)}px`,
-            height: `${Math.round(82.989 * scale)}px`,
+            flex: 1,
+            backgroundColor: "#fff",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontWeight: 800,
-            fontSize: `${Math.round(64 * scale)}px`,
-            letterSpacing: "5%",
-            textAlign: "center",
-            zIndex: 40,
+            px: 1,
           }}
         >
-          گاراژ من
-        </Box>
-
-        {isMobile ? (
-          <Box sx={{ position: "absolute", top: `${Math.round(120 * scale)}px`, left: 0, right: 0, px: 2 }}>
-            <Box sx={{ display: "grid", gridTemplateColumns: "1fr", gap: 2 }}>
-              {categories.map((c, idx) => (
-                <CategoryBox key={idx} title={c.title} mobile />
-              ))}
-              <NewCategory onAddCategory={handleAddCategory} mobile />
-            </Box>
-          </Box>
-        ) : (
-          boxesPositions.map((pos, idx) => (
-            <Box
-              key={idx}
-              sx={{
-                position: "absolute",
-                left: `${Math.round(pos.left * scale)}px`,
-                top: `${Math.round(pos.top * scale)}px`,
-                width: `${Math.round(box_width * scale)}px`,
-                height: `${Math.round(box_height * scale)}px`,
-              }}
-            >
-              <CategoryBox title={categories[idx]?.title} />
-            </Box>
-          ))
-        )}
-        {!isMobile && (
-          <Box
+          <Typography
             sx={{
-              position: "absolute",
-              left: `${Math.round(1039 * scale)}px`,
-              top: `${Math.round(1172 * scale)}px`,
-              width: `${Math.round(box_width * scale)}px`,
-              height: `${Math.round(box_height * scale)}px`,
+              fontWeight: 700,
+              fontSize: "0.9rem",
+              color: "#222",
+              textAlign: "center",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
             }}
           >
-            <NewCategory onAddCategory={handleAddCategory} />
-          </Box>
-        )}
+            {title}
+          </Typography>
+        </Box>
+
+        {/* چپ: کارت‌ها */}
+        <Box
+          sx={{
+            flex: 3,
+            backgroundColor: "#F7F7F7",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "8px",
+          }}
+        >
+          {/* کارت‌ها یا تصاویر اینجا قرار می‌گیرند */}
+        </Box>
+      </Box>
+    );
+  }
+
+  // دسکتاپ: همان حالت فعلی
+  return (
+    <Box
+      onClick={handleClick}
+      sx={{
+        width: "100%",
+        height: "100%",
+        borderRadius: "20px",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "#FFFFFF",
+        boxShadow: "0px 6px 12px rgba(0,0,0,0.08)",
+        transition: "box-shadow 0.2s ease",
+        "&:hover": {
+          boxShadow: "0px 8px 16px rgba(0,0,0,0.12)",
+        },
+      }}
+    >
+      {/* بخش کارت‌ها */}
+      <Box
+        sx={{
+          flex: 1,
+          backgroundColor: "#F7F7F7",
+          borderRadius: "20px",
+          boxShadow: "inset 0px -2px 5px rgba(0,0,0,0.06)",
+          border: "1px solid rgba(0,0,0,0.04)",
+        }}
+      />
+
+      {/* بخش عنوان */}
+      <Box
+        sx={{
+          backgroundColor: "#FFFFFF",
+          borderBottomLeftRadius: "20px",
+          borderBottomRightRadius: "20px",
+          height: "80px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          boxShadow: "inset 0px 2px 4px rgba(0,0,0,0.03)",
+        }}
+      >
+        <Typography sx={{ fontWeight: 700, fontSize: "1.2rem", color: "#222" }}>
+          {title}
+        </Typography>
       </Box>
     </Box>
   );

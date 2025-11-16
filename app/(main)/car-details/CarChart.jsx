@@ -41,44 +41,44 @@ const CarChart = () => {
     }
   };
 
-const chartData = {
-  labels: datasets[active].labels,
-  datasets: [
-    {
-      data: datasets[active].data,
-      borderColor: '#3b82f6',
-      borderWidth: 2,
-      tension: 0.4,
-      pointRadius: 3,
-      pointBackgroundColor: '#3b82f6',
-      fill: true,
-      backgroundColor: 'rgba(59,130,246,0.4)'
-    }
-  ]
-};
-
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { display: false },
-    tooltip: {
-      enabled: true,
-      backgroundColor: '#1e293b',
-      titleColor: '#fff',
-      bodyColor: '#fff',
-      padding: 10,
-      displayColors: false,
-      callbacks: {
-        label: (ctx) => `${ctx.raw} واحد`
+  const chartData = {
+    labels: datasets[active].labels,
+    datasets: [
+      {
+        data: datasets[active].data,
+        borderColor: '#3b82f6',
+        borderWidth: 2,
+        tension: 0.4,
+        pointRadius: 3,
+        pointBackgroundColor: '#3b82f6',
+        fill: true,
+        backgroundColor: 'rgba(59,130,246,0.4)'
       }
+    ]
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        enabled: true,
+        backgroundColor: '#1e293b',
+        titleColor: '#fff',
+        bodyColor: '#fff',
+        padding: 10,
+        displayColors: false,
+        callbacks: {
+          label: (ctx) => `${ctx.raw} واحد`
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#999' } },
+      y: { grid: { display: false }, ticks: { color: '#999' } }
     }
-  },
-  scales: {
-    x: { grid: { display: false }, ticks: { color: '#999' } },
-    y: { grid: { display: false }, ticks: { color: '#999' } }
-  }
-};
+  };
 
   return (
     <Box

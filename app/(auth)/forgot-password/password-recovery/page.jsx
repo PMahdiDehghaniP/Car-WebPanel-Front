@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import { Grid } from '@mui/material';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
@@ -15,8 +17,10 @@ import PasswordRecoveryForm from './components/PasswordRecoveryForm';
 const PasswordRecoveryPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+
   const emailSubmitted = searchParams.get('emailSubmitted');
   const email = searchParams.get('email');
+
   useEffect(() => {
     if (emailSubmitted !== 'true' || !email) {
       router.replace('/forgot-password');
@@ -65,4 +69,3 @@ const PasswordRecoveryPage = () => {
 };
 
 export default PasswordRecoveryPage;
-

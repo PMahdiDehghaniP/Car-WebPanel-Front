@@ -8,8 +8,8 @@ import CarCard from "@/app/components/Home/CarSlider/CarCard";
 
 const carsData = Array.from({ length: 16 }, (_, i) => ({
   id: i,
-  carName: `خودرو ${i + 1}`,
-  description: "توضیحات کوتاه خودرو برای نمایش کامل در کارت",
+  carName: "خودرو",
+  description: "توضیح کوتاه خودرو",
   carInformation: {
     maxSpeed: "220 km/h",
     gasType: "بنزین",

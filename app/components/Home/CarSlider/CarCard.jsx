@@ -1,3 +1,4 @@
+"use client"
 import {
   Button,
   Card,
@@ -5,7 +6,8 @@ import {
   CardMedia,
   Divider,
   Tooltip,
-  Typography
+  Typography,
+  useTheme
 } from '@mui/material';
 import { Box } from '@mui/system';
 import InfoIcon from './InfoIcon';
@@ -23,9 +25,9 @@ const CarCard = ({
   description,
   carInformation,
   price,
-  theme,
   onClick
 }) => {
+  const theme =useTheme()
   return (
     <Card
       sx={{

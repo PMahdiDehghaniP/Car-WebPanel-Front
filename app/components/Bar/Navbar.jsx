@@ -69,7 +69,7 @@ const Navbar = () => {
           ))}
         </div>
         <div className="flex items-center gap-4 md:gap-6">
-          <HambergerMenu />
+          <HambergerMenu/> 
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">

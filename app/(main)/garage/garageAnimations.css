@@ -1,0 +1,25 @@
+@keyframes carMoveLight {
+  0% {
+    transform: translateX(-100%); 
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes carMoveDark {
+  0% {
+    transform: translateX(100vw); 
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
+}
+
+.car-light-animation {
+  animation: carMoveLight 20s linear infinite;
+}
+
+.car-dark-animation {
+  animation: carMoveDark 20s linear infinite;
+}

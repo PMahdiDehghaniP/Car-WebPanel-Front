@@ -51,7 +51,8 @@ const SearchBar = () => {
         padding: '0.5rem',
         overflow: 'hidden',
         zIndex: 999,
-        minHeight: '80px'
+        minHeight: '80px',
+        boxShadow: '0px 2px 4px 0px #00000040;'
       }}
     >
       <Box

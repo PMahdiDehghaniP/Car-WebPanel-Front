@@ -25,9 +25,7 @@ export default function RootLayout({ children }) {
           >
             <DirectionProvider>
               <MuiThemeProvider>
-                <AOSProvider> 
-                  {children}
-                </AOSProvider>
+                <AOSProvider>{children}</AOSProvider>
               </MuiThemeProvider>
             </DirectionProvider>
           </SessionProvider>

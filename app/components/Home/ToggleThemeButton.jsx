@@ -10,7 +10,7 @@ const ToggleThemeButton = ({ styles }) => {
   const { theme: themeStatus } = useAppSelector((state) => state.theme);
   const dispatch = useAppDispatch();
   return (
-    <IconButton 
+    <IconButton
       onClick={() =>
         dispatch(setMuiTheme(themeStatus === 'dark' ? 'light' : 'dark'))
       }

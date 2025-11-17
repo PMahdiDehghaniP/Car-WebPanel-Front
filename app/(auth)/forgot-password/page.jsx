@@ -1,4 +1,4 @@
-'use server';
+'use client';
 import { Grid } from '@mui/material';
 import {
   authPagesFormBreakpoints,
@@ -51,4 +51,3 @@ const ForgotPasswordPage = () => {
   );
 };
 export default ForgotPasswordPage;
-

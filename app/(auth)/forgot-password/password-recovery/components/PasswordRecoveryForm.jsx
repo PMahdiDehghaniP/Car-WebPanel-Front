@@ -152,4 +152,3 @@ const PasswordRecoveryForm = () => {
   );
 };
 export default PasswordRecoveryForm;
-

@@ -14,7 +14,7 @@ export default function NewCategory({ onClick, mobile }) {
         onClick={onClick}
         sx={{
           width: "100%",
-          height: "100%",
+          height: "148px",
           borderRadius: "8px",
           display: "flex",
           flexDirection: "row-reverse",
@@ -24,7 +24,6 @@ export default function NewCategory({ onClick, mobile }) {
           backgroundColor: bgColor,
         }}
       >
-        {/* چپ: باکس + با عکس و overlay */}
         <Box
           sx={{
             flex: 3,
@@ -32,7 +31,8 @@ export default function NewCategory({ onClick, mobile }) {
             alignItems: "center",
             justifyContent: "center",
             position: "relative",
-            backgroundImage: "url('/newGarage.png')",
+            backgroundImage:
+              "linear-gradient(180deg, rgba(249,249,249,0.7) 0%, rgba(233,233,233,0.7) 100%), url('/newGarage.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -51,7 +51,7 @@ export default function NewCategory({ onClick, mobile }) {
               width: 55,
               height: 55,
               borderRadius: "12px",
-              backgroundColor: theme === "dark" ? "#2E3B55" : "#fff", // دکمه + در حالت دارک
+              backgroundColor: theme === "dark" ? "#2E3B55" : "#fff", 
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -71,8 +71,6 @@ export default function NewCategory({ onClick, mobile }) {
             </Typography>
           </Box>
         </Box>
-
-        {/* راست: عنوان */}
         <Box
           sx={{
             flex: 1,
@@ -106,7 +104,6 @@ export default function NewCategory({ onClick, mobile }) {
     );
   }
 
-  // دسکتاپ
   return (
     <Box
       onClick={onClick}
@@ -126,7 +123,6 @@ export default function NewCategory({ onClick, mobile }) {
         },
       }}
     >
-      {/* عکس با overlay */}
       <Box
         sx={{
           flex: 1,
@@ -135,7 +131,8 @@ export default function NewCategory({ onClick, mobile }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundImage: "url('/newGarage.png')",
+          backgroundImage:
+              "linear-gradient(180deg, rgba(249,249,249,0.7) 0%, rgba(233,233,233,0.7) 100%), url('/newGarage.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -174,7 +171,6 @@ export default function NewCategory({ onClick, mobile }) {
         </Box>
       </Box>
 
-      {/* عنوان */}
       <Box
         sx={{
           backgroundColor: bgColor,

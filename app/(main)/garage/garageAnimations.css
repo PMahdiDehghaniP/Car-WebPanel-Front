@@ -1,29 +1,25 @@
-/* --- انیمیشن حرکت از چپ به راست --- */
 @keyframes carMoveLight {
   0% {
-    transform: translateX(-100%); /* شروع از خارج صفحه سمت چپ */
+    transform: translateX(-100%); 
   }
   100% {
-    transform: translateX(100vw); /* حرکت تا خارج صفحه سمت راست */
+    transform: translateX(100vw);
   }
 }
 
-/* --- انیمیشن حرکت از راست به چپ --- */
 @keyframes carMoveDark {
   0% {
-    transform: translateX(100vw); /* شروع از خارج صفحه سمت راست */
+    transform: translateX(100vw); 
   }
   100% {
-    transform: translateX(-100%); /* حرکت تا خارج صفحه سمت چپ */
+    transform: translateX(-100%); 
   }
 }
 
-/* کلاس مخصوص حالت روشن */
 .car-light-animation {
   animation: carMoveLight 20s linear infinite;
 }
 
-/* کلاس مخصوص حالت دارک */
 .car-dark-animation {
   animation: carMoveDark 20s linear infinite;
 }

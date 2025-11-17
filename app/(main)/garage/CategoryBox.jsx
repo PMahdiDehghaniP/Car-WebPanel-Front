@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 export default function CategoryBox({ title = "دسته", id, mobile = false }) {
   const router = useRouter();
-  const { theme } = useSelector((state) => state.theme); // دریافت theme
+  const { theme } = useSelector((state) => state.theme); 
 
   const handleClick = () => {
     if (id) router.push(`/garage/category/${id}`);
@@ -34,7 +34,6 @@ export default function CategoryBox({ title = "دسته", id, mobile = false }) 
           cursor: "pointer",
         }}
       >
-        {/* راست: عنوان */}
         <Box
           sx={{
             flex: 1,
@@ -61,8 +60,6 @@ export default function CategoryBox({ title = "دسته", id, mobile = false }) 
             {title}
           </Typography>
         </Box>
-
-        {/* چپ: کارت‌ها */}
         <Box
           sx={{
             flex: 3,
@@ -73,13 +70,11 @@ export default function CategoryBox({ title = "دسته", id, mobile = false }) 
             borderRadius: "8px",
           }}
         >
-          {/* کارت‌ها یا تصاویر اینجا قرار می‌گیرند */}
         </Box>
       </Box>
     );
   }
 
-  // دسکتاپ
   return (
     <Box
       onClick={handleClick}
@@ -98,7 +93,6 @@ export default function CategoryBox({ title = "دسته", id, mobile = false }) 
         },
       }}
     >
-      {/* بخش کارت‌ها */}
       <Box
         sx={{
           flex: 1,
@@ -108,8 +102,6 @@ export default function CategoryBox({ title = "دسته", id, mobile = false }) 
           border: `1px solid ${borderColor}`,
         }}
       />
-
-      {/* بخش عنوان */}
       <Box
         sx={{
           backgroundColor: bgCard,

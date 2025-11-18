@@ -15,15 +15,16 @@ import {
 import Close from './close';
 import ToggleThemeButton from '../Home/ToggleThemeButton';
 import { useRouter  } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { menuOpen, activeItem } = useSelector((state) => state.ui);
-  const { isLoggedIn } = useSelector((state) => state.auth);
   const { theme } = useSelector((state) => state.theme);
+  const { data: session } = useSession(); 
   const router = useRouter();
 
-  const sidebarItems = isLoggedIn
+  const sidebarItems = session
     ? [
       { label: 'خانه', path: '/' },
       { label: 'خودروها', path: '/cars' },
@@ -32,7 +33,8 @@ const Sidebar = () => {
       { label: 'انجمن', path: '/forum' },
       { label: 'رویدادها', path: '/events' },
       { label: 'درباره ما', path: '/about' },
-    ]: [
+    ]
+    : [
       { label: 'خانه', path: '/' },
       { label: 'خودروها', path: '/cars' },
       { label: 'ورود / ثبت نام', path: '/signup' },

@@ -9,11 +9,12 @@ import ToggleThemeButton from '../Home/ToggleThemeButton';
 import NavSearchButten from './NavSearchButten';
 import RegisterToggleButten from './RegisterToggleButten';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const { menuOpen, activeItem } = useSelector((state) => state.ui);
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { data: session } = useSession();
   const { theme } = useSelector((state) => state.theme);
   const router = useRouter();
 
@@ -27,7 +28,7 @@ const Navbar = () => {
     }
   };
 
-  const menuItems = isLoggedIn
+  const menuItems = session
     ? [
         { label: 'خانه', path: '/' },
         { label: 'خودروها', path: '/cars' },

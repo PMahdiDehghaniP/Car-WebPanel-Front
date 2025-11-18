@@ -16,7 +16,7 @@ export default function CategoryBox({
   const { theme } = useSelector((state) => state.theme);
 
   const handleClick = () => {
-    if (id) router.push(`/garage/category/${id}`);
+    if (id) router.push(`/dashboard/garage/category/${id}`);
   };
 
   const bgCard = theme === 'dark' ? '#20263C' : '#fff';

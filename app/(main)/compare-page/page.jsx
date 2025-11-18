@@ -6,12 +6,14 @@ import Image from "next/image";
 import { RadarChart, PolarGrid, Radar as ReRadar } from "recharts";
 import { BiChevronDown } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 export default function ComparePage() {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.down("sm")); // <600
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600-899
   const isMdUp = useMediaQuery(theme.breakpoints.up("md")); // >=900
+  const reduxTheme = useSelector((state) => state.theme.theme);
 
   const labels = [
     "نوع سوخت",
@@ -115,7 +117,19 @@ export default function ComparePage() {
   };
 
   return (
-    <Box sx={{ width: "100%", direction: "rtl", display: "flex", justifyContent: "center", minHeight: isXs ? "100vh" : "220vh", position: "relative", overflowX: "hidden" }}>
+    <Box 
+      sx={{
+         width: "100%", 
+         direction: "rtl", 
+         display: "flex", 
+         justifyContent: "center", 
+         minHeight: isXs ? "100vh" : "220vh", 
+         position: "relative",
+         background: reduxTheme === "dark" ? "#20263C" : "#fff", 
+         overflowX: "hidden" ,
+         color: reduxTheme === "dark" ? "#fff" : "#000",
+        }}
+    >
       <Box sx={{ width: "100%", maxWidth: "1600px", mt: 5, position: "relative", zIndex: 1, px: { xs: 2, md: 4 } }}>
         <Typography align="start" fontWeight="bold" fontSize={{ xs: 18, sm: 24, md: 36 }} mb={{ xs: 2, md: 5 }}>
           مقایسه مشخصات فنی
@@ -177,7 +191,7 @@ export default function ComparePage() {
             </colgroup>
             <TableBody>
               {labels.map((label, i) => {
-                const rowColor = i % 2 === 0 ? "#f7f7f7" : "#ffffff";
+                const rowColor = reduxTheme === "dark" ? "#20263C" : i % 2 === 0 ? "#f7f7f7" : "#ffffff";
                 return (
                   <TableRow key={i} sx={{ '& td': { py: { xs: 0.6, sm: 1.2, md: 3 }, fontSize: { xs: 10, sm: 11, md: 14 } } }}>
                     <TableCell sx={{ backgroundColor: rowColor, fontWeight: 700, textAlign: "start", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
@@ -207,7 +221,7 @@ export default function ComparePage() {
                 item
                 key={idx}
                 sx={{
-                  flex: "0 0 auto",
+                  flex: "0 0 auto", 
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -217,8 +231,8 @@ export default function ComparePage() {
               >
                 <Box sx={{ width: RADAR_SIZE, display: "flex", justifyContent: "center" }}>{renderRadarChart(item.data, item.color, RADAR_SIZE)}</Box>
 
-                <Box mt={1} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <Box style={{ direction: "ltr", display: "flex", gap: isXs ? 6 : 8 }}>
+                <Box mt={1} sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+                  <Box sx style={{ direction: "ltr", display: "flex", gap: isXs ? 6 : 8 }}>
                     {Array.from({ length: 5 }).map((_, starIdx) => (
                       <FaStar key={starIdx} size={STAR_SIZE} color={starIdx < Math.floor(item.score) ? "#facc15" : "#e5e7eb"} />
                     ))}
@@ -237,9 +251,27 @@ export default function ComparePage() {
           </Grid>
         </Box>
 
-        {/* Final Winner */}
-        <Box sx={{ mt: { xs: 6, md: 12 }, width: "100%", display: "flex", justifyContent: "center" }}>
-          <Box sx={{ width: "100%", maxWidth: "520px", background: "#ffffff", borderRadius: "22px", boxShadow: "0px 10px 25px rgba(0,0,0,0.12)", textAlign: "center", py: 3, px: 2 }}>
+        <Box 
+          sx={{
+             mt: { xs: 6, md: 12 },
+             width: "100%", 
+             display: "flex", 
+             justifyContent: "center" 
+            }}
+        >
+          <Box 
+            sx={{ 
+              width: "100%", 
+              maxWidth: "520px", 
+              background: reduxTheme === "dark" ? "#2E3B55" : "#ffffff", 
+              borderRadius: "22px", 
+              boxShadow: "0px 10px 25px rgba(0,0,0,0.12)", 
+              textAlign: "center", 
+              py: 3, 
+              px: 2,
+              color: reduxTheme === "dark" ? "#fff" : "#000" 
+            }}
+          >
             <Typography fontSize={{ xs: 18, md: 32 }} fontWeight="900" sx={{ mb: 1 }}>
               برنده نهایی
             </Typography>
@@ -248,7 +280,7 @@ export default function ComparePage() {
               Mercedes-Benz C300 AMG Line
             </Typography>
 
-            <Typography fontSize={{ xs: 14, md: 20 }} fontWeight="700" color="#333">
+            <Typography sx ={{color: reduxTheme === "dark" ? "#fff" : "#000"}}fontSize={{ xs: 14, md: 20 }} fontWeight="700" color="#333">
               با امتیاز: 77
             </Typography>
           </Box>

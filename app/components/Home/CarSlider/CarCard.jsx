@@ -35,7 +35,7 @@ const CarCard = ({
         maxHeight: '430px',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: '0.75rem'
+        marginBottom: '0.75rem',position:"relative"
       }}
     >
       <CardMedia

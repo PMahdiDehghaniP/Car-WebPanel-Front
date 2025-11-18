@@ -38,7 +38,7 @@ const LoginForm = () => {
           password
         });
         if (!resp?.error) {
-          router.push('/dashboard');
+          router.push('/');
         }
       } catch (error) {
       } finally {

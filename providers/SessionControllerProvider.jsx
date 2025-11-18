@@ -1,23 +1,40 @@
 'use client';
+import { CircularProgress, Box } from '@mui/material';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 const SessionControllerProvider = ({ children }) => {
+  console.log("here");
+  
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    if (status === 'loading') return;
-    const controlSession = async () => {
+    if (status !== 'loading') {
       if (session?.error === 'RefreshAccessTokenError') {
         document.cookie = 'authjs.session-token=; path=/; max-age=0';
-        await signOut({ redirect: false });
-        router.push('/login');
+        signOut({ redirect: false }).then(() => router.push('/login'));
       }
-    };
-    controlSession();
-  }, [session, status]);
+    }
+  }, [session, status, router]);
+
+  if (status === 'loading') {
+    return (
+      <Box
+        sx={{
+          width: '100%',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <CircularProgress size={64} />
+      </Box>
+    );
+  }
+
   return <>{children}</>;
 };
 

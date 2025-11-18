@@ -13,7 +13,7 @@ const RegisterToggleButton = () => {
 
   const handleClick = () => {
     if (session) {
-      router.push('/garage');
+      router.push('dashboard/garage');
     } else {
       router.push('/signup');
     }

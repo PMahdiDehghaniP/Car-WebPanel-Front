@@ -81,7 +81,7 @@ const CarBoxSection = () => {
 
         <Box
           component="img"
-          src="BenzAMg.png"
+          src="/BenzAMg.png"
           sx={{
             position: 'absolute',
             bottom: '3%',

@@ -9,7 +9,8 @@ import ToggleThemeButton from '../Home/ToggleThemeButton';
 import NavSearchButten from './NavSearchButten';
 import RegisterToggleButten from './RegisterToggleButten';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
+import { Button } from '@mui/material';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -78,6 +79,15 @@ const Navbar = () => {
                   )}
               </button>
             )
+          )}
+          {status === 'authenticated' && (
+            <Button
+              onClick={() =>
+                signOut({ redirect: false }).then(() => router.push('/login'))
+              }
+            >
+              خروج
+            </Button>
           )}
         </div>
         <div className="flex items-center gap-4 md:gap-6">

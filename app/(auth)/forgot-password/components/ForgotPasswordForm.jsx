@@ -6,6 +6,8 @@ import { Box, Divider, TextField, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { forgotPasswordPageValidationSchema } from '@/validation/authPagesValidationsSchema';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import { toast } from 'sonner';
 
 const ForgotPasswordForm = () => {
   const router = useRouter();
@@ -16,13 +18,30 @@ const ForgotPasswordForm = () => {
     validationSchema: forgotPasswordPageValidationSchema,
     onSubmit: async (values) => {
       const { email } = values;
-      // api call
-      const query = new URLSearchParams({
-        emailSubmitted: 'true',
-        email
-      }).toString();
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_BHN}/auth/password/reset/request/`,
+          {
+            email
+          }
+        );
+        if (response?.status === 200) {
+          toast.success('کد بازیابی با موفقیت ارسال شد', { duration: 3000 });
+          const query = new URLSearchParams({
+            emailSubmitted: 'true',
+            email
+          }).toString();
 
-      router.push(`/forgot-password/password-recovery?${query}`);
+          router.push(`/forgot-password/password-recovery?${query}`);
+        }
+      } catch (error) {
+        console.log(error);
+
+        toast.error(
+          `Failed to send code Error: ${error?.response?.data?.detail}`,
+          { duration: 3000 }
+        );
+      }
     }
   });
   return (

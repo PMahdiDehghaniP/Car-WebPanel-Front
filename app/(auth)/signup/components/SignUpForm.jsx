@@ -31,7 +31,7 @@ const SignupForm = () => {
       let respose;
       try {
         setLoading(true);
-         respose = await axios.post(process.env.NEXT_PUBLIC_SIGNUP_URL, {
+        respose = await axios.post(process.env.NEXT_PUBLIC_SIGNUP_URL, {
           email,
           password
         });

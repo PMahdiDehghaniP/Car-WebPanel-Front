@@ -7,8 +7,11 @@ import AuthLogo from '../../../components/AuthLogo';
 import AuthFormsHeader from '../../../components/AuthFormsHeader';
 import { ArrowCircleRightOutlined } from '@mui/icons-material';
 import PasswordRecoveryForm from './PasswordRecoveryForm';
-import { authPagesImagesBreakPoints } from '../../../componentBreakpoints';
 import { useEffect } from 'react';
+import {
+  authPagesFormBreakpoints,
+  authPagesImagesBreakPoints
+} from '@/app/(auth)/componentBreakpoints';
 
 export const dynamic = 'force-dynamic';
 
@@ -50,7 +53,7 @@ const PasswordRecoveryPage = () => {
             />
           }
         />
-        <PasswordRecoveryForm />
+        <PasswordRecoveryForm email={email} />
       </Grid>
 
       <Grid

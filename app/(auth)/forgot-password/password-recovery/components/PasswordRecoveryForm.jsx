@@ -18,7 +18,7 @@ import TimerButton from './TimerButton';
 import { useRouter } from 'next/navigation';
 import { passwordRecoveryPageValidationSchema } from '@/validation/authPagesValidationsSchema';
 
-const PasswordRecoveryForm = () => {
+const PasswordRecoveryForm = ({ email }) => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showRepeatNewPassword, setShowRepeatNewPassword] = useState(false);
   const router = useRouter();
@@ -122,7 +122,7 @@ const PasswordRecoveryForm = () => {
               <InputAdornment
                 sx={{ paddingLeft: '0.5rem', paddingRight: '0.5rem' }}
               >
-                <TimerButton />
+                <TimerButton email={email} />
               </InputAdornment>
             )
           }

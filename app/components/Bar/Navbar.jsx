@@ -72,9 +72,10 @@ const Navbar = () => {
                 }`}
               >
                 {item.label}
-                {item.label !== 'درباره ما' && item.label !== 'ارتباط با ما' && (
-                  <TiArrowSortedDown size={14} />
-                )}
+                {item.label !== 'درباره ما' &&
+                  item.label !== 'ارتباط با ما' && (
+                    <TiArrowSortedDown size={14} />
+                  )}
               </button>
             )
           )}

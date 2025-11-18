@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import {
   Button,
   Card,
@@ -18,6 +18,7 @@ import {
   BookmarkBorderOutlined
 } from '@mui/icons-material';
 import { perfectCentering } from '@/app/constants/Styles';
+import { useRouter } from 'next/navigation';
 const CarCard = ({
   imageSrc,
   imageAlt,
@@ -27,7 +28,8 @@ const CarCard = ({
   price,
   onClick
 }) => {
-  const theme =useTheme()
+  const theme = useTheme();
+  const router = useRouter();
   return (
     <Card
       sx={{
@@ -35,7 +37,8 @@ const CarCard = ({
         maxHeight: '430px',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: '0.75rem',position:"relative"
+        marginBottom: '0.75rem',
+        position: 'relative'
       }}
     >
       <CardMedia
@@ -130,7 +133,10 @@ const CarCard = ({
           alignItems="center"
           width="100%"
         >
-          <Button sx={{ display: 'flex', gap: '0.25rem' }}>
+          <Button
+            sx={{ display: 'flex', gap: '0.25rem' }}
+            onClick={() => router.push('/dashboard/car-details')}
+          >
             <CallMadeOutlined fontSize="medium" />
             مشخصات کامل
           </Button>

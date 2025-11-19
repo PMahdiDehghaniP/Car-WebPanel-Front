@@ -170,13 +170,13 @@ export default function Error500Page() {
                   md: '1.625rem',
                 },
                 fontFamily: 'Vazirmatn, sans-serif',
-                ml: { xs: 'auto', md: 'auto' }, // Align button to the right (in RTL, this means margin-left: auto)
+                ml: { xs: 'auto', md: 'auto' }, // 👈 Align button to the right (in RTL, this means margin-left: auto)
                 mt: 1,
                 width: { xs: '100%', sm: 'auto' },
                 maxWidth: { xs: '280px', sm: '350px', md: '470px' },
                 display: 'block',
-                mx: { xs: 'auto', md: 'auto' }, //  Keep centered on mobile, right-aligned on desktop
-                //  Ensure button stays under the description text by adjusting vertical spacing
+                mx: { xs: 'auto', md: 'auto' }, // 👈 Keep centered on mobile, right-aligned on desktop
+                // 👇 Ensure button stays under the description text by adjusting vertical spacing
                 marginBottom: { xs: 0, md: 0 },
               }}
             >

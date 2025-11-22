@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import { signupPageValidationSchema } from '@/validation/authPagesValidationsSchema';
 import axios from 'axios';
 import { LoadingButton } from '@mui/lab';
+import { toast } from 'sonner';
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,16 +28,32 @@ const SignupForm = () => {
     validationSchema: signupPageValidationSchema,
     onSubmit: async (values) => {
       const { password, email } = values;
+      let respose;
       try {
         setLoading(true);
-        const respose = await axios.post(process.env.NEXT_PUBLIC_SIGNUP_URL, {
+        respose = await axios.post(process.env.NEXT_PUBLIC_SIGNUP_URL, {
           email,
           password
         });
-        if (respose?.data) {
+        console.log(respose);
+
+        if (respose?.status === 201) {
+          toast.success(
+            'ثبت نام با موفقیت انجام شد لطفا ایمیل خود را تایید کنید و سپس وارد شوید',
+            { duration: 5000 }
+          );
           router.push('/login');
+        } else {
+          toast.error(
+            `ثبت نام با خطا مواجه شد Error: ${respose?.data?.Message}`,
+            { duration: 5000 }
+          );
         }
       } catch (error) {
+        toast.error(
+          `ثبت نام با خطا مواجه شد Error: ${error?.response?.data?.email?.[0]}`,
+          { duration: 5000 }
+        );
       } finally {
         setLoading(false);
       }

@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { setMuiTheme } from '@/lib/store/slices/themeSlice';
 import { DarkMode, Sunny } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import { MdOutlineDarkMode , MdOutlineWbSunny } from "react-icons/md";
+import { MdOutlineDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 
 const ToggleThemeButton = ({ styles }) => {
   const { theme: themeStatus } = useAppSelector((state) => state.theme);
@@ -20,11 +20,14 @@ const ToggleThemeButton = ({ styles }) => {
         top: 9,
         left: 9,
         zIndex: 999,
-        borderRadius: '1000px',
-        
+        borderRadius: '1000px'
       }}
     >
-      {themeStatus === 'dark' ? <MdOutlineDarkMode size={30} color="#fff"/> : <MdOutlineWbSunny size={30} color="#000"/>}
+      {themeStatus === 'dark' ? (
+        <MdOutlineDarkMode size={30} color="#fff" />
+      ) : (
+        <MdOutlineWbSunny size={30} color="#000" />
+      )}
     </IconButton>
   );
 };

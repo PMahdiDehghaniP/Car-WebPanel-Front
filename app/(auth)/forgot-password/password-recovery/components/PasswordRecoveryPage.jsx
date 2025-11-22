@@ -1,17 +1,19 @@
 'use client';
 
-import { Grid } from "@mui/material";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import AuthLogo from "../../../components/AuthLogo";
-import AuthFormsHeader from "../../../components/AuthFormsHeader";
-import { ArrowCircleRightOutlined } from "@mui/icons-material";
-import PasswordRecoveryForm from "./PasswordRecoveryForm";
-import { authPagesImagesBreakPoints } from "../../../componentBreakpoints";
-import { useEffect } from "react";
+import { Grid } from '@mui/material';
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import AuthLogo from '../../../components/AuthLogo';
+import AuthFormsHeader from '../../../components/AuthFormsHeader';
+import { ArrowCircleRightOutlined } from '@mui/icons-material';
+import PasswordRecoveryForm from './PasswordRecoveryForm';
+import { useEffect } from 'react';
+import {
+  authPagesFormBreakpoints,
+  authPagesImagesBreakPoints
+} from '@/app/(auth)/componentBreakpoints';
 
 export const dynamic = 'force-dynamic';
-
 
 const PasswordRecoveryPage = () => {
   const router = useRouter();
@@ -51,7 +53,7 @@ const PasswordRecoveryPage = () => {
             />
           }
         />
-        <PasswordRecoveryForm />
+        <PasswordRecoveryForm email={email} />
       </Grid>
 
       <Grid

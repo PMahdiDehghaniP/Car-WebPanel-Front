@@ -6,12 +6,37 @@ const CarBoxSection = () => {
   const lineWidth = 2;
 
   const features = [
-    { text: ' حداکثر سرعت : ۲۵۰ کیلومتر بر ساعت (محدودشده الکترونیکی)', rotate: 25, side: 'left', top: '-10%' },
-    { text: "شتاب صفر تا صد: 6 ثانیه", rotate: 10, side: 'left', top: '25%' },
-    { text: 'گشتاور : ۴۰۰ نیوتن‌متر بین ۲۰۰۰ تا ۳۲۰۰ دور در دقیقه', rotate: -10, side: 'left', top: '60%' },
-    { text: " مدل : Mercedes-Benz C300 AMG Line ", rotate: -25, side: 'right', top: '-10%' },
-    { text: 'موتور : ۲.۰ لیتری توربوشارژ چهارسیلندر (M254)', rotate: -10, side: 'right', top: '25%' },
-    { text:  " قدرت : ۲۵۵ اسب‌بخار در ۵۸۰۰ دور در دقیقه", rotate: 15, side: 'right', top: '60%' },
+    {
+      text: ' حداکثر سرعت : ۲۵۰ کیلومتر بر ساعت (محدودشده الکترونیکی)',
+      rotate: 25,
+      side: 'left',
+      top: '-10%'
+    },
+    { text: 'شتاب صفر تا صد: 6 ثانیه', rotate: 10, side: 'left', top: '25%' },
+    {
+      text: 'گشتاور : ۴۰۰ نیوتن‌متر بین ۲۰۰۰ تا ۳۲۰۰ دور در دقیقه',
+      rotate: -10,
+      side: 'left',
+      top: '60%'
+    },
+    {
+      text: ' مدل : Mercedes-Benz C300 AMG Line ',
+      rotate: -25,
+      side: 'right',
+      top: '-10%'
+    },
+    {
+      text: 'موتور : ۲.۰ لیتری توربوشارژ چهارسیلندر (M254)',
+      rotate: -10,
+      side: 'right',
+      top: '25%'
+    },
+    {
+      text: ' قدرت : ۲۵۵ اسب‌بخار در ۵۸۰۰ دور در دقیقه',
+      rotate: 15,
+      side: 'right',
+      top: '60%'
+    }
   ];
 
   return (
@@ -22,9 +47,10 @@ const CarBoxSection = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        background: 'linear-gradient(180deg, #20263C 0%, #424965 51.44%, #20263C 100%)',
+        background:
+          'linear-gradient(180deg, #20263C 0%, #424965 51.44%, #20263C 100%)',
         gap: '5rem',
-        padding: '0.5rem',
+        padding: '0.5rem'
       }}
     >
       <Box
@@ -33,17 +59,20 @@ const CarBoxSection = () => {
           display: 'flex',
           justifyContent: 'space-between',
           gap: '2rem',
-          alignItems: 'center',
+          alignItems: 'center'
         }}
       >
-        <Button sx={{ fontSize: { xs: '12px', md: '1.5rem' } }} variant="contained">
+        <Button
+          sx={{ fontSize: { xs: '12px', md: '1.5rem' } }}
+          variant="contained"
+        >
           افزودن به گاراژ
         </Button>
         <Typography
           sx={{
             fontSize: { xs: '1rem', md: '2rem' },
             fontWeight: 700,
-            color: '#FFFFFF',
+            color: '#FFFFFF'
           }}
         >
           Mercedes Benz AMG 2022
@@ -53,7 +82,7 @@ const CarBoxSection = () => {
           src="/mercedesLogo.png"
           sx={{
             width: { xs: 50, md: 100, lg: 200 },
-            height: { xs: 50, md: 100, lg: 200 },
+            height: { xs: 50, md: 100, lg: 200 }
           }}
         />
       </Box>
@@ -63,7 +92,7 @@ const CarBoxSection = () => {
           position: 'relative',
           width: '100%',
           maxWidth: stageSize,
-          aspectRatio: '16/9',
+          aspectRatio: '16/9'
         }}
       >
         <Box
@@ -75,13 +104,13 @@ const CarBoxSection = () => {
             objectFit: 'contain',
             position: 'absolute',
             bottom: 0,
-            left: 0,
+            left: 0
           }}
         />
 
         <Box
           component="img"
-          src="BenzAMg.png"
+          src="/BenzAMg.png"
           sx={{
             position: 'absolute',
             bottom: '3%',
@@ -90,7 +119,7 @@ const CarBoxSection = () => {
             width: '100%',
             maxWidth: '600px',
             zIndex: 2,
-            objectFit: 'contain',
+            objectFit: 'contain'
           }}
         />
 
@@ -106,7 +135,8 @@ const CarBoxSection = () => {
                 height: `${lineWidth}px`,
                 backgroundColor: '#fff',
                 transform: `rotate(${item.rotate}deg)`,
-                transformOrigin: item.side === 'left' ? 'left center' : 'right center',
+                transformOrigin:
+                  item.side === 'left' ? 'left center' : 'right center'
               }}
             />
             <Box
@@ -122,7 +152,7 @@ const CarBoxSection = () => {
                 textAlign: 'center',
                 fontSize: '1rem',
                 whiteSpace: 'pre-wrap',
-                maxWidth: '400px',
+                maxWidth: '400px'
               }}
             >
               {item.text}

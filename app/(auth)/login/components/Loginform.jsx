@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { loginPageValidationSchema } from '@/validation/authPagesValidationsSchema';
 import { LoadingButton } from '@mui/lab';
+import { toast } from 'sonner';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +39,8 @@ const LoginForm = () => {
           password
         });
         if (!resp?.error) {
-          router.push('/dashboard');
+          toast.success('ورود با موفقیت انجام شد', { duration: 3000 });
+          router.push('/');
         }
       } catch (error) {
       } finally {

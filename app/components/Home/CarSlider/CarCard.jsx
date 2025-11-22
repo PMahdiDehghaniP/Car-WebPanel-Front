@@ -1,3 +1,4 @@
+'use client';
 import {
   Button,
   Card,
@@ -5,7 +6,8 @@ import {
   CardMedia,
   Divider,
   Tooltip,
-  Typography
+  Typography,
+  useTheme
 } from '@mui/material';
 import { Box } from '@mui/system';
 import InfoIcon from './InfoIcon';
@@ -16,6 +18,7 @@ import {
   BookmarkBorderOutlined
 } from '@mui/icons-material';
 import { perfectCentering } from '@/app/constants/Styles';
+import { useRouter } from 'next/navigation';
 const CarCard = ({
   imageSrc,
   imageAlt,
@@ -23,9 +26,10 @@ const CarCard = ({
   description,
   carInformation,
   price,
-  theme,
   onClick
 }) => {
+  const theme = useTheme();
+  const router = useRouter();
   return (
     <Card
       sx={{
@@ -43,7 +47,8 @@ const CarCard = ({
         sx={{
           height: '220px',
           width: '100%',
-          objectFit: 'cover'
+          objectFit: 'cover',
+          position: 'relative'
         }}
         image={imageSrc}
       />
@@ -128,7 +133,10 @@ const CarCard = ({
           alignItems="center"
           width="100%"
         >
-          <Button sx={{ display: 'flex', gap: '0.25rem' }}>
+          <Button
+            sx={{ display: 'flex', gap: '0.25rem' }}
+            onClick={() => router.push('/dashboard/car-details')}
+          >
             <CallMadeOutlined fontSize="medium" />
             مشخصات کامل
           </Button>

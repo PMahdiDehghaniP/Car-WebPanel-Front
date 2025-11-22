@@ -1,17 +1,19 @@
+'use client';
+
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleLogin } from '@/lib/store/slices/authSlice';
+import { useSelector } from 'react-redux';
+import { useSession } from 'next-auth/react';
 import { FaRegUser } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
 
-const RegisterToggleButten = () => {
-  const { isLoggedIn } = useSelector((state) => state.auth);
+const RegisterToggleButton = () => {
+  const { data: session } = useSession();
   const { theme } = useSelector((state) => state.theme);
   const router = useRouter();
 
   const handleClick = () => {
-    if (isLoggedIn) {
-      router.push('/garage');
+    if (session) {
+      router.push('/dashboard/garage');
     } else {
       router.push('/signup');
     }
@@ -28,12 +30,12 @@ const RegisterToggleButten = () => {
             ? 'bg-white text-black hover:bg-gray-200'
             : 'bg-blue-600 text-white hover:bg-blue-700'
         }
-        `}
+      `}
     >
-      {isLoggedIn ? 'گاراژ من' : 'ثبت نام'}
+      {session ? 'گاراژ من' : 'ثبت نام'}
       <FaRegUser size={14} />
     </button>
   );
 };
 
-export default RegisterToggleButten;
+export default RegisterToggleButton;

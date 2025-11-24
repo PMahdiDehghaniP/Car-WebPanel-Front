@@ -14,38 +14,38 @@ import {
 } from 'react-icons/md';
 import Close from './close';
 import ToggleThemeButton from '../Home/ToggleThemeButton';
-import { useRouter  } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { menuOpen, activeItem } = useSelector((state) => state.ui);
   const { theme } = useSelector((state) => state.theme);
-  const { data: session } = useSession(); 
+  const { data: session } = useSession();
   const router = useRouter();
 
   const sidebarItems = session
     ? [
-      { label: 'خانه', path: '/' },
-      { label: 'خودروها', path: '/cars' },
-      { label: 'داشبورد', path: '/dashboard' },
-      { label: 'گاراژ من', path: '/garage' },
-      { label: 'انجمن', path: '/forum' },
-      { label: 'رویدادها', path: '/events' },
-      { label: 'درباره ما', path: '/about' },
-    ]
+        { label: 'خانه', path: '/' },
+        { label: 'خودروها', path: '/cars' },
+        { label: 'داشبورد', path: '/dashboard' },
+        { label: 'گاراژ من', path: '/dashboard/garage' },
+        { label: 'انجمن', path: '/forum' },
+        { label: 'رویدادها', path: '/events' },
+        { label: 'درباره ما', path: '/about' }
+      ]
     : [
-      { label: 'خانه', path: '/' },
-      { label: 'خودروها', path: '/cars' },
-      { label: 'ورود / ثبت نام', path: '/signup' },
-      { label: 'انجمن', path: '/forum' },
-      { label: 'رویدادها', path: '/events' },
-      { label: 'درباره ما', path: '/about' }
-    ];
+        { label: 'خانه', path: '/' },
+        { label: 'خودروها', path: '/cars' },
+        { label: 'ورود / ثبت نام', path: '/signup' },
+        { label: 'انجمن', path: '/forum' },
+        { label: 'رویدادها', path: '/events' },
+        { label: 'درباره ما', path: '/about' }
+      ];
 
   const handleClick = (item) => {
     dispatch(setActiveItem(item.label));
-    const validPaths = sidebarItems.map((i)=> i.path);
+    const validPaths = sidebarItems.map((i) => i.path);
     if (validPaths.includes(item.path)) {
       router.push(item.path);
     } else {

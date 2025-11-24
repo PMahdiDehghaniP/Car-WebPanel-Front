@@ -5,14 +5,27 @@ import FeatureCardsSection from '../components/Home/FeatureCardsSection';
 import AchivementSection from '../components/Home/Achivement';
 import HomePageHeader from '../components/Home/HomePageHeader';
 import { useLazyQuery } from '@apollo/client';
-import { GET_BRANDS } from '@/schemas/HomePageSchemas';
+import {
+  GET_BRANDS,
+  GET_BRANDS_BY_RATE,
+  GET_HOME_PAGE_CARS
+} from '@/schemas/HomePageSchemas';
 import { useEffect } from 'react';
 
 const HomeContent = () => {
   const [getBrands, { data: getBrandsData }] = useLazyQuery(GET_BRANDS);
-
+  const [getHomePageCars, { data: getHomePageCarsData }] =
+    useLazyQuery(GET_HOME_PAGE_CARS);
+  const [getBrandsByRate, { data: getBrandsByRateData }] =
+    useLazyQuery(GET_BRANDS_BY_RATE);
   useEffect(() => {
-    getBrands();
+    getBrandsByRate({
+      variables: {
+        pageSize: 20,
+        page: 1,
+        minRate: 0
+      }
+    });
   }, []);
 
   return (

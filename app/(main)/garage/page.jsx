@@ -111,15 +111,15 @@ export default function GaragePage() {
           }}
         />
 
-        {pages.length > 1 && (
-          <Box sx={{  display: 'flex', justifyContent: 'center' }}>
-            <GarajinoPagination
-              page={currentPage + 1} 
-              handlePageChange={handlePaginationChange}
-              items={paginationPlaceholderItems}
-            />
-          </Box>
-        )}
+        
+        <Box sx={{  display: 'flex', justifyContent: 'center' }}>
+          <GarajinoPagination
+            page={currentPage + 1} 
+            handlePageChange={handlePaginationChange}
+            items={paginationPlaceholderItems}
+          />
+        </Box>
+        
 
         <NewCategoryModal 
           // sx= {{

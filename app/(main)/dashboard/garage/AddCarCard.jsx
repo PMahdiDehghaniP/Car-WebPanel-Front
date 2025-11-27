@@ -14,10 +14,9 @@ const AddCarCard = ({
   bgCard = '#fff'
 }) => {
   const router = useRouter();
-
   return (
     <Box
-      onClick={() => router.push("/dashboard/car-search")}
+      onClick={() => router.push("/dashboard/search-car")}
       sx={{
         width: '100%',                   
         maxWidth: `${maxWidth}px`,        

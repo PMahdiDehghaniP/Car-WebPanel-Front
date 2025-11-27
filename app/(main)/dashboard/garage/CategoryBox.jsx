@@ -12,7 +12,7 @@ export default function CategoryBox({ title = 'دسته', id, mobile = false, ca
   const { theme } = useSelector((state) => state.theme);
 
   const handleClick = () => {
-    if (id) router.push(`/garage/category/${id}`);
+    if (id) router.push(`/dashboard/garage/category/${id}`);
   };
   const bgCard = theme === 'dark' ? '#20263C' : '#E9E8E800';
   const bgInner = theme === 'dark' ? '#2E3B55' : '#E9E8E800';

@@ -62,11 +62,10 @@ export default function WhoAreWeCard() {
             <Typography variant="h5" component="h2" 
               sx={{
                fontWeight: 500 ,
-               fontSize : '2.6rem'
+               fontSize : '3rem'
             }}>
               ما کی هستیم ؟
             </Typography>
-
             <Typography variant="body1" 
               sx={{
                  lineHeight: 1.2 ,
@@ -76,7 +75,6 @@ export default function WhoAreWeCard() {
               ما تیم It’s All 200 هستیم؛ گروهی از دانشجویان علاقه‌مند به خودرو و
               تکنولوژی که هدفمان ساخت یک پلتفرم جامع و حرفه‌ای خودرویی است.
             </Typography>
-
             <Typography variant="body1" 
              sx={{
                  lineHeight: 1.2 ,
@@ -88,8 +86,6 @@ export default function WhoAreWeCard() {
             </Typography>
           </Stack>
         </Box>
-
-
       </Paper>
     </Box>
   );

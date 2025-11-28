@@ -7,14 +7,12 @@ import Stack from '@mui/material/Stack';
 export default function WhoAreWeCard() {
   return (
     <Box dir="rtl" sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Paper
-        elevation={0}
-        square
+      <Box
         sx={{
           display: 'flex',
           alignItems: 'stretch',
-          height: '600px',
-          width: '1500px',
+          height: '500px',
+          width: '1440px',
           borderRadius: '50px',
           borderBottom: '2px solid #2F6BFF',
           overflow: 'hidden',
@@ -86,7 +84,7 @@ export default function WhoAreWeCard() {
             </Typography>
           </Stack>
         </Box>
-      </Paper>
+      </Box>
     </Box>
   );
 }

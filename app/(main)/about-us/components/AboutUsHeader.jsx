@@ -5,14 +5,8 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-export default function AboutUsHeader({
-  title = 'گاراژینو',
-  imageSrc ="/aboutUsHeader.png" ,
-  height = 450,
-  blue = '#2F6BFF',
-  direction = 'to bottom right',
-}) {
-  const gradient = `linear-gradient(${direction}, ${blue} 50%, #ffffff 50%)`;
+export default function AboutUsHeader() {
+  const gradient = `linear-gradient(${'to bottom right'}, ${'#2F6BFF'} 50%, #ffffff 50%)`;
   return (  
      <Box
       component="section"
@@ -21,9 +15,7 @@ export default function AboutUsHeader({
         height: '450px',
         width: '100%',
         overflow: 'hidden',
-        // ensure no background color here that could override pseudo
         bgcolor: 'transparent',
-        // pseudo-element creates the exact half-split diagonal
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -35,7 +27,6 @@ export default function AboutUsHeader({
         },
       }}
     >
-      {/* content above the background */}
       <Typography
         component="h1"
         variant="h1"
@@ -51,27 +42,24 @@ export default function AboutUsHeader({
           textShadow: '0 6px 12px rgba(0,0,0,0.32)',
         }}
       >
-        {title}
+        'گاراژینو'
       </Typography>
-
-      {imageSrc && (
-        <Box
-          component="img"
-          src={imageSrc}
-          alt={title}
-          sx={{
-            position: 'relative',
-            zIndex: 2,
-            display: 'block',
-            mx: 'auto',
-            maxHeight: { xs: 280, sm: 450, md: 500, lg: 600 },
-            width: 'auto',
-            transform: 'translateY(-35px)',
-            pointerEvents: 'none',
-            filter: 'drop-shadow(0 18px 22px rgba(0,0,0,0.25))',
-          }}
-        />
-      )}
+    <Box
+        component="img"
+        src="/aboutUsHeader.png"
+        alt='گاراژینو'
+        sx={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'block',
+        mx: 'auto',
+        maxHeight: { xs: 280, sm: 450, md: 500, lg: 600 },
+        width: 'auto',
+        transform: 'translateY(-35px)',
+        pointerEvents: 'none',
+        filter: 'drop-shadow(0 18px 22px rgba(0,0,0,0.25))',
+        }}
+    />
     </Box>  
   );
 }

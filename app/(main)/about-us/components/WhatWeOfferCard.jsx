@@ -4,18 +4,15 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
-
 export default function WhatWeOfferCard() {
   return (
     <Box  sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Paper
-        elevation={0}
-        square
+      <Box
         sx={{
           display: 'flex',
           alignItems: 'stretch',
           height: '800px',
-          width: '1500px',
+          width: '1440px',
           borderRadius: '50px',
           borderBottom: '2px solid #2F6BFF',
           overflow: 'hidden',
@@ -147,7 +144,7 @@ export default function WhatWeOfferCard() {
             </Box>
           </Stack>
         </Box>
-      </Paper>
+      </Box>
     </Box>
   );
 }

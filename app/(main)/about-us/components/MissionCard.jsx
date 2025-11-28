@@ -4,9 +4,10 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
-export default function WhoAreWeCard() {
+
+export default function MissionsCard() {
   return (
-    <Box dir="rtl" sx={{ display: 'flex', justifyContent: 'center' }}>
+    <Box  sx={{ display: 'flex', justifyContent: 'center' }}>
       <Paper
         elevation={0}
         square
@@ -34,8 +35,8 @@ export default function WhoAreWeCard() {
         >
           <Box
             component="img"
-            src="/whoareus.png"
-            alt="who are us"
+            src="/missions.png"
+            alt="missions"
             sx={{
               maxWidth: '90%',
               maxHeight: '80%',
@@ -54,42 +55,32 @@ export default function WhoAreWeCard() {
             textAlign: 'right',
           }}
         >
-          <Stack spacing={2}
-            sx={{
-              gap: 15
-            }}
-          >
-            <Typography variant="h5" component="h2" 
+          <Stack spacing={2} sx={{ gap: 10 }}>
+            <Typography
+              variant="h5"
+              component="h2"
               sx={{
                fontWeight: 500 ,
-               fontSize : '2.6rem'
-            }}>
-              ما کی هستیم ؟
+               fontSize : '3rem'
+            }}
+            >
+              ماموریت ما
             </Typography>
 
-            <Typography variant="body1" 
-              sx={{
-                 lineHeight: 1.2 ,
-                 fontSize : '1.6rem'
-                }}
-            >
-              ما تیم It’s All 200 هستیم؛ گروهی از دانشجویان علاقه‌مند به خودرو و
-              تکنولوژی که هدفمان ساخت یک پلتفرم جامع و حرفه‌ای خودرویی است.
+            <Typography variant="body1" sx={{ lineHeight: 1.2, fontSize: '1.6rem' }}>
+              ساخت یک اکوسیستم یکپارچه که ترکیبی باشد از:
+              <br /> . دیتابیس کامل و دقیق خودروها
+              <br />. ابزارهای هوشمند مثل مقایسه و تخمین هزینه
+              <br />. شبکه اجتماعی خودرو محور
+              <br />. قابلیت‌های شخصی‌سازی مثل گاراژ و اچیومنت
             </Typography>
 
-            <Typography variant="body1" 
-             sx={{
-                 lineHeight: 1.2 ,
-                 fontSize : '1.6rem'
-                }}
-            >
-              پلتفرمی که هم اطلاعات فنی دقیق ارائه کند، هم ابزارهای تحلیلی بدهد، و
-              هم یک شبکه اجتماعی مخصوص عاشقان خودرو باشد.
+            <Typography variant="body1" sx={{ lineHeight: 1.2, fontSize: '1.6rem' }}>
+              هدف ما ایجاد محیطی است که در آن کاربران بتوانند بهتر انتخاب کنند، راحت‌تر
+              به اطلاعات برسند، و با دیگران تعامل واقعی داشته باشند.
             </Typography>
           </Stack>
         </Box>
-
-
       </Paper>
     </Box>
   );

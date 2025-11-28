@@ -303,6 +303,299 @@ const baseThemeOptions = (isRtl) => {
           }
         }
       }
+    },
+    sizing: {
+      tokenCarDetails: {
+        desktop: {
+          backAndForthBtn: { width: '60px', heigth: '60px', radius: '45px' },
+          addToGarageBtn: {
+            width: '188px',
+            heigth: '60px',
+            fontSize: '20px',
+            radius: '15px'
+          },
+          compareBtn: {
+            width: '245px',
+            heigth: '82px',
+            fontSize: '32px',
+            radius: '20px'
+          },
+          dateBtn: {
+            width: '128px',
+            heigth: '68px',
+            fontSize: '36px',
+            radius: '24px'
+          },
+          submitBtn: {
+            width: '155px',
+            heigth: '70px',
+            fontSize: '32px',
+            radius: '10px'
+          },
+          likeBtn: { width: '40px', heigth: '40px' },
+          carName: { fontSize: '64' },
+          sectionTitle: { fontSize: '48px' },
+          carAroundInfoTitle: { fontSize: '32px' },
+          carAroundInfo: { fontSize: '28px' },
+          moreInfoTitle: { fontSize: '40px' },
+          moreInfo: { fontSize: '36px' },
+          priceInfo: { fontSize: '24px' },
+          totalCostInfoTitle: { fontSize: '36px' },
+          totalCostInfo: { fontSize: '24px' },
+          commentName: { fontSize: '24px' },
+          commentTitle: { fontSize: '40px' },
+          commentText: { fontSize: '24px' }
+        },
+        mobile: {
+          backAndForthBtn: { width: '36px', heigth: '36px', radius: '45px' },
+          addToGarageBtn: {
+            width: '77px',
+            heigth: '22px',
+            fontSize: '7',
+            radius: '6px'
+          },
+          compareBtn: {
+            width: '85px',
+            heigth: '32px',
+            fontSize: '16px',
+            radius: '5px'
+          },
+          dateBtn: {
+            width: '31px',
+            heigth: '19px',
+            fontSize: '10px',
+            radius: '5px'
+          },
+          submitBtn: {
+            width: '145px',
+            heigth: '48px',
+            fontSize: '24px',
+            radius: '5px'
+          },
+          likeBtn: { width: '24px', heigth: '24px' },
+          carName: { fontSize: '24' },
+          sectionTitle: { fontSize: '20px' },
+          carAroundInfoTitle: { fontSize: '10px' },
+          carAroundInfo: { fontSize: '6px' },
+          moreInfoTitle: { fontSize: '14px' },
+          moreInfo: { fontSize: '12px' },
+          priceInfo: { fontSize: '8px' },
+          totalCostInfoTitle: { fontSize: '10px' },
+          totalCostInfo: { fontSize: '6px' },
+          commentName: { fontSize: '16px' },
+          commentTitle: { fontSize: '14px' },
+          commentText: { fontSize: '8px' }
+        }
+      },
+
+      tokenChangeProfile: {
+        desktop: {
+          changePicBtn: {
+            width: '188px',
+            height: '48px',
+            fontSize: '20px',
+            radius: '10px'
+          },
+          submitBtn: {
+            width: '274px',
+            height: '68px',
+            fontSize: '28px',
+            radius: '16px'
+          },
+          formTitle: { fontSize: '32px' },
+          inputLabel: { fontSize: '10px' },
+          inputText: { fontSize: '10px' }
+        },
+        mobile: {
+          changePicBtn: {
+            width: '120px',
+            height: '36px',
+            fontSize: '14px',
+            radius: '8px'
+          },
+          submitBtn: {
+            width: '104px',
+            height: '24px',
+            fontSize: '10px',
+            radius: '6px'
+          },
+          formTitle: { fontSize: '12px' },
+          inputLabel: { fontSize: '28px' },
+          inputText: { fontSize: '28px' }
+        }
+      },
+
+      tokenEvent: {
+        desktop: {
+          timer: { fontSize: '24px' },
+          myPicsTitle: { fontSize: '38px' },
+          deleteBtn: { width: '100px', higth: '40px', radius: '24px' },
+          leaderboardTitle: { fontSize: '24px' },
+          leaderboardName: { fontSize: '14px' },
+          sortText: { fontSize: '20px' },
+          allPicsTitle: { fontSize: '32px' },
+          postUsername: { fontSize: '20px' },
+          likeBtn: { width: '40px', heigth: '40px' },
+          reportBtn: { width: '100px', heigth: '40px' },
+          postDescription: { fontSize: '20px' },
+          positionTitle: { fontSize: '32' },
+          positionText: { fontSize: '32' }
+        },
+        mobile: {
+          timer: { fontSize: '7px' },
+          myPicsTitle: { fontSize: '16px' },
+          tabBtn: { width: 'fit', heigth: '97', fontSize: '12px' },
+          deleteBtn: { width: '76px', higth: '30px', radius: '24px' },
+          leaderboardTitle: { fontSize: '24px' },
+          leaderboardName: { fontSize: '14px' },
+          sortText: { fontSize: '12px' },
+          allPicsTitle: { fontSize: '16px' },
+          postUsername: { fontSize: '12px' },
+          likeBtn: { width: '28px', heigth: '28px' },
+          reportBtn: { width: '64px', heigth: '28px' },
+          postDescription: { fontSize: '12px' },
+          positionTitle: { fontSize: '24' },
+          positionText: { fontSize: '24' }
+        }
+      },
+
+      tokenProfile: {
+        desktop: {
+          changeInfoBtn: {
+            width: 'fit',
+            height: '44px',
+            radius: '10px',
+            fontSize: '16px'
+          },
+          likeBtn: { width: '44px', heigth: '44px' },
+          commentBtn: { width: '44px', height: '44px' },
+          username: { fontSize: '36px' },
+          bioTitle: { fontSize: '20px' },
+          bio: { fontSize: '16px' },
+          nickname: { fontSize: '16px' },
+          number: { fontSize: '40px' },
+          numberInfo: { fontSize: '20px' },
+          aboutMyCarTitle: { fontSize: '37px' },
+          aboutMyCarDescription: { fontSize: '14px' },
+          aboutMyCarIconInfoText: { fontSize: '10px' },
+          customizationTitle: { fontSize: '18px' },
+          customizationItems: { fontSize: '16px' }
+        },
+        mobile: {
+          changeInfoBtn: {
+            width: 'fit',
+            height: '30px',
+            radius: '7px',
+            fontSize: '11px'
+          },
+          likeBtn: { width: '20px', heigth: '20px' },
+          commentBtn: { width: '20px', height: '20px' },
+          username: { fontSize: '32px' },
+          bioTitle: { fontSize: '11px' },
+          bio: { fontSize: '9px' },
+          nickname: { fontSize: '14px' },
+          number: { fontSize: '30px' },
+          numberInfo: { fontSize: '15px' },
+          aboutMyCarTitle: { fontSize: '18px' },
+          aboutMyCarDescription: { fontSize: '7px' },
+          aboutMyCarIconInfoText: { fontSize: '5px' },
+          customizationTitle: { fontSize: '8px' },
+          customizationItems: { fontSize: '7px' }
+        }
+      },
+
+      tokenHomePage: {
+        desktop: {
+          header: {
+            button: {
+              width: '152px',
+              height: '47px',
+              radius: '46px',
+              fontSize: '15px'
+            },
+            themeBtn: { width: '72px', height: '72px' },
+            items: { fontSize: '15px' }
+          },
+          searchBar: {
+            button: {
+              width: '215px',
+              height: '55px',
+              radius: '60px',
+              fontSize: '15px'
+            },
+            xBtn: { width: '56px', height: '56px', radius: '60px' },
+            items: { fontSize: '15px' }
+          },
+          brands: {
+            button: { width: '209px', height: '180px', fontSize: '18px' }
+          },
+          mainCards: {
+            button: {
+              width: 'fit',
+              height: '57px',
+              fontSize: '20px',
+              radius: '12px'
+            },
+            backAndNextBtn: { width: '60px', height: '60px', radius: '45px' }
+          },
+          footer: {
+            title: { fontSize: '32px' },
+            linkText: { fontSize: '24px' },
+            socialLinks: { width: '40px', height: '40px' },
+            contactUsItems: { fontSize: '15x' },
+            addressAndEmail: { fontSize: '10px' }
+          },
+          auth: {
+            button: {
+              width: '410px',
+              height: '58px',
+              radius: '10px',
+              fontSize: '20px'
+            }
+          }
+        },
+        mobile: {
+          header: {
+            button: { width: '56px', height: '56px', radius: '8px' }
+          },
+          themeBtn: { width: '40px', height: '40px' },
+          sideBar: {
+            items: { fontSize: '16px' }
+          },
+          searchBar: {
+            button: { width: '56px', height: '56px' },
+            xBtn: { width: '46px', height: '46px', radius: '60px' }
+          },
+          brands: {
+            button: { width: '126px', height: '126px', fontSize: '14px' }
+          },
+          mainCards: {
+            button: {
+              width: 'fit',
+              height: '40px',
+              fontSize: '20px',
+              radius: '12px'
+            },
+            backAndNextBtn: { width: '60px', height: '60px', radius: '45px' }
+          },
+          tab: { fontSize: '16px' },
+          footer: {
+            title: { fontSize: '16px' },
+            linkText: { fontSize: '20px' },
+            socialLinks: { width: '40px', height: '40px' },
+            contactUsItems: { fontSize: '12px' },
+            addressAndEmail: { fontSize: '10px' }
+          },
+          auth: {
+            button: {
+              width: '410px',
+              height: '58px',
+              radius: '10px',
+              fontSize: '20px'
+            }
+          }
+        }
+      }
     }
   };
 };

@@ -38,3 +38,24 @@ export const GET_WEEK_TOP_RATED_POST = gql`
     }
   }
 `;
+
+export const GET_BRANDS_BY_RATE = gql`
+  query BrandsByRate($pageSize: Int, $page: Int, $minRate: Float) {
+    brandsByRate(pageSize: $pageSize, page: $page, minRate: $minRate) {
+      count
+      nextPage
+      previousPage
+      page
+      pageSize
+      results {
+        id
+        name
+        logoUrl
+        info
+        brandRate
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;

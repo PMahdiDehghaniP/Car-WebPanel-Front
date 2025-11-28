@@ -1,11 +1,13 @@
 'use client';
-import { Box, useTheme } from '@mui/material';
+import { Box, CircularProgress, useTheme } from '@mui/material';
 import CarsLogoSection from './CarsLogoSection';
 import LogoCardHeader from './LogoCarsCardHeader';
 import { perfectCentering } from '@/app/constants/Styles';
 
-const LogoCarsCard = () => {
+const LogoCarsCard = ({ getLogoLoading, logoData }) => {
   const theme = useTheme();
+  console.log(logoData, 'logoData');
+
   return (
     <Box
       sx={{
@@ -25,8 +27,14 @@ const LogoCarsCard = () => {
         gap: '1.5rem'
       }}
     >
-      <LogoCardHeader />
-      <CarsLogoSection />
+      {!logoData || getLogoLoading ? (
+        <CircularProgress size={64} />
+      ) : (
+        <>
+          <LogoCardHeader />
+          <CarsLogoSection logoData={logoData} />
+        </>
+      )}
     </Box>
   );
 };

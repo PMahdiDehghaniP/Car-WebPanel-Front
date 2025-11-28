@@ -1,9 +1,8 @@
-import CarLogos from '@/app/constants/homePageCarLogos';
 import { Box } from '@mui/system';
 import CarLogoCard from './CarLogoCard';
 import { perfectCentering } from '@/app/constants/Styles';
 
-const CarsLogoSection = () => {
+const CarsLogoSection = ({ logoData }) => {
   return (
     <Box
       sx={{
@@ -14,8 +13,8 @@ const CarsLogoSection = () => {
         gap: '0.5rem'
       }}
     >
-      {CarLogos.map((car, index) => (
-        <CarLogoCard key={index} carName={car.name} logoSrc={car.logoSrc} />
+      {logoData?.slice(0, 6)?.map((car, index) => (
+        <CarLogoCard key={index} carName={car.name} logoSrc={car.logoUrl} />
       ))}
     </Box>
   );

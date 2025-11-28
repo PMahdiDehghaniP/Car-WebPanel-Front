@@ -6,18 +6,46 @@ import AchivementSection from '../components/Home/Achivement';
 import HomePageHeader from '../components/Home/HomePageHeader';
 import { useLazyQuery } from '@apollo/client';
 import {
-  GET_BRANDS,
   GET_BRANDS_BY_RATE,
-  GET_HOME_PAGE_CARS
+  GET_TOP_MOTNH_POSTS
 } from '@/schemas/HomePageSchemas';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const HomeContent = () => {
-  const [getBrands, { data: getBrandsData }] = useLazyQuery(GET_BRANDS);
-  const [getHomePageCars, { data: getHomePageCarsData }] =
-    useLazyQuery(GET_HOME_PAGE_CARS);
-  const [getBrandsByRate, { data: getBrandsByRateData }] =
-    useLazyQuery(GET_BRANDS_BY_RATE);
+  const [page, setPage] = useState(1);
+  const [topPostsData, setTopPostsData] = useState(new Map());
+  const handlePageChange = () => setPage((prev) => prev + 1);
+  const [
+    getBrandsByRate,
+    { data: getBrandsByRateData, loading: getBrandsByRateLoading }
+  ] = useLazyQuery(
+    GET_BRANDS_BY_RATE(`
+      count
+      nextPage
+      previousPage
+      page
+      pageSize
+      results {
+      name
+      logoUrl
+      }`)
+  );
+  const [
+    getTopPostsPreview,
+    { data: getTopPostsPreviewData, loading: getTopPostsPreviewLoading }
+  ] = useLazyQuery(
+    GET_TOP_MOTNH_POSTS(`
+      id
+    content
+    image
+    video
+    createdAt
+    likeCount
+    user {
+        avatar
+        fullName
+    }`)
+  );
   useEffect(() => {
     getBrandsByRate({
       variables: {
@@ -27,6 +55,26 @@ const HomeContent = () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    getTopPostsPreview({
+      variables: {
+        pagination: {
+          pageIndex: page,
+          pageSize: 20
+        }
+      }
+    });
+  }, [page]);
+  useEffect(() => {
+    if (getTopPostsPreviewData?.topPostsLastMonth.length) {
+      const newMap = new Map(topPostsData);
+      getTopPostsPreviewData?.topPostsLastMonth?.forEach((post) => {
+        newMap.set(post?.id, post);
+      });
+      setTopPostsData(newMap);
+    }
+  }, [getTopPostsPreviewData?.topPostsLastMonth]);
 
   return (
     <Box
@@ -55,9 +103,16 @@ const HomeContent = () => {
           overflow: 'hidden'
         }}
       >
-        <LogoCarsCard />
+        <LogoCarsCard
+          getLogoLoading={getBrandsByRateLoading}
+          logoData={getBrandsByRateData?.brandsByRate?.results}
+        />
         <CarSlider />
-        <FeatureCardsSection />
+        <FeatureCardsSection
+          handlePageChange={handlePageChange}
+          topPostsData={Array.from(topPostsData.values())}
+          getTopPostsDataLoading={getTopPostsPreviewLoading}
+        />
         <AchivementSection />
       </Box>
     </Box>

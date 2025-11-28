@@ -47,7 +47,7 @@ const ApolloClientProvider = ({ children }) => {
 
         // we will redirect user to login page
         if (responseStatus === 401) {
-          router.push('/login');
+          signOut({ redirect: false }).then(() => router.push('/login'));
         }
       }
     });

@@ -16,8 +16,9 @@ import {
   BookmarkBorder,
   MoreHoriz
 } from '@mui/icons-material';
+import { formatInstagramDate } from '@/utils/formatters';
 
-const InstagramPostCard = () => {
+const InstagramPostCard = ({ post }) => {
   return (
     <Card
       sx={{
@@ -47,7 +48,7 @@ const InstagramPostCard = () => {
         }
         title={
           <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-            محمد‌مهدی قاسمی
+            {post?.user?.fullName || 'No Name'}
             <Box
               component="span"
               sx={{
@@ -70,8 +71,8 @@ const InstagramPostCard = () => {
 
       <Box sx={{ position: 'relative', flex: 1, maxHeight: 196 }}>
         <CardMedia
-          component="img"
-          image="/HomePageMainImage.jpg"
+          component={post?.video ? 'video' : 'image'}
+          src={post?.video ? post?.video : post?.image}
           alt="car"
           sx={{
             height: '100%',
@@ -95,7 +96,7 @@ const InstagramPostCard = () => {
               <IconButton size="small">
                 <FavoriteBorder />
               </IconButton>
-              1.139
+              {post?.likeCount}
             </Typography>
             <Typography variant="body2">
               <IconButton size="small">
@@ -114,14 +115,25 @@ const InstagramPostCard = () => {
             <BookmarkBorder />
           </IconButton>
         </Box>
-        <Typography variant="body2" color="text.primary">
-          سلام بروبیکس، امروز اومدم به ماشین خاصی رو معرفی کنم...
+        <Typography
+          variant="body2"
+          color="text.primary"
+          sx={{
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            lineHeight: 1.5
+          }}
+        >
+          {post?.content}
         </Typography>
       </CardContent>
 
       <CardActions sx={{ px: '0.75rem', mt: 'auto' }}>
         <Typography variant="caption" color="text.secondary">
-          ۱۱ ساعت پیش
+          {formatInstagramDate(post?.createdAt)}
         </Typography>
       </CardActions>
     </Card>

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 export default function AboutUsHeader({
   title = 'گاراژینو',
   imageSrc ="/aboutUsHeader.png" ,
-  height = 300,
+  height = 450,
   blue = '#2F6BFF',
   direction = 'to bottom right',
 }) {
@@ -18,7 +18,7 @@ export default function AboutUsHeader({
       component="section"
       sx={{
         position: 'relative',
-        height: `${height}px`,
+        height: '450px',
         width: '100%',
         overflow: 'hidden',
         // ensure no background color here that could override pseudo
@@ -41,13 +41,13 @@ export default function AboutUsHeader({
         variant="h1"
         sx={{
           position: 'absolute',
-          top: 65,
+          top: 60,
           left: '50%',
-          transform: 'translateX(-50%) scaleX(1.6)',
+          transform: 'translateX(-50%) scaleX(1.1)',
           zIndex: 2,
           color: '#fff',
           fontWeight: 300,
-          fontSize: { xs: '2.5rem', sm: '4rem', md: '5rem' },
+          fontSize: { xs: '2.5rem', sm: '4rem', md: '10rem' },
           textShadow: '0 6px 12px rgba(0,0,0,0.32)',
         }}
       >
@@ -64,9 +64,9 @@ export default function AboutUsHeader({
             zIndex: 2,
             display: 'block',
             mx: 'auto',
-            maxHeight: { xs: 140, sm: 220, md: 360, lg: 420 },
+            maxHeight: { xs: 280, sm: 450, md: 500, lg: 600 },
             width: 'auto',
-            transform: 'translateY(-38px)',
+            transform: 'translateY(-35px)',
             pointerEvents: 'none',
             filter: 'drop-shadow(0 18px 22px rgba(0,0,0,0.25))',
           }}

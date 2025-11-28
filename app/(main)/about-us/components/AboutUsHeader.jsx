@@ -4,9 +4,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useSelector } from 'react-redux';
+import { useTheme } from '@mui/material/styles';
 
 export default function AboutUsHeader() {
-  const gradient = `linear-gradient(${'to bottom right'}, ${'#2F6BFF'} 50%, #ffffff 50%)`;
+  const { theme } = useSelector((state) => state.theme);
+  const muiTheme = useTheme();
+  const bgColor = muiTheme.palette.background.default;
+  const gradient = `linear-gradient(${'to bottom right'}, ${'#2F6BFF'} 50%, ${bgColor} 50%)`;
   return (  
      <Box
       component="section"

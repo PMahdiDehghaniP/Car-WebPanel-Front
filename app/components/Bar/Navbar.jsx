@@ -35,7 +35,7 @@ const Navbar = () => {
         { label: 'داشبورد', path: '/dashboard' },
         { label: 'انجمن', path: '/forum' },
         { label: 'رویدادها', path: '/events' },
-        { label: 'درباره ما', path: '/about' },
+        { label: 'درباره ما', path: '/dashboard/about-us' },
         { label: 'ارتباط با ما', path: '/contact' }
       ]
     : [
@@ -43,7 +43,7 @@ const Navbar = () => {
         { label: 'خودروها', path: '/cars' },
         { label: 'انجمن', path: '/forum' },
         { label: 'رویدادها', path: '/events' },
-        { label: 'درباره ما', path: '/about' },
+        { label: 'درباره ما', path: '/dashboard/about-us' },
         { label: 'ارتباط با ما', path: '/contact' }
       ];
 

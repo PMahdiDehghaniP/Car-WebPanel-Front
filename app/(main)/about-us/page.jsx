@@ -1,25 +1,34 @@
-import React from 'react'
-import { Box, Typography } from '@mui/material';
+'use client';
+
+import React from 'react';
+import { Box, useMediaQuery } from '@mui/material';
 import AboutUsHeader from './components/AboutUsHeader';
 import WhoAreWeCard from './components/WhoAreWeCard';
 import MissionsCard from './components/MissionCard';
 import WhatWeOfferCard from './components/WhatWeOfferCard';
 import TeamCard from './components/TeamCard';
-const AboutUsPage = () => {
+
+const AboutUsPage = ({ isMobile: isMobileProp }) => {
+  // اگر پراپ isMobile به این کامپوننت داده شده بود از اون استفاده می‌کنیم،
+  // در غیر این صورت خودکار بر اساس breakpoint تشخیص می‌دهیم.
+  const mq = useMediaQuery('(max-width:900px)');
+  const isMobile = typeof isMobileProp === 'boolean' ? isMobileProp : mq;
+
   return (
-    <Box 
-        sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 12
-        }}
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: isMobile ? 6 : 12,
+      }}
     >
-        <AboutUsHeader/>
-        <WhoAreWeCard />
-        <MissionsCard />
-        <WhatWeOfferCard />
-        <TeamCard />
+      <AboutUsHeader isMobile={isMobile} />
+      <WhoAreWeCard isMobile={isMobile} />
+      <MissionsCard isMobile={isMobile} />
+      <WhatWeOfferCard isMobile={isMobile} />
+      <TeamCard isMobile={isMobile} />
     </Box>
-  )
-}
-export default AboutUsPage
+  );
+};
+
+export default AboutUsPage;

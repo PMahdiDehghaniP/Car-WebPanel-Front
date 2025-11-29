@@ -5,11 +5,12 @@ import FeatureCardsSection from '../components/Home/FeatureCardsSection';
 import AchivementSection from '../components/Home/Achivement';
 import HomePageHeader from '../components/Home/HomePageHeader';
 import { useLazyQuery } from '@apollo/client';
+
+import { useEffect, useState } from 'react';
 import {
   GET_BRANDS_BY_RATE,
   GET_TOP_MOTNH_POSTS
 } from '@/schemas/GraphqlSchemas';
-import { useEffect, useState } from 'react';
 
 const HomeContent = () => {
   const [page, setPage] = useState(1);

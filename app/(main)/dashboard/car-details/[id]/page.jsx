@@ -11,12 +11,13 @@ import LineChart from '../CarChart';
 import CarBoxSection from '../components/CarBoxSection';
 import { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
+
+import { perfectCentering } from '@/app/constants/Styles';
 import {
   GET_CAR_BY_ID,
   GET_CAR_COSTS,
   GET_CARS_RATING
 } from '@/schemas/GraphqlSchemas';
-import { perfectCentering } from '@/app/constants/Styles';
 
 const CarDetailsPage = () => {
   const { id } = useParams();
@@ -105,7 +106,7 @@ const CarDetailsPage = () => {
           <GallarySlider
             galleryData={getCarInfoByIdData?.getCarById?.gallery}
           />
-          <CarBoxSection />
+          <CarBoxSection carData={getCarInfoByIdData?.getCarById}/>
           <CarInformation carInfoData={getCarInfoByIdData?.getCarById} />
           <LineChart />
           <MoneyCostSection

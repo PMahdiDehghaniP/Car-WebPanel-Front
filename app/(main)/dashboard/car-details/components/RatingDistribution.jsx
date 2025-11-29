@@ -1,6 +1,13 @@
 'use client';
 import React from 'react';
-import { Box, Typography, Rating, LinearProgress, Stack, useTheme } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Rating,
+  LinearProgress,
+  Stack,
+  useTheme
+} from '@mui/material';
 
 const RatingDistribution = ({ getCarRatingsData }) => {
   const theme = useTheme();
@@ -20,7 +27,10 @@ const RatingDistribution = ({ getCarRatingsData }) => {
     >
       <Typography
         variant="h3"
-        sx={{ flexBasis: { xs: '100%', md: 'auto' }, textAlign: { xs: 'center', md: 'left' } }}
+        sx={{
+          flexBasis: { xs: '100%', md: 'auto' },
+          textAlign: { xs: 'center', md: 'left' }
+        }}
       >
         نظرات کابران
       </Typography>
@@ -45,16 +55,19 @@ const RatingDistribution = ({ getCarRatingsData }) => {
         <Typography variant="h4" fontWeight="bold">
           {getCarRatingsData?.averageRating}
         </Typography>
-        <Rating
-          value={getCarRatingsData?.averageRating}
+        {getCarRatingsData?.averageRating !== undefined && (
+          <Rating
+            value={getCarRatingsData.averageRating}
+            readOnly
           precision={0.5}
-          readOnly
-          sx={{
-            '& .MuiRating-iconFilled': { color: '#ffc107' },
-            '& .MuiRating-iconHover': { color: '#ffc107' },
-            direction: 'ltr'
-          }}
-        />
+            sx={{
+              '& .MuiRating-iconFilled': { color: '#ffc107' },
+              '& .MuiRating-iconHover': { color: '#ffc107' },
+              direction: 'ltr'
+            }}
+          />
+        )}
+
         <Typography variant="body2" color="gray">
           بر اساس {getCarRatingsData?.totalReviews} رأی
         </Typography>
@@ -99,7 +112,10 @@ const RatingDistribution = ({ getCarRatingsData }) => {
                 }}
               />
 
-              <Typography variant="body2" sx={{ minWidth: 30, textAlign: 'right' }}>
+              <Typography
+                variant="body2"
+                sx={{ minWidth: 30, textAlign: 'right' }}
+              >
                 {percent.toFixed(2)}%
               </Typography>
             </Stack>

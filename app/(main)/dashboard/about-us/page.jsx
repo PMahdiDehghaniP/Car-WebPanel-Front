@@ -9,8 +9,6 @@ import WhatWeOfferCard from './components/WhatWeOfferCard';
 import TeamCard from './components/TeamCard';
 
 const AboutUsPage = ({ isMobile: isMobileProp }) => {
-  // اگر پراپ isMobile به این کامپوننت داده شده بود از اون استفاده می‌کنیم،
-  // در غیر این صورت خودکار بر اساس breakpoint تشخیص می‌دهیم.
   const mq = useMediaQuery('(max-width:900px)');
   const isMobile = typeof isMobileProp === 'boolean' ? isMobileProp : mq;
 

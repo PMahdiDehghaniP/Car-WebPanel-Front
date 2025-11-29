@@ -53,7 +53,6 @@ const CategoryPage = () => {
   };
   const handleCloseFilter = () => setIsFilterOpen(false);
   const handleSelectFilter = (value) => {
-    console.log('Selected filter:', value);
     setIsFilterOpen(false);
   };
 

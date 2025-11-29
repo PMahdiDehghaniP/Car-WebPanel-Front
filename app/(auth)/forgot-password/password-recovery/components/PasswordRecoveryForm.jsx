@@ -31,7 +31,6 @@ const PasswordRecoveryForm = ({ email }) => {
     },
     validationSchema: passwordRecoveryPageValidationSchema,
     onSubmit: async (values) => {
-      console.log('sjdsiasdji');
     }
   });
   return (

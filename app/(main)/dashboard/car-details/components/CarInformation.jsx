@@ -13,7 +13,6 @@ import ColorLensIcon from '@mui/icons-material/ColorLens';
 
 const CarInformation = ({ carInfoData }) => {
   const theme = useTheme();
-  console.log(carInfoData, 'data');
 
   const mockData = [
     {

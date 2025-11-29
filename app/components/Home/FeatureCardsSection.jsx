@@ -13,7 +13,6 @@ const FeatureCardsSection = ({
   getTopPostsDataLoading
 }) => {
   const theme = useTheme();
-  console.log(topPostsData, 'topPostsData');
 
   return (
     <>

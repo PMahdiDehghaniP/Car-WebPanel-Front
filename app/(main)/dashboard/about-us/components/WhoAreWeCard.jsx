@@ -8,9 +8,11 @@ export default function WhoAreWeCard({ isMobile }) {
   const leftPanelWidth = isMobile ? '20%' : 360;
   const padding = isMobile ? 1 : 6;
   const titleFontSize = isMobile ? '1rem' : '3rem';
-  const bodyFontSize = isMobile ? '0.45rem' : '1.6rem';   
+  const bodyFontSize = isMobile ? '0.45rem' : '1.6rem';
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', px: isMobile ? 1.5 : 0 }}>
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center', px: isMobile ? 1.5 : 0 }}
+    >
       <Box
         sx={{
           display: 'flex',
@@ -32,7 +34,7 @@ export default function WhoAreWeCard({ isMobile }) {
             alignItems: 'center',
             justifyContent: 'center',
             p: 2,
-            backgroundColor: 'transparent',
+            backgroundColor: 'transparent'
           }}
         >
           <Box
@@ -43,7 +45,7 @@ export default function WhoAreWeCard({ isMobile }) {
               maxWidth: '100%',
               maxHeight: '100%',
               objectFit: 'contain',
-              display: 'block',
+              display: 'block'
             }}
           />
         </Box>
@@ -55,20 +57,30 @@ export default function WhoAreWeCard({ isMobile }) {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            textAlign: 'right',
+            textAlign: 'right'
           }}
         >
           <Stack spacing={isMobile ? 2.5 : 2} sx={{ gap: isMobile ? 3 : 15 }}>
-            <Typography variant="h5" component="h2" sx={{ fontWeight: 500, fontSize: titleFontSize }}>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{ fontWeight: 500, fontSize: titleFontSize }}
+            >
               ما کی هستیم ؟
             </Typography>
-            <Typography variant="body1" sx={{ lineHeight: 1.2, fontSize: bodyFontSize }}>
+            <Typography
+              variant="body1"
+              sx={{ lineHeight: 1.2, fontSize: bodyFontSize }}
+            >
               ما تیم It’s All 200 هستیم؛ گروهی از دانشجویان علاقه‌مند به خودرو و
               تکنولوژی که هدفمان ساخت یک پلتفرم جامع و حرفه‌ای خودرویی است.
             </Typography>
-            <Typography variant="body1" sx={{ lineHeight: 1.2, fontSize: bodyFontSize }}>
-              پلتفرمی که هم اطلاعات فنی دقیق ارائه کند، هم ابزارهای تحلیلی بدهد، و
-              هم یک شبکه اجتماعی مخصوص عاشقان خودرو باشد.
+            <Typography
+              variant="body1"
+              sx={{ lineHeight: 1.2, fontSize: bodyFontSize }}
+            >
+              پلتفرمی که هم اطلاعات فنی دقیق ارائه کند، هم ابزارهای تحلیلی بدهد،
+              و هم یک شبکه اجتماعی مخصوص عاشقان خودرو باشد.
             </Typography>
           </Stack>
         </Box>

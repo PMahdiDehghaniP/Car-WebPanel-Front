@@ -11,7 +11,9 @@ export default function TeamCard({ isMobile = false }) {
   const nameFontSize = isMobile ? '0.75rem' : '2rem';
   const bodyFontSize = isMobile ? '0.5rem' : '1.6rem';
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', px: isMobile ? 1.5 : 0 }}>
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center', px: isMobile ? 1.5 : 0 }}
+    >
       <Box
         sx={{
           display: 'flex',
@@ -21,18 +23,18 @@ export default function TeamCard({ isMobile = false }) {
           borderRadius: isMobile ? '28px' : '50px',
           borderBottom: `2px solid #2F6BFF`,
           overflow: 'hidden',
-          bgcolor: 'background.paper',
+          bgcolor: 'background.paper'
         }}
       >
         <Box
           sx={{
             width: isMobile ? '35%' : leftPanelWidth,
-            minWidth: isMobile ? '35%' : leftPanelWidth,  
+            minWidth: isMobile ? '35%' : leftPanelWidth,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             p: 2,
-            backgroundColor: 'transparent',
+            backgroundColor: 'transparent'
           }}
         >
           <Box
@@ -43,7 +45,7 @@ export default function TeamCard({ isMobile = false }) {
               maxWidth: '100%',
               maxHeight: '100%',
               objectFit: 'contain',
-              display: 'block',
+              display: 'block'
             }}
           />
         </Box>
@@ -54,19 +56,42 @@ export default function TeamCard({ isMobile = false }) {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            textAlign: 'right',
+            textAlign: 'right'
           }}
         >
           <Stack spacing={isMobile ? 4 : 7}>
-            <Typography variant="h5" component="h2" sx={{ fontWeight: 600, fontSize: titleFontSize }}>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{ fontWeight: 600, fontSize: titleFontSize }}
+            >
               تیم ما
             </Typography>
-            <Box sx={{ display: 'flex', gap: isMobile ? 0 : 35, flexWrap: 'nowrap' }}>
-              <Box sx={{ flex: 1, minWidth: isMobile ? 0 : 280, display: 'flex', flexDirection: 'column'}}>
-                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: nameFontSize }}>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: isMobile ? 0 : 35,
+                flexWrap: 'nowrap'
+              }}
+            >
+              <Box
+                sx={{
+                  flex: 1,
+                  minWidth: isMobile ? 0 : 280,
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 700, mb: 1, fontSize: nameFontSize }}
+                >
                   Front-End
                 </Typography>
-                <Typography variant="body1" sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}>
+                <Typography
+                  variant="body1"
+                  sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}
+                >
                   • مهدی دهقانی
                   <br />• آرین سعیدکندری
                   <br />• عرفان قاسمیان
@@ -74,11 +99,24 @@ export default function TeamCard({ isMobile = false }) {
                   <br />• محمد مهدی پاشاپور
                 </Typography>
               </Box>
-              <Box sx={{ flex: 1, minWidth: isMobile ? 0 : 240, display: 'flex', flexDirection: 'column'}}>
-                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: nameFontSize }}>
+              <Box
+                sx={{
+                  flex: 1,
+                  minWidth: isMobile ? 0 : 240,
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 700, mb: 1, fontSize: nameFontSize }}
+                >
                   Back-End
                 </Typography>
-                <Typography variant="body1" sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}>
+                <Typography
+                  variant="body1"
+                  sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}
+                >
                   • ابوالفضل شهسواری
                   <br />• محمد متین نوری
                 </Typography>

@@ -19,7 +19,7 @@ const AboutUsPage = ({ isMobile: isMobileProp }) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: isMobile ? 6 : 12,
+        gap: isMobile ? 6 : 12
       }}
     >
       <AboutUsHeader isMobile={isMobile} />

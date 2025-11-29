@@ -9,9 +9,11 @@ export default function WhatWeOfferCard({ isMobile = false }) {
   const padding = isMobile ? 1 : 6;
   const titleFontSize = isMobile ? '1rem' : '3rem';
   const headingFontSize = isMobile ? '0.75rem' : '2rem';
-  const bodyFontSize = isMobile ? '0.45rem' : '1.6rem'; 
+  const bodyFontSize = isMobile ? '0.45rem' : '1.6rem';
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', px: isMobile ? 1.5 : 0 }}>
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center', px: isMobile ? 1.5 : 0 }}
+    >
       <Box
         sx={{
           display: 'flex',
@@ -22,7 +24,7 @@ export default function WhatWeOfferCard({ isMobile = false }) {
           borderBottom: `2px solid #2F6BFF`,
           overflow: 'hidden',
           bgcolor: 'background.paper',
-          flexDirection: 'row',
+          flexDirection: 'row'
         }}
       >
         <Box
@@ -35,7 +37,7 @@ export default function WhatWeOfferCard({ isMobile = false }) {
             justifyContent: 'center',
             gap: 10,
             p: 2,
-            backgroundColor: 'transparent',
+            backgroundColor: 'transparent'
           }}
         >
           <Box
@@ -46,7 +48,7 @@ export default function WhatWeOfferCard({ isMobile = false }) {
               maxWidth: '100%',
               maxHeight: '100%',
               objectFit: 'contain',
-              display: 'block',
+              display: 'block'
             }}
           />
           <Box
@@ -57,7 +59,7 @@ export default function WhatWeOfferCard({ isMobile = false }) {
               maxWidth: '100%',
               maxHeight: '100%',
               objectFit: 'contain',
-              display: 'block',
+              display: 'block'
             }}
           />
         </Box>
@@ -69,27 +71,44 @@ export default function WhatWeOfferCard({ isMobile = false }) {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            textAlign: 'right',
+            textAlign: 'right'
           }}
         >
           <Stack spacing={isMobile ? 3 : 8}>
-            <Typography variant="h4" component="h2" sx={{ fontWeight: 700, fontSize: titleFontSize }}>
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{ fontWeight: 700, fontSize: titleFontSize }}
+            >
               چه چیزهایی ارائه می‌دهیم؟
             </Typography>
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}
+              >
                 بانک اطلاعات فنی خودرو
               </Typography>
-              <Typography variant="body1" sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}>
-                • تمام مشخصات فنی، تیپ‌ها، مصرف سوخت، شتاب، امکانات و قیمت تقریبی
+              <Typography
+                variant="body1"
+                sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}
+              >
+                • تمام مشخصات فنی، تیپ‌ها، مصرف سوخت، شتاب، امکانات و قیمت
+                تقریبی
               </Typography>
             </Box>
 
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}
+              >
                 ابزارهای هوشمند
               </Typography>
-              <Typography variant="body1" sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}>
+              <Typography
+                variant="body1"
+                sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}
+              >
                 • مقایسهٔ کنارهم خودروها
                 <br />• تخمین هزینه سالانه (سوخت، بیمه، مالیات و…)
                 <br />• فیلترهای پیشرفته و جستجوی دقیق
@@ -98,10 +117,16 @@ export default function WhatWeOfferCard({ isMobile = false }) {
             </Box>
 
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}
+              >
                 شبکه اجتماعی خودرو
               </Typography>
-              <Typography variant="body1" sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}>
+              <Typography
+                variant="body1"
+                sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}
+              >
                 • امکان ایجاد پست (عکس، ویدیو، متن)
                 <br />• لایک، کامنت، فالو
                 <br />• نمایش پست‌های ترند و مرتبط با علایق کاربر
@@ -110,11 +135,18 @@ export default function WhatWeOfferCard({ isMobile = false }) {
             </Box>
 
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 700, mb: 1, fontSize: headingFontSize }}
+              >
                 گیمیفیکیشن و اچیومنت
               </Typography>
-              <Typography variant="body1" sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}>
-                • کسب نشان، امتیاز و قابلیت‌های قابل آزادسازی بر اساس فعالیت کاربران
+              <Typography
+                variant="body1"
+                sx={{ lineHeight: 1.8, fontSize: bodyFontSize }}
+              >
+                • کسب نشان، امتیاز و قابلیت‌های قابل آزادسازی بر اساس فعالیت
+                کاربران
               </Typography>
             </Box>
           </Stack>
@@ -125,5 +157,5 @@ export default function WhatWeOfferCard({ isMobile = false }) {
 }
 
 WhatWeOfferCard.propTypes = {
-  isMobile: PropTypes.bool,
+  isMobile: PropTypes.bool
 };

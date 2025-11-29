@@ -8,7 +8,7 @@ import { useLazyQuery } from '@apollo/client';
 import {
   GET_BRANDS_BY_RATE,
   GET_TOP_MOTNH_POSTS
-} from '@/schemas/HomePageSchemas';
+} from '@/schemas/GraphqlSchemas';
 import { useEffect, useState } from 'react';
 
 const HomeContent = () => {

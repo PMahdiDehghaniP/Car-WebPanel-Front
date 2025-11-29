@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@mui/material/styles';
 
-export default function AboutUsHeader({ isMobile  }) {
+export default function AboutUsHeader({ isMobile }) {
   const { theme } = useSelector((state) => state.theme);
   const muiTheme = useTheme();
   const bgColor = muiTheme.palette.background.default;
@@ -29,8 +29,8 @@ export default function AboutUsHeader({ isMobile  }) {
           zIndex: 0,
           backgroundImage: gradient,
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '100% 100%',
-        },
+          backgroundSize: '100% 100%'
+        }
       }}
     >
       <Typography
@@ -46,7 +46,7 @@ export default function AboutUsHeader({ isMobile  }) {
           fontWeight: 300,
           fontSize: isMobile ? '2.5rem' : { sm: '4rem', md: '10rem' },
           textShadow: '0 6px 12px rgba(0,0,0,0.32)',
-          whiteSpace: 'nowrap',
+          whiteSpace: 'nowrap'
         }}
       >
         گاراژینو
@@ -63,9 +63,11 @@ export default function AboutUsHeader({ isMobile  }) {
           mx: 'auto',
           maxHeight: isMobile ? 220 : { xs: 280, sm: 450, md: 500, lg: 600 },
           width: 'auto',
-          transform: isMobile ? 'translateY(-15px) scale(0.8)' : 'translateY(-35px)',
+          transform: isMobile
+            ? 'translateY(-15px) scale(0.8)'
+            : 'translateY(-35px)',
           pointerEvents: 'none',
-          filter: 'drop-shadow(0 18px 22px rgba(0,0,0,0.25))',
+          filter: 'drop-shadow(0 18px 22px rgba(0,0,0,0.25))'
         }}
       />
     </Box>

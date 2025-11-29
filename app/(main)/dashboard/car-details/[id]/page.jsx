@@ -11,7 +11,11 @@ import LineChart from '../CarChart';
 import CarBoxSection from '../components/CarBoxSection';
 import { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { GET_CAR_BY_ID, GET_CAR_COSTS } from '@/schemas/HomePageSchemas';
+import {
+  GET_CAR_BY_ID,
+  GET_CAR_COSTS,
+  GET_CARS_RATING
+} from '@/schemas/GraphqlSchemas';
 import { perfectCentering } from '@/app/constants/Styles';
 
 const CarDetailsPage = () => {
@@ -20,7 +24,8 @@ const CarDetailsPage = () => {
     getCarInfoById,
     { data: getCarInfoByIdData, loading: getCarInfoByIdLoading }
   ] = useLazyQuery(
-    GET_CAR_BY_ID(`    acceleration0100
+    GET_CAR_BY_ID(`    
+    acceleration0100
     availableColors
     brand {
       brandRate
@@ -62,13 +67,24 @@ const CarDetailsPage = () => {
     annualTaxCost
     annualTotalCost`)
     );
+  const [
+    getCarRatings,
+    { data: getCarRatingsData, loading: getCarsRatingLoading }
+  ] = useLazyQuery(
+    GET_CARS_RATING(`    averageRating
+    breakdown {
+      count
+      stars
+    }
+    totalReviews`)
+  );
   useEffect(() => {
     if (id) {
       getCarInfoById({ variables: { carId: id } });
       getCarCosts({ variables: { carId: id } });
+      getCarRatings({ variables: { carId: id } });
     }
   }, [id]);
-  console.log(getCarCostsData, 'data');
 
   return (
     <Box
@@ -95,7 +111,9 @@ const CarDetailsPage = () => {
           <MoneyCostSection
             getCarCostsData={getCarCostsData?.getCarCostsByCarId}
           />
-          <RatingDistribution />
+          <RatingDistribution
+            getCarRatingsData={getCarRatingsData?.getCarRatingSummary}
+          />
           <CommentSection />
           <Divider
             sx={{

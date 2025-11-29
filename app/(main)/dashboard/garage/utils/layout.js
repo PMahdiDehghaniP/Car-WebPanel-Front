@@ -15,14 +15,21 @@ const MOBILE_CANVAS = 468;
 
 export const layoutPageItems = (rawItems = [], mobile = false) => {
   const vSpacing = mobile ? V_SPACING_MOBILE : V_SPACING;
-  const mobileBoxWidth = Math.min(FIGMA_BOX_MOBILE.width, Math.max(240, MOBILE_CANVAS - 48));
+  const mobileBoxWidth = Math.min(
+    FIGMA_BOX_MOBILE.width,
+    Math.max(240, MOBILE_CANVAS - 48)
+  );
   const mobileBoxHeight = Math.round(mobileBoxWidth * 0.58);
-  const bottoms = mobile ? [START_TOP_MOBILE - vSpacing] : [START_TOP - vSpacing, START_TOP - vSpacing];
+  const bottoms = mobile
+    ? [START_TOP_MOBILE - vSpacing]
+    : [START_TOP - vSpacing, START_TOP - vSpacing];
   const laid = [];
 
   rawItems.forEach((item, idx) => {
     const col = mobile ? 0 : idx % 2 === 0 ? 0 : 1;
-    const left = mobile ? Math.max(24, Math.round((MOBILE_CANVAS - mobileBoxWidth) / 2)) : COLUMN_LEFTS[col];
+    const left = mobile
+      ? Math.max(24, Math.round((MOBILE_CANVAS - mobileBoxWidth) / 2))
+      : COLUMN_LEFTS[col];
     const top = bottoms[col] + vSpacing;
 
     laid.push({
@@ -30,7 +37,13 @@ export const layoutPageItems = (rawItems = [], mobile = false) => {
       title: item.title,
       left,
       top,
-      ...(mobile ? { width: mobileBoxWidth, height: mobileBoxHeight, borderRadius: Math.round(mobileBoxHeight / 6) } : FIGMA_BOX),
+      ...(mobile
+        ? {
+            width: mobileBoxWidth,
+            height: mobileBoxHeight,
+            borderRadius: Math.round(mobileBoxHeight / 6)
+          }
+        : FIGMA_BOX),
       cars: item.cars ?? [],
       isNew: !!item.isNew
     });

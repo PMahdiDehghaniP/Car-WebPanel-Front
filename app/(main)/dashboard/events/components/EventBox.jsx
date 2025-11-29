@@ -1,18 +1,17 @@
-import React from 'react'
-import { Box, Typography } from "@mui/material";
+import React from 'react';
+import { Box, Typography } from '@mui/material';
 const EventBox = () => {
   return (
     <Box
       sx={{
-        borderColor: "red",
-        width: "100vm",
-        display: "flex",
-        
+        borderColor: 'red',
+        width: '100vm',
+        display: 'flex'
       }}
     >
-        Hello World
+      Hello World
     </Box>
-  )
-}
+  );
+};
 
-export default EventBox
+export default EventBox;

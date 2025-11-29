@@ -49,7 +49,7 @@ const CategoryPage = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const handleToggleFilter = () => {
-    setIsFilterOpen(prev => !prev);
+    setIsFilterOpen((prev) => !prev);
   };
   const handleCloseFilter = () => setIsFilterOpen(false);
   const handleSelectFilter = (value) => {
@@ -76,7 +76,8 @@ const CategoryPage = () => {
   };
 
   const visibleCombined = pages[page - 1] || [];
-  const paginationPlaceholderItems = pages.length > 0 ? new Array(pages.length * 20).fill(null) : [];
+  const paginationPlaceholderItems =
+    pages.length > 0 ? new Array(pages.length * 20).fill(null) : [];
   const cardMaxWidth = isMobile ? 170 : 330;
   const cardMinHeight = isMobile ? 320 : 430;
 
@@ -166,7 +167,7 @@ const CategoryPage = () => {
                   maxWidth: `${cardMaxWidth}px`,
                   minHeight: `${cardMinHeight}px`,
                   display: 'flex',
-                  alignItems: 'stretch', 
+                  alignItems: 'stretch',
                   boxSizing: 'border-box'
                 }}
               >
@@ -219,7 +220,9 @@ const CategoryPage = () => {
           );
         })}
       </Box>
-      <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 2 }}>
+      <Box
+        sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 2 }}
+      >
         <GarajinoPagination
           page={page}
           handlePageChange={handlePageChange}

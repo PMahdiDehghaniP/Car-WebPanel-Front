@@ -1,4 +1,4 @@
-import { isToday } from 'date-fns';
+import { isThisWeek, isThisYear, isToday, isYesterday } from 'date-fns';
 
 export const formatNumber = (num) =>
   num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

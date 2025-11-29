@@ -7,7 +7,11 @@ import ExplanationCard from './ExplanationCard';
 import FamilyCard from './FamilyCard';
 import { useTheme } from '@mui/material';
 
-const FeatureCardsSection = ({ topPostsData, handlePageChange ,getTopPostsDataLoading}) => {
+const FeatureCardsSection = ({
+  topPostsData,
+  handlePageChange,
+  getTopPostsDataLoading
+}) => {
   const theme = useTheme();
   console.log(topPostsData, 'topPostsData');
 

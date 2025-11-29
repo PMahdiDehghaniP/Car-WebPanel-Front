@@ -11,28 +11,46 @@ import ShieldIcon from '@mui/icons-material/Shield';
 import StarIcon from '@mui/icons-material/Star';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
 
-const CarInformation = () => {
+const CarInformation = ({ carInfoData }) => {
   const theme = useTheme();
+  console.log(carInfoData, 'data');
+
   const mockData = [
-    { label: 'نوع سوخت:', value: 'بنزین سوپر', icon: <LocalGasStationIcon /> },
+    {
+      label: 'نوع سوخت:',
+      value: `${carInfoData?.fuelType}`,
+      icon: <LocalGasStationIcon />
+    },
     {
       label: 'مصرف ترکیبی:',
-      value: '۷.۲ لیتر در هر ۱۰۰ کیلومتر (LTP)',
+      value: `${carInfoData?.combinedFuelConsumption} در  هر  100 کیلومتر `,
       icon: <SpeedIcon />
     },
-    { label: 'وزن خالص:', value: '۲۶۵۰ کیلوگرم', icon: <ScaleIcon /> },
+    {
+      label: 'وزن خالص:',
+      value: `${carInfoData?.curbWeightKg} کیلوگرم`,
+      icon: <ScaleIcon />
+    },
     {
       label: 'ابعاد (طول × عرض × ارتفاع):',
-      value: '۴۷۵۱ × ۱۸۲۰ × ۱۳۸۸ میلی‌متر',
+      value: `${carInfoData?.dimensionsMm} میلی متر`,
       icon: <StraightenIcon />
     },
     {
       label: 'فاصله بین دو محور:',
-      value: '۲۸۶۵ میلی‌متر',
+      value: `${carInfoData?.wheelbaseMm}  میلی متر `,
       icon: <DirectionsCarIcon />
     },
-    { label: 'حجم صندوق:', value: '۴۵۵ لیتر', icon: <ScaleIcon /> },
-    { label: 'ظرفیت سرنشین:', value: '۵ نفر', icon: <GroupsIcon /> },
+    {
+      label: 'حجم صندوق:',
+      value: `${carInfoData?.trunkVolumeL}  لیتر `,
+      icon: <ScaleIcon />
+    },
+    {
+      label: 'ظرفیت سرنشین:',
+      value: `${carInfoData?.seatingCapacity} نفر `,
+      icon: <GroupsIcon />
+    },
     {
       label: 'سیستم مالتی‌مدیا:',
       value: 'نمایشگر لمسی ۱۱.۹ اینچی MBUX + نمایشگر دیجیتال ۱۳.۳ اینچی',

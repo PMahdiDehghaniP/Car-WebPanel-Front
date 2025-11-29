@@ -7,7 +7,12 @@ import { useSelector } from 'react-redux';
 import CardStack from './CarStack';
 import CardTray from './CardStackTray';
 
-export default function CategoryBox({ title = 'دسته', id, mobile = false, cars = [] }) {
+export default function CategoryBox({
+  title = 'دسته',
+  id,
+  mobile = false,
+  cars = []
+}) {
   const router = useRouter();
   const { theme } = useSelector((state) => state.theme);
 
@@ -17,14 +22,45 @@ export default function CategoryBox({ title = 'دسته', id, mobile = false, ca
   const bgCard = theme === 'dark' ? '#20263C' : '#E9E8E800';
   const bgInner = theme === 'dark' ? '#2E3B55' : '#E9E8E800';
   const textColor = theme === 'dark' ? '#fff' : '#222';
-  const borderColor = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)';
+  const borderColor =
+    theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)';
 
   const defaultCars = [
-    { image: '/forgotPasswordImage.png', name: 'Car 1', desc: 'Desc 1', info: {}, price: '$20000' },
-    { image: '/forgotPasswordImage.png', name: 'Car 2', desc: 'Desc 2', info: {}, price: '$21000' },
-    { image: '/forgotPasswordImage.png', name: 'Car 3', desc: 'Desc 3', info: {}, price: '$22000' },
-    { image: '/forgotPasswordImage.png', name: 'Car 4', desc: 'Desc 4', info: {}, price: '$19000' },
-    { image: '/forgotPasswordImage.png', name: 'Car 5', desc: 'Desc 5', info: {}, price: '$23000' }
+    {
+      image: '/forgotPasswordImage.png',
+      name: 'Car 1',
+      desc: 'Desc 1',
+      info: {},
+      price: '$20000'
+    },
+    {
+      image: '/forgotPasswordImage.png',
+      name: 'Car 2',
+      desc: 'Desc 2',
+      info: {},
+      price: '$21000'
+    },
+    {
+      image: '/forgotPasswordImage.png',
+      name: 'Car 3',
+      desc: 'Desc 3',
+      info: {},
+      price: '$22000'
+    },
+    {
+      image: '/forgotPasswordImage.png',
+      name: 'Car 4',
+      desc: 'Desc 4',
+      info: {},
+      price: '$19000'
+    },
+    {
+      image: '/forgotPasswordImage.png',
+      name: 'Car 5',
+      desc: 'Desc 5',
+      info: {},
+      price: '$23000'
+    }
   ];
   const allCars = [
     (cars && cars[0]) || defaultCars[0],
@@ -47,37 +83,51 @@ export default function CategoryBox({ title = 'دسته', id, mobile = false, ca
           overflow: 'hidden',
           cursor: 'pointer',
           backgroundColor: bgCard,
-          boxShadow: theme === 'dark' ? '0px 6px 12px rgba(0,0,0,0.25)' : '0px 6px 12px rgba(0,0,0,0.08)',
+          boxShadow:
+            theme === 'dark'
+              ? '0px 6px 12px rgba(0,0,0,0.25)'
+              : '0px 6px 12px rgba(0,0,0,0.08)'
         }}
       >
         <Box
-         sx={{
-           flex: 1, 
-           backgroundColor: bgCard, 
-           display: 'flex', 
-           alignItems: 'center', 
-           justifyContent: 'center', 
-           px: 1 
-           }}
+          sx={{
+            flex: 1,
+            backgroundColor: bgCard,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            px: 1
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: 700,
+              fontSize: '0.85rem',
+              color: textColor,
+              textAlign: 'center'
+            }}
           >
-          <Typography sx={{ fontWeight: 700, fontSize: '0.85rem', color: textColor, textAlign: 'center' }}>{title}</Typography>
+            {title}
+          </Typography>
         </Box>
         <Box
-         sx={{
-           flex: 3, 
-           backgroundColor: bgInner, 
-           display: 'flex', 
-           alignItems: 'center', 
-           justifyContent: 'center', 
-           borderRadius: '8px', 
-           position: 'relative', 
-           overflow: 'hidden', 
-           px: 1
+          sx={{
+            flex: 3,
+            backgroundColor: bgInner,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '8px',
+            position: 'relative',
+            overflow: 'hidden',
+            px: 1
           }}
         >
           <CardTray width={220} height={28} mobile={true} />
 
-          <Box sx={{ width: 220, height: 148, position: 'relative', zIndex: 1 }}>
+          <Box
+            sx={{ width: 220, height: 148, position: 'relative', zIndex: 1 }}
+          >
             <CardStack
               cards={allCars}
               base={{
@@ -110,9 +160,17 @@ export default function CategoryBox({ title = 'دسته', id, mobile = false, ca
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: bgCard,
-        boxShadow: theme === 'dark' ? '0px 6px 12px rgba(0,0,0,0.25)' : '0px 6px 12px rgba(0,0,0,0.08)',
+        boxShadow:
+          theme === 'dark'
+            ? '0px 6px 12px rgba(0,0,0,0.25)'
+            : '0px 6px 12px rgba(0,0,0,0.08)',
         transition: 'box-shadow 0.2s ease',
-        '&:hover': { boxShadow: theme === 'dark' ? '0px 8px 16px rgba(0,0,0,0.35)' : '0px 8px 16px rgba(0,0,0,0.12)' }
+        '&:hover': {
+          boxShadow:
+            theme === 'dark'
+              ? '0px 8px 16px rgba(0,0,0,0.35)'
+              : '0px 8px 16px rgba(0,0,0,0.12)'
+        }
       }}
     >
       <Box
@@ -120,7 +178,10 @@ export default function CategoryBox({ title = 'دسته', id, mobile = false, ca
           flex: 1,
           backgroundColor: bgInner,
           borderRadius: '20px',
-          boxShadow: theme === 'dark' ? 'inset 0px -2px 5px rgba(0,0,0,0.4)' : 'inset 0px -2px 5px rgba(0,0,0,0.06)',
+          boxShadow:
+            theme === 'dark'
+              ? 'inset 0px -2px 5px rgba(0,0,0,0.4)'
+              : 'inset 0px -2px 5px rgba(0,0,0,0.06)',
           border: `1px solid ${borderColor}`,
           position: 'relative',
           display: 'flex',
@@ -156,13 +217,18 @@ export default function CategoryBox({ title = 'دسته', id, mobile = false, ca
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          boxShadow: theme === 'dark' ? 'inset 0px 2px 4px rgba(255,255,255,0.05)' : 'inset 0px 2px 4px rgba(0,0,0,0.03)'
+          boxShadow:
+            theme === 'dark'
+              ? 'inset 0px 2px 4px rgba(255,255,255,0.05)'
+              : 'inset 0px 2px 4px rgba(0,0,0,0.03)'
         }}
       >
         <Typography
-         sx={{ 
-          fontWeight: 700, fontSize: '1.2rem', color: textColor 
-        }}
+          sx={{
+            fontWeight: 700,
+            fontSize: '1.2rem',
+            color: textColor
+          }}
         >
           {title}
         </Typography>

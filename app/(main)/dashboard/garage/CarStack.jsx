@@ -9,7 +9,7 @@ function useContainerSize(ref) {
   useEffect(() => {
     if (!ref.current) return undefined;
     const el = ref.current;
-    const ro = new ResizeObserver(entries => {
+    const ro = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const cr = entry.contentRect;
         setSize({ width: Math.round(cr.width), height: Math.round(cr.height) });
@@ -51,7 +51,8 @@ const DEFAULTS = {
 
 export function CardStack({ cards = [], base = {}, className = '' }) {
   const ref = useRef(null);
-  const { width: containerWidth, height: containerHeight } = useContainerSize(ref);
+  const { width: containerWidth, height: containerHeight } =
+    useContainerSize(ref);
 
   const cfg = useMemo(() => ({ ...DEFAULTS, ...base }), [base]);
   const scale = useMemo(() => {
@@ -61,11 +62,16 @@ export function CardStack({ cards = [], base = {}, className = '' }) {
     const approxBaseHeight = cfg.centerH + 60;
     const scaleByHeight = containerHeight / approxBaseHeight;
 
-    const responsiveFactor = containerWidth < cfg.compactBreakpoint
-      ? clamp(containerWidth / cfg.compactBreakpoint, 0.45, 1) * cfg.compactMultiplier
-      : 1.05;
+    const responsiveFactor =
+      containerWidth < cfg.compactBreakpoint
+        ? clamp(containerWidth / cfg.compactBreakpoint, 0.45, 1) *
+          cfg.compactMultiplier
+        : 1.05;
 
-    const raw = Math.min(scaleByWidth, scaleByHeight) * cfg.globalScale * responsiveFactor;
+    const raw =
+      Math.min(scaleByWidth, scaleByHeight) *
+      cfg.globalScale *
+      responsiveFactor;
     const damped = Math.pow(raw, 0.95);
     return clamp(damped, cfg.minScale, cfg.maxScale);
   }, [containerWidth, containerHeight, cfg]);
@@ -78,19 +84,43 @@ export function CardStack({ cards = [], base = {}, className = '' }) {
     const backW = Math.round(cfg.backW * scale);
     const backH = Math.round(cfg.backH * scale);
 
-    const visualBoost = containerWidth >= 1200 ? 1.22 : (containerWidth >= 992 ? 1.12 : (containerWidth >= 768 ? 1.06 : 1));
-    const spacingBoostBase = visualBoost > 1 ? (1 + (visualBoost - 1) * 0.85) : 1;
+    const visualBoost =
+      containerWidth >= 1200
+        ? 1.22
+        : containerWidth >= 992
+          ? 1.12
+          : containerWidth >= 768
+            ? 1.06
+            : 1;
+    const spacingBoostBase = visualBoost > 1 ? 1 + (visualBoost - 1) * 0.85 : 1;
 
-    const compactSpacing = containerWidth < 480 ? 2.2 : (containerWidth < 640 ? 1.20 : 1);
+    const compactSpacing =
+      containerWidth < 480 ? 2.2 : containerWidth < 640 ? 1.2 : 1;
     const mobileSpacingExtra = containerWidth < 360 ? 1.06 : 1;
     const spacingBoost = spacingBoostBase * compactSpacing * mobileSpacingExtra;
 
-    const sideOffset = Math.round(cfg.sideOffset * scale * cfg.offsetMultiplier * spacingBoost);
-    const backOffset = Math.round(cfg.backOffset * scale * cfg.offsetMultiplier * spacingBoost);
+    const sideOffset = Math.round(
+      cfg.sideOffset * scale * cfg.offsetMultiplier * spacingBoost
+    );
+    const backOffset = Math.round(
+      cfg.backOffset * scale * cfg.offsetMultiplier * spacingBoost
+    );
 
-    const centerVisualScale = clamp(scale * cfg.centerVisualScaleMultiplier * visualBoost, 0.22, 1.15);
-    const sideVisualScale = clamp(centerVisualScale * cfg.sideVisualScaleMultiplier, 0.16, 1.15);
-    const backVisualScale = clamp(centerVisualScale * cfg.backVisualScaleMultiplier, 0.12, 1.15);
+    const centerVisualScale = clamp(
+      scale * cfg.centerVisualScaleMultiplier * visualBoost,
+      0.22,
+      1.15
+    );
+    const sideVisualScale = clamp(
+      centerVisualScale * cfg.sideVisualScaleMultiplier,
+      0.16,
+      1.15
+    );
+    const backVisualScale = clamp(
+      centerVisualScale * cfg.backVisualScaleMultiplier,
+      0.12,
+      1.15
+    );
 
     const centerVisW = Math.round(centerW * centerVisualScale);
     const centerVisH = Math.round(centerH * centerVisualScale);
@@ -99,42 +129,108 @@ export function CardStack({ cards = [], base = {}, className = '' }) {
     const backVisW = Math.round(backW * backVisualScale);
     const backVisH = Math.round(backH * backVisualScale);
 
-    const responsiveVerticalOffsetPercent = containerWidth < 480
-      ? 0.42
-      : (containerWidth < 768 ? 0.32 : (containerWidth < 992 ? 0.20 : cfg.verticalOffsetPercent));
+    const responsiveVerticalOffsetPercent =
+      containerWidth < 480
+        ? 0.42
+        : containerWidth < 768
+          ? 0.32
+          : containerWidth < 992
+            ? 0.2
+            : cfg.verticalOffsetPercent;
 
-    const leftCenter = containerWidth ? Math.round(containerWidth / 2 - centerVisW / 2) : null;
+    const leftCenter = containerWidth
+      ? Math.round(containerWidth / 2 - centerVisW / 2)
+      : null;
     const topCenter = containerHeight
-      ? Math.round(containerHeight / 2 - centerVisH / 2) - Math.round(containerHeight * responsiveVerticalOffsetPercent)
+      ? Math.round(containerHeight / 2 - centerVisH / 2) -
+        Math.round(containerHeight * responsiveVerticalOffsetPercent)
       : null;
 
     const leftSide = leftCenter != null ? leftCenter - sideOffset : null;
-    const leftRight = leftCenter != null ? Math.round(leftCenter + centerVisW + sideOffset - sideVisW) : null;
+    const leftRight =
+      leftCenter != null
+        ? Math.round(leftCenter + centerVisW + sideOffset - sideVisW)
+        : null;
     const leftBackLeft = leftCenter != null ? leftCenter - backOffset : null;
-    const leftBackRight = leftCenter != null ? Math.round(leftCenter + centerVisW + backOffset - backVisW) : null;
+    const leftBackRight =
+      leftCenter != null
+        ? Math.round(leftCenter + centerVisW + backOffset - backVisW)
+        : null;
 
-    const sideTop = topCenter != null ? topCenter + Math.round(centerVisH * 0.06) : null;
-    const backTop = topCenter != null ? topCenter + Math.round(centerVisH * 0.14) : null;
+    const sideTop =
+      topCenter != null ? topCenter + Math.round(centerVisH * 0.06) : null;
+    const backTop =
+      topCenter != null ? topCenter + Math.round(centerVisH * 0.14) : null;
 
     return {
-      centerW, centerH, sideW, sideH, backW, backH,
-      centerVisW, centerVisH, sideVisW, sideVisH, backVisW, backVisH,
-      leftCenter, topCenter, leftSide, leftRight, leftBackLeft, leftBackRight,
-      sideTop, backTop,
+      centerW,
+      centerH,
+      sideW,
+      sideH,
+      backW,
+      backH,
+      centerVisW,
+      centerVisH,
+      sideVisW,
+      sideVisH,
+      backVisW,
+      backVisH,
+      leftCenter,
+      topCenter,
+      leftSide,
+      leftRight,
+      leftBackLeft,
+      leftBackRight,
+      sideTop,
+      backTop,
       sideOpacity: cfg.sideOpacity,
       backOpacity: cfg.backOpacity,
-      centerVisualScale, sideVisualScale, backVisualScale
+      centerVisualScale,
+      sideVisualScale,
+      backVisualScale
     };
   }, [cfg, scale, containerWidth, containerHeight]);
   const all = useMemo(() => {
     const d = [
-      { image: '/forgotPasswordImage.png', name: 'Car 1', desc: '', info: {}, price: '' },
-      { image: '/forgotPasswordImage.png', name: 'Car 2', desc: '', info: {}, price: '' },
-      { image: '/forgotPasswordImage.png', name: 'Car 3', desc: '', info: {}, price: '' },
-      { image: '/forgotPasswordImage.png', name: 'Car 4', desc: '', info: {}, price: '' },
-      { image: '/forgotPasswordImage.png', name: 'Car 5', desc: '', info: {}, price: '' }
+      {
+        image: '/forgotPasswordImage.png',
+        name: 'Car 1',
+        desc: '',
+        info: {},
+        price: ''
+      },
+      {
+        image: '/forgotPasswordImage.png',
+        name: 'Car 2',
+        desc: '',
+        info: {},
+        price: ''
+      },
+      {
+        image: '/forgotPasswordImage.png',
+        name: 'Car 3',
+        desc: '',
+        info: {},
+        price: ''
+      },
+      {
+        image: '/forgotPasswordImage.png',
+        name: 'Car 4',
+        desc: '',
+        info: {},
+        price: ''
+      },
+      {
+        image: '/forgotPasswordImage.png',
+        name: 'Car 5',
+        desc: '',
+        info: {},
+        price: ''
+      }
     ];
-    return Array.from({ length: 5 }).map((_, i) => (cards && cards[i] ? cards[i] : d[i]));
+    return Array.from({ length: 5 }).map((_, i) =>
+      cards && cards[i] ? cards[i] : d[i]
+    );
   }, [cards]);
   const positions = useMemo(() => {
     return [
@@ -200,9 +296,14 @@ export function CardStack({ cards = [], base = {}, className = '' }) {
     <Box
       ref={ref}
       className={className}
-      sx={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden' }}
+      sx={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
     >
-      {positions.map(pos => (
+      {positions.map((pos) => (
         <Box
           key={pos.index}
           sx={{

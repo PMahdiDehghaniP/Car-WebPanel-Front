@@ -39,3 +39,19 @@ export const GET_TOP_MOTNH_POSTS = (items) => gql`
     }
   }
 `;
+
+export const GET_CAR_BY_ID = (items) => gql`
+query GetCarById($carId:ID!) {
+  getCarById(carId: $carId) {
+    ${items}
+  }
+}
+`;
+
+export const GET_CAR_COSTS = (items) => gql`
+query GetCarCosts($carId:ID!) {
+  getCarCostsByCarId(carId:$carId) {
+    ${items}
+  }
+}
+`;

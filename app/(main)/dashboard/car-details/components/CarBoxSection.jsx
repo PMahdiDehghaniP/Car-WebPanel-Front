@@ -1,7 +1,7 @@
 'use client';
 import { Box, Button, Typography } from '@mui/material';
 
-const CarBoxSection = ({carData}) => {
+const CarBoxSection = ({ carData }) => {
   const stageSize = { xs: 250, md: 550, lg: 600 };
   const lineWidth = 2;
 
@@ -12,7 +12,12 @@ const CarBoxSection = ({carData}) => {
       side: 'left',
       top: '-10%'
     },
-    { text: `شتاب صفر تا صد: ${carData?.acceleration0100} ثانیه`, rotate: 10, side: 'left', top: '25%' },
+    {
+      text: `شتاب صفر تا صد: ${carData?.acceleration0100} ثانیه`,
+      rotate: 10,
+      side: 'left',
+      top: '25%'
+    },
     {
       text: `گشتاور: ${carData?.trunkVolumeL} نیوتن‌متر بین ۲۰۰۰ تا ۳۲۰۰ دور در دقیقه`,
       rotate: -10,

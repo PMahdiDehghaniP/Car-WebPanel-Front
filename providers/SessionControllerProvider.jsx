@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 const SessionControllerProvider = ({ children }) => {
-
   const { data: session, status } = useSession();
   const router = useRouter();
 

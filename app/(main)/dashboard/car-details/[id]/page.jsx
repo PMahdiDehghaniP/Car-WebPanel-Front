@@ -106,7 +106,7 @@ const CarDetailsPage = () => {
           <GallarySlider
             galleryData={getCarInfoByIdData?.getCarById?.gallery}
           />
-          <CarBoxSection carData={getCarInfoByIdData?.getCarById}/>
+          <CarBoxSection carData={getCarInfoByIdData?.getCarById} />
           <CarInformation carInfoData={getCarInfoByIdData?.getCarById} />
           <LineChart />
           <MoneyCostSection

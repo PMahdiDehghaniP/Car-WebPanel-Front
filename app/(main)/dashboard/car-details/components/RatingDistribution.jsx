@@ -59,7 +59,7 @@ const RatingDistribution = ({ getCarRatingsData }) => {
           <Rating
             value={getCarRatingsData.averageRating}
             readOnly
-          precision={0.5}
+            precision={0.5}
             sx={{
               '& .MuiRating-iconFilled': { color: '#ffc107' },
               '& .MuiRating-iconHover': { color: '#ffc107' },

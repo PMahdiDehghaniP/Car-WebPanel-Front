@@ -13,6 +13,12 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ENV NEXT_PUBLIC_GRAPHQL_BHN=http://185.60.136.35:8000/graphql/
+ENV NEXT_PUBLIC_BHN=http://185.60.136.35:8000
+ENV NEXT_PUBLIC_LOGIN_URL=http://185.60.136.35:8000/auth/login/
+ENV NEXT_PUBLIC_REFRESH_TOKEN_URL=http://185.60.136.35:8000/auth/token/refresh/
+ENV NEXT_PUBLIC_SIGNUP_URL=http://185.60.136.35:8000/auth/register/
+
 RUN npm run build
 
 # Stage 3: Runner

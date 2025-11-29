@@ -30,8 +30,7 @@ const PasswordRecoveryForm = ({ email }) => {
       recoveryCode: ''
     },
     validationSchema: passwordRecoveryPageValidationSchema,
-    onSubmit: async (values) => {
-    }
+    onSubmit: async (values) => {}
   });
   return (
     <Box

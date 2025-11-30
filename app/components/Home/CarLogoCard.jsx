@@ -18,7 +18,7 @@ const CarLogoCard = ({ logoSrc, carName }) => {
       }}
     >
       <Box width="90px" height="90px" sx={{ ...perfectCentering }}>
-        <img src={logoSrc} />
+        <img src="https://raw.githubusercontent.com/abolfazlshahsavaryyy/ItsAll200StaticData/main/porche.jpeg" />
       </Box>
 
       <Typography sx={{ fontSize: '18px', fontWeight: 500 }}>

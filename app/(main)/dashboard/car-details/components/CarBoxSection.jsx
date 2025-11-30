@@ -25,7 +25,7 @@ const CarBoxSection = ({ carData }) => {
       top: '60%'
     },
     {
-      text: ' مدل : Mercedes-Benz C300 AMG Line ',
+      text: `مدل : ${carData?.releaseYear} | ${carData?.brand?.name} ${carData?.name}`,
       rotate: -25,
       side: 'right',
       top: '-10%'
@@ -80,11 +80,11 @@ const CarBoxSection = ({ carData }) => {
             color: '#FFFFFF'
           }}
         >
-          Mercedes Benz AMG 2022
+          {`${carData?.brand?.name} ${carData?.name}`}
         </Typography>
         <Box
           component="img"
-          src="/mercedesLogo.png"
+          src={carData?.brand?.logoUrl}
           sx={{
             width: { xs: 50, md: 100, lg: 200 },
             height: { xs: 50, md: 100, lg: 200 }

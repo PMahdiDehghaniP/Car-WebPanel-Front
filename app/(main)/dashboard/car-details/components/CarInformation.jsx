@@ -52,15 +52,19 @@ const CarInformation = ({ carInfoData }) => {
     },
     {
       label: 'سیستم مالتی‌مدیا:',
-      value: 'نمایشگر لمسی ۱۱.۹ اینچی MBUX + نمایشگر دیجیتال ۱۳.۳ اینچی',
+      value: `${carInfoData?.multimediaSystem}`,
       icon: <SettingsIcon />
     },
     {
       label: 'سیستم‌های ایمنی و کمکی:',
-      value: 'ترمز خودکار اضطراری، نگهدارنده بین خطوط، هشدار نقطه کور',
+      value: `${carInfoData?.safetyAssistFeatures || 'Nothing'}`,
       icon: <ShieldIcon />
     },
-    { label: 'ایمنی:', value: '۵ ستاره Euro NCAP', icon: <StarIcon /> },
+    {
+      label: 'ایمنی:',
+      value: `${carInfoData?.safetyRating} ستاره Euro NCAP`,
+      icon: <StarIcon />
+    },
     {
       label: 'رنگ:',
       value: 'مشکی متالیک (Obsidian Black Metallic)',

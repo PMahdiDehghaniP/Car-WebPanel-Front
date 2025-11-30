@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import LogoCarsCard from '../components/Home/LogoCarsCard';
 import CarSlider from '../components/Home/CarSlider/CarSlider';
 import FeatureCardsSection from '../components/Home/FeatureCardsSection';
@@ -8,6 +8,7 @@ import { useLazyQuery } from '@apollo/client';
 
 import { useEffect, useState } from 'react';
 import {
+  GET_BASE_CARS,
   GET_BRANDS_BY_RATE,
   GET_TOP_MOTNH_POSTS
 } from '@/schemas/GraphqlSchemas';
@@ -15,7 +16,30 @@ import {
 const HomeContent = () => {
   const [page, setPage] = useState(1);
   const [topPostsData, setTopPostsData] = useState(new Map());
+  const [carSliderData, setCarSliderData] = useState(new Map());
+  const [carSliderPage, setCarSliderPage] = useState(1);
+  const [carsSortType, setCarsSortType] = useState('NONE');
+  const [shouldGetMoreTopLastPosts, setShouldGetMoreTopLastPosts] =
+    useState(true);
+  const handleCarSliderPageChange = () => setCarSliderPage((prev) => prev + 1);
   const handlePageChange = () => setPage((prev) => prev + 1);
+  const [getBaseCars, { data: getBaseCarsData, loading: getBaseCarsLoading }] =
+    useLazyQuery(
+      GET_BASE_CARS(`    
+    hasNext
+    hasPrevious
+    totalCount
+    data {
+      topSpeedKmh
+      pictureUrl
+      gearbox
+      fuel
+      price
+      description
+      name
+      id
+    }`)
+    );
   const [
     getBrandsByRate,
     { data: getBrandsByRateData, loading: getBrandsByRateLoading }
@@ -58,15 +82,18 @@ const HomeContent = () => {
   }, []);
 
   useEffect(() => {
-    getTopPostsPreview({
-      variables: {
-        pagination: {
-          pageIndex: page,
-          pageSize: 20
+    if (shouldGetMoreTopLastPosts) {
+      getTopPostsPreview({
+        variables: {
+          pagination: {
+            pageIndex: page,
+            pageSize: 20
+          }
         }
-      }
-    });
-  }, [page]);
+      });
+    }
+  }, [page, shouldGetMoreTopLastPosts]);
+
   useEffect(() => {
     if (getTopPostsPreviewData?.topPostsLastMonth.length) {
       const newMap = new Map(topPostsData);
@@ -74,8 +101,28 @@ const HomeContent = () => {
         newMap.set(post?.id, post);
       });
       setTopPostsData(newMap);
+    } else {
+      setShouldGetMoreTopLastPosts(false);
     }
   }, [getTopPostsPreviewData?.topPostsLastMonth]);
+  useEffect(() => {
+    getBaseCars({
+      variables: {
+        page: carSliderPage,
+        pageSize: 20,
+        sortBy: carsSortType
+      }
+    });
+  }, [carSliderPage, carsSortType]);
+  useEffect(() => {
+    if (getBaseCarsData?.basecarsHomePage?.data) {
+      const newMap = new Map(carSliderData);
+      getBaseCarsData?.basecarsHomePage?.data?.forEach((car) => {
+        newMap.set(car?.id, car);
+      });
+      setCarSliderData(newMap);
+    }
+  }, [getBaseCarsData]);
 
   return (
     <Box
@@ -108,7 +155,18 @@ const HomeContent = () => {
           getLogoLoading={getBrandsByRateLoading}
           logoData={getBrandsByRateData?.brandsByRate?.results}
         />
-        <CarSlider />
+        <CarSlider
+          carsSortType={carsSortType}
+          handleCarsSortTypeChange={(newValue) => {
+            setCarSliderPage(1);
+            setCarSliderData(new Map());
+            setCarsSortType(newValue);
+          }}
+          carsData={Array.from(carSliderData.values())}
+          getBaseCarsLoading={!getBaseCarsData || getBaseCarsLoading}
+          hasNext={getBaseCarsData?.basecarsHomePage?.hasNext}
+          handleCarSliderPageChange={handleCarSliderPageChange}
+        />
         <FeatureCardsSection
           handlePageChange={handlePageChange}
           topPostsData={Array.from(topPostsData.values())}

@@ -63,3 +63,11 @@ query GetCarRatingSummary($carId:ID!) {
   }
 }
 `;
+
+export const GET_BASE_CARS = (items) => gql`
+query BasecarsHomePage($page:Int,$pageSize:Int,$sortBy:SortByEnum) {
+  basecarsHomePage(page:$page,pageSize:$pageSize,sortBy:$sortBy) {
+    ${items}
+  }
+}
+`;

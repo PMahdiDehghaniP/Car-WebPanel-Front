@@ -12,6 +12,7 @@ const PostSlider = ({ topPostsData, onLoadMore }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const loading = useRef(false);
 
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
@@ -24,17 +25,14 @@ const PostSlider = ({ topPostsData, onLoadMore }) => {
   }, [swiperInstance]);
 
   const handleSlideChange = (swiper) => {
-    if (
-      swiper.slides.length - swiper.activeIndex <= 3 &&
-      topPostsData?.length
-    ) {
-      onLoadMore();
-    }
-  };
-
-  const handleTransitionEnd = (swiper) => {
-    if (swiper.isEnd && !swiper.params.loop && topPostsData?.length) {
-      onLoadMore();
+    const realIndex = swiper.realIndex;
+    const total = topPostsData?.length || 0;
+    if (total - realIndex <= 2) {
+      if (!loading.current) {
+        loading.current = true;
+        onLoadMore();
+        setTimeout(() => (loading.current = false), 800);
+      }
     }
   };
 
@@ -44,7 +42,7 @@ const PostSlider = ({ topPostsData, onLoadMore }) => {
         width: '90%',
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
-        alignItems: isMobile ? 'center' : 'center',
+        alignItems: 'center',
         justifyContent: isMobile ? 'center' : 'space-between',
         gap: '1rem',
         zIndex: 999,
@@ -52,25 +50,23 @@ const PostSlider = ({ topPostsData, onLoadMore }) => {
       }}
     >
       {!isMobile && (
-        <>
-          <Box
-            component="button"
-            sx={{
-              backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
-              border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
-              ...perfectCentering,
-              borderRadius: '100%',
-              width: '4rem',
-              height: '4rem',
-              cursor: 'pointer'
-            }}
-            ref={prevRef}
-          >
-            <ArrowForwardIos
-              sx={{ color: theme.palette?.carSlider?.iconColor }}
-            />
-          </Box>
-        </>
+        <Box
+          component="button"
+          sx={{
+            backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
+            border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
+            ...perfectCentering,
+            borderRadius: '100%',
+            width: '4rem',
+            height: '4rem',
+            cursor: 'pointer'
+          }}
+          ref={prevRef}
+        >
+          <ArrowForwardIos
+            sx={{ color: theme.palette?.carSlider?.iconColor }}
+          />
+        </Box>
       )}
 
       <Box
@@ -86,16 +82,13 @@ const PostSlider = ({ topPostsData, onLoadMore }) => {
           modules={[Navigation, Autoplay, Pagination]}
           onSwiper={setSwiperInstance}
           onSlideChange={handleSlideChange}
-          onTransitionEnd={handleTransitionEnd}
           autoplay={{ delay: 2500 }}
           slidesPerView={1}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current
           }}
-          style={{
-            width: '100%'
-          }}
+          style={{ width: '100%' }}
         >
           {topPostsData.map((post, index) => (
             <SwiperSlide key={index} style={{ ...perfectCentering }}>
@@ -117,11 +110,7 @@ const PostSlider = ({ topPostsData, onLoadMore }) => {
           >
             <Box
               component="button"
-              onClick={() => {
-                if (swiperInstance) {
-                  swiperInstance.slideNext();
-                }
-              }}
+              onClick={() => swiperInstance?.slideNext()}
               sx={{
                 backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
                 border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
@@ -140,13 +129,10 @@ const PostSlider = ({ topPostsData, onLoadMore }) => {
                 }}
               />
             </Box>
+
             <Box
               component="button"
-              onClick={() => {
-                if (swiperInstance) {
-                  swiperInstance.slidePrev();
-                }
-              }}
+              onClick={() => swiperInstance?.slidePrev()}
               sx={{
                 backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
                 border: `1px solid ${theme.palette?.carSlider?.borderColor}`,

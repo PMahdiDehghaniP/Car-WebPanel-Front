@@ -10,7 +10,7 @@ const EventBox = ({ isMobile, title, description, time , image }) => {
 
   const containerHeight = isMobile ? 220 : 500;
   const containerWidth = isMobile ? '100%' : '100%';
-  const bgColor = theme === 'dark' ? '#25283a' : '#F4F4F4';
+  const bgColor = theme === 'dark' ? '#272F4E' : '#F4F4F4';
   const textColor = theme === 'dark' ? '#E6E9F2' : '#111';
   const titleColor = 'linear-gradient(180deg, #00ADCF 0%, #00D20B 46.35%, #047500 100%)';
 
@@ -26,13 +26,12 @@ const EventBox = ({ isMobile, title, description, time , image }) => {
         borderRadius: isMobile ? '28px' : '50px',
         bgcolor: bgColor,
         overflow: 'hidden',
-        borderBottom: '0.98px solid #CECECE',
+        borderBottom: theme === 'dark' ? '0.98px solid #363F5F' : '0.23px solid #CECECE',
         px: 'var(--pad)',                       
         py: isMobile ? 2 : 4,
         boxSizing: 'border-box',
       }}
     >
-
       <Box
         sx={{
           flex: 1,
@@ -206,5 +205,4 @@ const EventBox = ({ isMobile, title, description, time , image }) => {
     </Box>
   );
 }
-
 export default EventBox;

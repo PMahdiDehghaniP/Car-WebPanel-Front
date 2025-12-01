@@ -56,7 +56,8 @@ const CarDetailsPage = () => {
     topSpeedKmh
     torqueNm
     trunkVolumeL
-    wheelbaseMm`)
+    wheelbaseMm
+    `)
   );
   const [getCarCosts, { data: getCarCostsData, loading: getCarCostsLoading }] =
     useLazyQuery(

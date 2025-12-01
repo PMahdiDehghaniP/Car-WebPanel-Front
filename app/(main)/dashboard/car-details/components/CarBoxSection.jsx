@@ -1,26 +1,31 @@
 'use client';
 import { Box, Button, Typography } from '@mui/material';
 
-const CarBoxSection = () => {
+const CarBoxSection = ({ carData }) => {
   const stageSize = { xs: 250, md: 550, lg: 600 };
   const lineWidth = 2;
 
   const features = [
     {
-      text: ' حداکثر سرعت : ۲۵۰ کیلومتر بر ساعت (محدودشده الکترونیکی)',
+      text: `حداکثر سرعت: ${carData?.topSpeedKmh} کیلومتر بر ساعت (محدودشده الکترونیکی)`,
       rotate: 25,
       side: 'left',
       top: '-10%'
     },
-    { text: 'شتاب صفر تا صد: 6 ثانیه', rotate: 10, side: 'left', top: '25%' },
     {
-      text: 'گشتاور : ۴۰۰ نیوتن‌متر بین ۲۰۰۰ تا ۳۲۰۰ دور در دقیقه',
+      text: `شتاب صفر تا صد: ${carData?.acceleration0100} ثانیه`,
+      rotate: 10,
+      side: 'left',
+      top: '25%'
+    },
+    {
+      text: `گشتاور: ${carData?.trunkVolumeL} نیوتن‌متر بین ۲۰۰۰ تا ۳۲۰۰ دور در دقیقه`,
       rotate: -10,
       side: 'left',
       top: '60%'
     },
     {
-      text: ' مدل : Mercedes-Benz C300 AMG Line ',
+      text: `مدل : ${carData?.releaseYear} | ${carData?.brand?.name} ${carData?.name}`,
       rotate: -25,
       side: 'right',
       top: '-10%'
@@ -32,7 +37,7 @@ const CarBoxSection = () => {
       top: '25%'
     },
     {
-      text: ' قدرت : ۲۵۵ اسب‌بخار در ۵۸۰۰ دور در دقیقه',
+      text: `قدرت: ${carData?.powerHp} اسب‌بخار در ۵۸۰۰ دور در دقیقه`,
       rotate: 15,
       side: 'right',
       top: '60%'
@@ -75,11 +80,11 @@ const CarBoxSection = () => {
             color: '#FFFFFF'
           }}
         >
-          Mercedes Benz AMG 2022
+          {`${carData?.brand?.name} ${carData?.name}`}
         </Typography>
         <Box
           component="img"
-          src="/mercedesLogo.png"
+          src={carData?.brand?.logoUrl}
           sx={{
             width: { xs: 50, md: 100, lg: 200 },
             height: { xs: 50, md: 100, lg: 200 }

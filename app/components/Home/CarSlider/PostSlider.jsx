@@ -6,12 +6,13 @@ import { useRef, useEffect, useState } from 'react';
 import { perfectCentering } from '@/app/constants/Styles';
 import InstagramPostCard from '../../PostCard';
 
-const PostSlider = () => {
+const PostSlider = ({ topPostsData, onLoadMore }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const loading = useRef(false);
 
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
@@ -23,13 +24,25 @@ const PostSlider = () => {
     }
   }, [swiperInstance]);
 
+  const handleSlideChange = (swiper) => {
+    const realIndex = swiper.realIndex;
+    const total = topPostsData?.length || 0;
+    if (total - realIndex <= 2) {
+      if (!loading.current) {
+        loading.current = true;
+        onLoadMore();
+        setTimeout(() => (loading.current = false), 800);
+      }
+    }
+  };
+
   return (
     <Box
       sx={{
         width: '90%',
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
-        alignItems: isMobile ? 'center' : 'center',
+        alignItems: 'center',
         justifyContent: isMobile ? 'center' : 'space-between',
         gap: '1rem',
         zIndex: 999,
@@ -37,25 +50,23 @@ const PostSlider = () => {
       }}
     >
       {!isMobile && (
-        <>
-          <Box
-            component="button"
-            sx={{
-              backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
-              border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
-              ...perfectCentering,
-              borderRadius: '100%',
-              width: '4rem',
-              height: '4rem',
-              cursor: 'pointer'
-            }}
-            ref={prevRef}
-          >
-            <ArrowForwardIos
-              sx={{ color: theme.palette?.carSlider?.iconColor }}
-            />
-          </Box>
-        </>
+        <Box
+          component="button"
+          sx={{
+            backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
+            border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
+            ...perfectCentering,
+            borderRadius: '100%',
+            width: '4rem',
+            height: '4rem',
+            cursor: 'pointer'
+          }}
+          ref={prevRef}
+        >
+          <ArrowForwardIos
+            sx={{ color: theme.palette?.carSlider?.iconColor }}
+          />
+        </Box>
       )}
 
       <Box
@@ -70,19 +81,18 @@ const PostSlider = () => {
           loop
           modules={[Navigation, Autoplay, Pagination]}
           onSwiper={setSwiperInstance}
+          onSlideChange={handleSlideChange}
           autoplay={{ delay: 2500 }}
           slidesPerView={1}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current
           }}
-          style={{
-            width: '100%'
-          }}
+          style={{ width: '100%' }}
         >
-          {Array.from({ length: 10 }).map((number, index) => (
+          {topPostsData.map((post, index) => (
             <SwiperSlide key={index} style={{ ...perfectCentering }}>
-              <InstagramPostCard />
+              <InstagramPostCard post={post} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -100,6 +110,7 @@ const PostSlider = () => {
           >
             <Box
               component="button"
+              onClick={() => swiperInstance?.slideNext()}
               sx={{
                 backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
                 border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
@@ -110,7 +121,6 @@ const PostSlider = () => {
                 cursor: 'pointer',
                 flexShrink: 0
               }}
-              ref={nextRef}
             >
               <ArrowForwardIos
                 sx={{
@@ -119,8 +129,10 @@ const PostSlider = () => {
                 }}
               />
             </Box>
+
             <Box
               component="button"
+              onClick={() => swiperInstance?.slidePrev()}
               sx={{
                 backgroundColor: theme.palette?.carSlider?.sliderButtonBgColor,
                 border: `1px solid ${theme.palette?.carSlider?.borderColor}`,
@@ -131,7 +143,6 @@ const PostSlider = () => {
                 cursor: 'pointer',
                 flexShrink: 0
               }}
-              ref={prevRef}
             >
               <ArrowBackIos
                 sx={{

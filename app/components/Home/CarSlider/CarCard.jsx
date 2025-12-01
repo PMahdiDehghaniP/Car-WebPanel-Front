@@ -26,7 +26,8 @@ const CarCard = ({
   description,
   carInformation,
   price,
-  onClick
+  onClick,
+  carId
 }) => {
   const theme = useTheme();
   const router = useRouter();
@@ -135,7 +136,7 @@ const CarCard = ({
         >
           <Button
             sx={{ display: 'flex', gap: '0.25rem' }}
-            onClick={() => router.push('/dashboard/car-details')}
+            onClick={() => router.push(`/dashboard/car-details/${carId}`)}
           >
             <CallMadeOutlined fontSize="medium" />
             مشخصات کامل

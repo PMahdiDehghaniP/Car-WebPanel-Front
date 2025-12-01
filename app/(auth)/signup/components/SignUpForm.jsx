@@ -35,7 +35,6 @@ const SignupForm = () => {
           email,
           password
         });
-        console.log(respose);
 
         if (respose?.status === 201) {
           toast.success(

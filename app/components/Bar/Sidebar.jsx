@@ -32,7 +32,7 @@ const Sidebar = () => {
         { label: 'گاراژ من', path: '/dashboard/garage' },
         { label: 'انجمن', path: '/forum' },
         { label: 'رویدادها', path: '/events' },
-        { label: 'درباره ما', path: '/about' }
+        { label: 'درباره ما', path: '/dashboard/about-us' }
       ]
     : [
         { label: 'خانه', path: '/' },
@@ -40,7 +40,7 @@ const Sidebar = () => {
         { label: 'ورود / ثبت نام', path: '/signup' },
         { label: 'انجمن', path: '/forum' },
         { label: 'رویدادها', path: '/events' },
-        { label: 'درباره ما', path: '/about' }
+        { label: 'درباره ما', path: '/dashboard/about-us' }
       ];
 
   const handleClick = (item) => {

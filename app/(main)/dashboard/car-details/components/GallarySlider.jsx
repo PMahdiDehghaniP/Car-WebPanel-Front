@@ -9,15 +9,14 @@ import { perfectCentering } from '@/app/constants/Styles';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const GallarySlider = () => {
-  const cars = Array(10).fill('/blueAmg.png');
+const GallarySlider = ({ galleryData }) => {
   const theme = useTheme();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const isMobile = useMediaQuery('(max-width:600px)');
   const isTablet = useMediaQuery('(max-width:900px)');
-  const sliderHeight = isMobile ? '50vh' : isTablet ? '65vh' : '85vh';
+  const sliderHeight = isMobile ? '50vh' : isTablet ? '65vh' : '55vh';
 
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
@@ -40,7 +39,7 @@ const GallarySlider = () => {
         slidesPerView={1}
         style={{ width: '100%', height: '100%' }}
       >
-        {cars.map((car, index) => (
+        {galleryData?.map((car, index) => (
           <SwiperSlide key={index} style={{ ...perfectCentering }}>
             <Image
               src={car}

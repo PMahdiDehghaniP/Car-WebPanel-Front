@@ -54,9 +54,8 @@ const SubmitCommentSection = () => {
           >
             <Typography variant="body1">امتیاز</Typography>
             <Rating
-              value={3}
+              value={2.43}
               precision={0.5}
-              readOnly
               sx={{
                 '& .MuiRating-iconFilled': { color: '#ffc107' },
                 '& .MuiRating-iconHover': { color: '#ffc107' },

@@ -1,11 +1,24 @@
 'use client';
-import { Button, Grid, Typography, useTheme, Box } from '@mui/material';
-import InstagramPostCard from '../PostCard';
+import {
+  Button,
+  Grid,
+  Typography,
+  useTheme,
+  Box,
+  CircularProgress
+} from '@mui/material';
 import PostSlider from './CarSlider/PostSlider';
 
-const FamilyCard = ({ dataAos = 'fade-right' }) => {
+const FamilyCard = ({
+  dataAos = 'fade-right',
+  topPostsData,
+  handlePageChange,
+  loading
+}) => {
   const theme = useTheme();
-  return (
+  return loading ? (
+    <CircularProgress size={36} />
+  ) : (
     <Grid
       container
       sx={{
@@ -56,7 +69,7 @@ const FamilyCard = ({ dataAos = 'fade-right' }) => {
         >
           برترین پست های هفته
         </Typography>
-        <PostSlider />
+        <PostSlider topPostsData={topPostsData} onLoadMore={handlePageChange} />
         <Button sx={{ minWidth: '300px' }} variant="contained">
           مشاهده همه پست ها
         </Button>

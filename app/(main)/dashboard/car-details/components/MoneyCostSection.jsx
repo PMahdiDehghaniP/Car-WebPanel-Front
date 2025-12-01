@@ -9,36 +9,36 @@ import {
 import { Grid, Box, Typography } from '@mui/material';
 import CarTaxItem from './CarTaxItem';
 
-const MoneyCostSection = () => {
+const MoneyCostSection = ({ getCarCostsData }) => {
   const carTaxMockData = [
     {
       title: 'سوخت/انرژی',
-      amount: '1450 دلار در سال',
+      amount: `${getCarCostsData?.annualFuelCost || 0} دلار در سال `,
       icon: <LocalGasStation sx={{ fontSize: { md: '48px', xs: '36px' } }} />
     },
     {
       title: 'بیمه',
-      amount: '1250 دلار در سال',
+      amount: `${getCarCostsData?.annualInsuranceCost || 0} دلار در سال `,
       icon: <Security sx={{ fontSize: { md: '48px', xs: '36px' } }} />
     },
     {
       title: 'سرویس و تعمیرات',
-      amount: '950 دلار در سال',
+      amount: `${getCarCostsData?.annualMaintenanceCost || 0} دلار در سال `,
       icon: <Build sx={{ fontSize: { md: '48px', xs: '36px' } }} />
     },
     {
       title: 'استهلاک',
-      amount: '5200 دلار در سال',
+      amount: `${getCarCostsData?.annualMiscCost || 0} دلار در سال `,
       icon: <BarChart sx={{ fontSize: { md: '48px', xs: '36px' } }} />
     },
     {
       title: 'مالیات و عوارض',
-      amount: '500 دلار در سال',
+      amount: `${getCarCostsData?.annualTaxCost || 0} دلار در سال `,
       icon: <AttachMoney sx={{ fontSize: { md: '48px', xs: '36px' } }} />
     },
     {
       title: 'اقساط یا لیزینگ',
-      amount: '600 دلار در سال',
+      amount: `${getCarCostsData?.annualPartsCost || 0} دلار در سال `,
       icon: <CreditCard sx={{ fontSize: { md: '48px', xs: '36px' } }} />
     }
   ];
@@ -126,7 +126,7 @@ const MoneyCostSection = () => {
           <Typography
             sx={{ fontWeight: 700, fontSize: { xs: '0.5rem', md: '1.25rem' } }}
           >
-            5454545 دلار در هر سال
+            {getCarCostsData?.annualTotalCost} دلار در هر سال
           </Typography>
         </Box>
         <Box zIndex={999} component="img" src="/money.png" />

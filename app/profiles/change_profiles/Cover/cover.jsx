@@ -52,7 +52,7 @@ const CoverSection = () => {
           '&:hover': {
             backgroundColor: '#5a6fd8',
           },
-          // Responsive positioning adjustments
+        
           '@media (max-width: 600px)': {
             left: '72%',
             transform: 'translateX(-50%)'

@@ -9,7 +9,7 @@ const NewPasswordInput = () => {
     color: 'grey'
   });
 
-  const checkPasswordStrength = (password: string) => {
+  const checkPasswordStrength = (password) => {
     if (password.length === 0) {
       return { score: 0, message: '', color: 'grey' };
     }
@@ -64,7 +64,7 @@ const NewPasswordInput = () => {
     return { score: (score / 4) * 100, message, color };
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
     setPasswordStrength(checkPasswordStrength(newPassword));

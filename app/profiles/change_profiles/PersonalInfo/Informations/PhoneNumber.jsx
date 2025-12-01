@@ -5,7 +5,7 @@ const PhoneNumberInput = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('+98');
 
-  const formatPhoneNumber = (value: string) => {
+  const formatPhoneNumber = (value) => {
     // Remove all non-digit characters
     const digits = value.replace(/\D/g, '');
     
@@ -19,13 +19,13 @@ const PhoneNumberInput = () => {
     }
   };
 
-  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhoneNumberChange = (e) => {
     const value = e.target.value;
     const formattedValue = formatPhoneNumber(value);
     setPhoneNumber(formattedValue);
   };
 
-  const handleCountryCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCountryCodeChange = (e) => {
     let value = e.target.value;
     
     // Ensure it starts with +

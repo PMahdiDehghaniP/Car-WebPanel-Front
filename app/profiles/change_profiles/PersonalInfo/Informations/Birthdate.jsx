@@ -8,13 +8,13 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CloseIcon from '@mui/icons-material/Close';
 
 const BirthdateInput = () => {
-  const [birthdate, setBirthdate] = useState<Date | null>(null);
+  const [birthdate, setBirthdate] = useState(null);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const formatDisplayDate = (date: Date | null) => {
+  const formatDisplayDate = (date) => {
     if (!date) return '1375/01/01';
     
     // For display purposes - you might want to use a proper Jalali date library

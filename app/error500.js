@@ -1,4 +1,3 @@
-// app/error500/page.tsx
 'use client';
 
 import * as React from 'react';
@@ -175,8 +174,7 @@ export default function Error500Page() {
                 width: { xs: '100%', sm: 'auto' },
                 maxWidth: { xs: '280px', sm: '350px', md: '470px' },
                 display: 'block',
-                mx: { xs: 'auto', md: 'auto' }, // 👈 Keep centered on mobile, right-aligned on desktop
-                // 👇 Ensure button stays under the description text by adjusting vertical spacing
+                mx: { xs: 'auto', md: 'auto' }, 
                 marginBottom: { xs: 0, md: 0 },
               }}
             >

@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 
 const AuthFormsHeader = ({ title, headerIcon }) => (
+  
   <Box
     sx={{
       position: 'relative',

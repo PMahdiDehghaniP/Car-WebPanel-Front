@@ -4,6 +4,7 @@ import { Box } from '@mui/system';
 
 const AchivementSection = () => {
   return (
+    
     <Box
       sx={{
         width: '100%',

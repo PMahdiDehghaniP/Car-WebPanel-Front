@@ -3,16 +3,12 @@ import { useState } from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 
-interface CheckPasswordProps {
-  newPassword: string;
-}
-
-const CheckPassword = ({ newPassword }: CheckPasswordProps) => {
+const CheckPassword = ({ newPassword }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [isTouched, setIsTouched] = useState(false);
 
-  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleConfirmPasswordChange = (e) => {
     const value = e.target.value;
     setConfirmPassword(value);
     setIsTouched(true);

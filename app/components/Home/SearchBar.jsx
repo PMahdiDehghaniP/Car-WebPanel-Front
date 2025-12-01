@@ -63,7 +63,7 @@ const SearchBar = () => {
       >
         <StyledInputBase
           placeholder="جستجو..."
-          isopen={isSearchOpen}
+          isopen={isSearchOpen.toString()}
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           onFocus={handleSearchFocus}

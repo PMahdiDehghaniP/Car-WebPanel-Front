@@ -1,3 +1,4 @@
+
 export const Achivements = [
   {
     id: 'Note',
@@ -15,3 +16,4 @@ export const Achivements = [
   { id: 'Trophy', src: '/Trophy.png', width: '150px', height: '150px' },
   { id: 'Timer', src: '/TimerAchivement.png', width: '120', height: '120px' }
 ];
+export default Achivements;

@@ -23,7 +23,7 @@ const EventsPage = () => {
     () =>
       Array.from({ length: 15 }, (_, index) => ({
         id: index,
-        title: 'رویداد سبزتازان',
+        EventName: 'رویداد سبزتازان',
         description:
           'این رویداد برای انتخاب بهترین ماشینِ سبز رنگ برگزار شده. میتونی هم جزو برنده‌ها باشی یا انتخاب برنده سهمت باشه!',
         time: `${Math.floor(Math.random() * 30) + 1} days ${Math.floor(Math.random() * 24)} hours`,
@@ -100,8 +100,10 @@ const EventsPage = () => {
         {paginatedEvents.map((ev) => (
           <EventBox
             key={ev.id}
+            id = {ev.id}
             isMobile={isMobile}
-            title={ev.title}
+            isParticularPage={false}
+            EventName={ev.EventName}
             description={ev.description}
             time={ev.time}
             image={ev.image}

@@ -409,6 +409,7 @@ export default function ComparePage() {
                   alt="car1"
                   fill
                   style={{ objectFit: 'cover' }}
+                  unoptimized
                 />
               </Box>
 
@@ -465,6 +466,7 @@ export default function ComparePage() {
                   alt="Car2"
                   fill
                   style={{ objectFit: 'cover' }}
+                  unoptimized
                 />
               </Box>
 

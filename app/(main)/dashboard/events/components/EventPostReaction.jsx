@@ -25,7 +25,6 @@ const EventPostActions = ({ isHasPost, likes, liked, onLikeToggle, previewUrl, o
           <Box sx={{ width: 96 }} />
         )}
       </Box>
-
       {!isHasPost && (
         <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
           <Button

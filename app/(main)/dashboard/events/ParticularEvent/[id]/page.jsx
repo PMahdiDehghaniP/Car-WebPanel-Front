@@ -1,4 +1,3 @@
-// app/(main)/events/ParticularEvent/page.jsx
 'use client';
 
 import React, { useRef, useState, useLayoutEffect, useEffect } from 'react';

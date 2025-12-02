@@ -4,7 +4,6 @@ import React from 'react';
 import { Box, Avatar, Typography, List, ListItem } from '@mui/material';
 import { FaCrown } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
-
 const TopThreeItem = ({ item, position }) => {
   const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const isCenter = position === 'center';

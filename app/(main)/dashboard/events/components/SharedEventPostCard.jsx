@@ -70,12 +70,10 @@ const SharedEventPostCard = ({
       return next;
     });
   };
-
   const openMenu = (e) => setAnchorEl(e.currentTarget);
   const closeMenu = () => setAnchorEl(null);
   const handleReport = () => { closeMenu(); onReport(); };
   const handleMore = () => { closeMenu(); onMore(); };
-
   return (
     <Card sx={{
       width: 700,
@@ -119,7 +117,6 @@ const SharedEventPostCard = ({
           </Menu>
         </Box>
       </Box>
-
       <Divider />
       {image && (
         <Box
@@ -140,7 +137,6 @@ const SharedEventPostCard = ({
           {caption ?? ''}
         </Typography>
       </CardContent>
-
       <CardActions sx={{ display: 'flex', justifyContent: 'space-between', px: 2, pb: 1 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <IconButton
@@ -171,9 +167,8 @@ const SharedEventPostCard = ({
     </Card>
   );
 };
-
-export default function PostsList({
-}) {
+const  PostsList =({
+})  =>{
   const isMobile = useMediaQuery('(max-width:720px)');
   return (
     <Box
@@ -213,8 +208,8 @@ export default function PostsList({
         }}
         aria-label="Event posts list"
       >
-        <Box sx={{ display: 'grid', gap: 3, justifyContent: 'center', direction: 'rtl' }}>
-          {samplePosts.map((p, i) => (
+        <Box sx={{ display: 'grid', gap: 3, justifyContent: 'center',}}>
+          {samplePosts.map((p, i) =>(
             <SharedEventPostCard
               key={i}
               avatar={p.avatar}
@@ -223,7 +218,7 @@ export default function PostsList({
               image={p.image}
               createdAt={p.createdAt}
               initialLikes={p.initialLikes}
-              maxWidth={'100%'}
+              maxWidth='100%'
               imageHeight={isMobile ? 180 : 280}
               compact={true}
             />
@@ -233,3 +228,4 @@ export default function PostsList({
     </Box>
   );
 }
+export default PostsList

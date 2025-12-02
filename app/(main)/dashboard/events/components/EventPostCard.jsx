@@ -2,7 +2,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, Button } from '@mui/material';
-
 import EventPostHeader from './EventPostHeader';
 import EventPostImageArea from './EventPostImageArea';
 import EventPostCaption from './EventPostCaption';
@@ -18,9 +17,7 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [caption, setCaption] = useState(initialPost?.caption ?? '');
-
   const fileRef = useRef(null);
-
   useEffect(() => {
     return () => {
       if (previewUrl) URL.revokeObjectURL(previewUrl);
@@ -28,9 +25,7 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
   }, [previewUrl]);
 
   const isHasPost = Boolean(post);
-
   const openFilePicker = () => fileRef.current?.click();
-
   const onFileChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -41,7 +36,6 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
     setSelectedFile(file);
     setPreviewUrl(url);
   };
-
   const onRegisterPost = () => {
     if (!previewUrl) return;
     const newPost = {
@@ -55,7 +49,6 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
     setLiked(false);
     setSelectedFile(null);
   };
-
   const onDelete = () => {
     if (post && post.image && post.image.startsWith('blob:')) {
       try { URL.revokeObjectURL(post.image); } catch {}
@@ -76,7 +69,6 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
       return next;
     });
   };
-
   return (
     <Box sx={{ width: '100%',  mx: 'auto', p: 1 , height: 500 }}>
       <Box sx={{

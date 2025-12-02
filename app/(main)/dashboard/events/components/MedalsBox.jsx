@@ -32,7 +32,6 @@ const MedalsBox = () => {
 
         {display.map((it, i) => {
           const isCenter = i === 1; 
-
           return (
             <Box key={i} 
             sx={{

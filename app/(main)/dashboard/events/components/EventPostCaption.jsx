@@ -5,7 +5,6 @@ import { Box, Typography, TextField } from '@mui/material';
 
 const EventPostCaption = ({ isHasPost, caption, onCaptionChange }) => {
   const captionTextColor = '#333';
-
   return (
     <Box sx={{ p: 2 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, flexWrap: 'wrap' }}>

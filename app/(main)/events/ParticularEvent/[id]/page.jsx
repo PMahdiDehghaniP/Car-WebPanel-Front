@@ -1,3 +1,4 @@
+// app/(main)/events/ParticularEvent/page.jsx
 'use client';
 
 import React from 'react';
@@ -7,6 +8,7 @@ import { useSelector } from 'react-redux';
 import EventPostCard from '../../components/EventPostCard';
 import MedalsBox from '../../components/MedalsBox';
 import EventTopRanking from '../../components/EventTopRanking';
+import SharedEventPostCard from '../../components/SharedEventPostCard';
 
 const topThree = [
   { src: '/avatar-1.jpg', name: 'Bryan Wolf', likes: 35 },
@@ -25,12 +27,9 @@ const others = [
 ];
 
 export default function Page({ params }) {
-  const resolved = React.use(params); // ← فقط اگر Next 15 مجبور کند، فعلاً لازم نیست
-  const id = resolved.id;
-
+  const {id} = params ;
   const isMobile = useMediaQuery("(max-width:900px)");
   const { theme } = useSelector((state) => state.theme || { theme: 'light' });
-
   const sample = {
     image: '/GreenEvent.jpg',
     caption: 'ماشین بن تن باشه',
@@ -39,11 +38,82 @@ export default function Page({ params }) {
   };
 
   return (
-    <Box>
+    <Box sx={{ p: 2, boxSizing: 'border-box' ,gap: 5 }}>
       <EventBox isMobile={isMobile} isParticularPage={true} />
-      <EventPostCard initialPost={sample} />
-      <MedalsBox />
-      <EventTopRanking topThree={topThree} others={others} />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: 10,
+          alignItems: 'stretch',
+          mt: 2,
+          minHeight: isMobile ? 'auto' : '80vh'
+        }}
+      >
+        <Box
+          sx={{
+            flex: '0 0 50%',
+            width: '50%',
+            minWidth: 280,
+            display: 'flex',
+            flexDirection: 'column',
+            p: 2,
+            justifyContent: 'flex-start', 
+            alignItems: 'flex-start'           
+          }}
+        >
+
+          <Box sx={{ width: '100%', mb: 2,  mr: 4}}>
+            <Box sx={{ fontWeight: 800, fontSize: 24 }}>پست‌های ارسالی</Box>
+          </Box>
+          <Box sx={{
+            width: '100%',
+            display: 'flex',
+            alignItems: 'flex-start',  
+            justifyContent: 'flex-start',  
+            pt: 4
+          }}>
+            <Box sx={{ width: '100%', maxWidth: 760, display: 'flex', justifyContent: 'center' }}>
+              <SharedEventPostCard
+                avatar="/sample-avatar-1.jpg"
+                username="کاربر ویژه"
+                caption="این پست داخل باکسِ پست‌های ارسالی قرار دارد. کارت افقی وسط قرار دارد و از بالای باکس شروع می‌شود."
+                image="/sample-post-1.jpg"
+                createdAt={Date.now() - 1000 * 60 * 60}
+                initialLikes={128}
+                maxWidth="92%"
+                fullHeight={false}
+                imageHeight={320}
+              />
+            </Box>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            flex: '1 1 50%',
+            width: '65%',
+            minWidth: 320,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center' ,
+            gap: 5,
+            p: 2,
+            mt : 14
+          }}
+        >
+          <Box sx={{ width: '100%' }}>
+            <EventPostCard initialPost={sample} />
+          </Box>
+
+          <Box sx={{ width: '100%', overflowY: 'auto' }}>
+            <EventTopRanking topThree={topThree} others={others} />
+          </Box>
+
+          <Box sx={{ width: '100%' }}>
+            <MedalsBox />
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 }

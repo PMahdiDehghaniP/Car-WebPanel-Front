@@ -8,7 +8,7 @@ import EventPostImageArea from './EventPostImageArea';
 import EventPostCaption from './EventPostCaption';
 import EventPostActions from './EventPostReaction'; 
 
-const EventPostCard = ({ initialPost = null, maxWidth = 520 }) => {
+const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
   const [post, setPost] = useState(initialPost);
   const [likes, setLikes] = useState(initialPost?.likes ?? 0);
   const [liked, setLiked] = useState(false);
@@ -76,7 +76,7 @@ const EventPostCard = ({ initialPost = null, maxWidth = 520 }) => {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: maxWidth, mx: 'auto', p: 1 }}>
+    <Box sx={{ width: '100%',  mx: 'auto', p: 1 , height: 500 }}>
       <Box sx={{
         border: '1px solid #B4B4B4',
         borderRadius: 2,

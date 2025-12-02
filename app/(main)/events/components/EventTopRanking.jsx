@@ -83,7 +83,7 @@ const BottomList = ({ others = [] }) => {
 };
 const EventTopRanking = ({ topThree = [], others = [] }) => {
   return (
-    <Box  sx={{ width: '40%', minWidth: 280 , border : '1px solid #BEBEBE', borderRadius: 2 }}>
+    <Box  sx={{ width: '100%', minWidth: 280 , border : '1px solid #BEBEBE', borderRadius: 2 }}>
       <TopThreeBox topThree={topThree} />
       <BottomList others={others} />
     </Box>

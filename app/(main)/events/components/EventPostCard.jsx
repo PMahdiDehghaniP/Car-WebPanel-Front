@@ -1,4 +1,3 @@
-// app/(main)/events/ParticularEvent/components/PostCard.jsx
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
@@ -77,7 +76,7 @@ const EventPostCard = ({ initialPost = null, maxWidth = 520 }) => {
   };
 
   return (
-    <Box dir="rtl" sx={{ width: '100%', maxWidth: maxWidth, mx: 'auto', p: 1 }}>
+    <Box sx={{ width: '100%', maxWidth: maxWidth, mx: 'auto', p: 1 }}>
       <Box sx={{
         border: '1px solid #B4B4B4',
         borderRadius: 2,
@@ -92,16 +91,13 @@ const EventPostCard = ({ initialPost = null, maxWidth = 520 }) => {
           style={{ display: 'none' }}
           onChange={onFileChange}
         />
-
         <EventPostHeader isHasPost={isHasPost} onDelete={onDelete} />
-
         <EventPostImageArea
           isHasPost={isHasPost}
           post={post}
           previewUrl={previewUrl}
           openFilePicker={openFilePicker}
         />
-
         <Box sx={{ px: 2, py: 1.25 }}>
           <Box sx={{
             display: 'flex',
@@ -115,7 +111,6 @@ const EventPostCard = ({ initialPost = null, maxWidth = 520 }) => {
               caption={isHasPost ? post?.caption ?? '' : caption}
               onCaptionChange={(v) => setCaption(v)}
             />
-
             <EventPostActions
               isHasPost={isHasPost}
               likes={likes}
@@ -125,11 +120,9 @@ const EventPostCard = ({ initialPost = null, maxWidth = 520 }) => {
               onRegisterPost={onRegisterPost}
             />
           </Box>
-
         </Box>
       </Box>
     </Box>
   );
 };
-
 export default EventPostCard;

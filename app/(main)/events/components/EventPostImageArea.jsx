@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -60,7 +59,6 @@ const EventPostImageArea = ({ isHasPost, post, previewUrl, openFilePicker }) => 
             <path d="M4 7H6L7.6 4.4C7.82 4.02 8.19 3.78 8.6 3.78H15.4C15.81 3.78 16.18 4.02 16.4 4.4L18 7H20C21.1 7 22 7.9 22 9V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V9C2 7.9 2.9 7 4 7Z" stroke="#CFCFCF" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
             <circle cx="12" cy="13" r="3.5" stroke="#CFCFCF" strokeWidth="0.9"/>
           </svg>
-
           {previewUrl ? (
             <Typography sx={{ mt: 1, color: '#333', fontSize: 13 }}>پیش‌نمایش انتخاب شده — اکنون روی «ثبت عکس» بزن</Typography>
           ) : (
@@ -71,5 +69,4 @@ const EventPostImageArea = ({ isHasPost, post, previewUrl, openFilePicker }) => 
     </Box>
   );
 };
-
 export default EventPostImageArea;

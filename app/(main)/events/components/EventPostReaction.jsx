@@ -1,4 +1,3 @@
-// app/(main)/events/ParticularEvent/components/PostActions.jsx
 'use client';
 
 import React from 'react';

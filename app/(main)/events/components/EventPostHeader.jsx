@@ -1,4 +1,3 @@
-// app/(main)/events/ParticularEvent/components/PostHeader.jsx
 'use client';
 
 import React from 'react';
@@ -45,5 +44,4 @@ const EventPostHeader = ({ isHasPost, onDelete }) => {
     </Box>
   );
 };
-
 export default EventPostHeader;

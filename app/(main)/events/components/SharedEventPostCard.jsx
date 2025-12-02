@@ -25,6 +25,7 @@ import {
 } from '@mui/material';
 import { MdOutlineThumbUpAlt, MdMoreHoriz } from 'react-icons/md';
 import { GoReport } from 'react-icons/go';
+import { useSelector } from 'react-redux';
 
 const remainingTime = (input) => {
   if (!input) return '';
@@ -55,8 +56,8 @@ const SharedEventPostCard = ({
   initiallyLiked = false,
   onReport = () => {},
   onMore = () => {},           
-  avatarSize = 56,
-}) => {
+  avatarSize = 56,}) => {
+  const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const [likes, setLikes] = React.useState(initialLikes);
   const [liked, setLiked] = React.useState(Boolean(initiallyLiked));
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -84,7 +85,7 @@ const SharedEventPostCard = ({
       borderRadius: 1,
       boxShadow: '0 6px 18px rgba(0,0,0,0.04)',
       overflow: 'hidden',
-      bgcolor: '#fff'
+      bgcolor: theme === 'dark' ? '#272F4E' :'#fff' 
     }}>
 
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',   py: 1 }}>
@@ -172,8 +173,6 @@ const SharedEventPostCard = ({
 };
 
 export default function PostsList({
-  maxContainerHeight = '1330px',
-  cardMaxWidth = '100%'
 }) {
   const isMobile = useMediaQuery('(max-width:720px)');
 
@@ -192,7 +191,7 @@ export default function PostsList({
         sx={{
           width: '100%',
           maxWidth: '100%',
-          height: maxContainerHeight,
+          height: '1330px'  ,
           overflowY: 'auto',
           overscrollBehavior: 'contain',
           WebkitOverflowScrolling: 'touch',

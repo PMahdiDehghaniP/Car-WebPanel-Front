@@ -7,8 +7,10 @@ import EventPostHeader from './EventPostHeader';
 import EventPostImageArea from './EventPostImageArea';
 import EventPostCaption from './EventPostCaption';
 import EventPostActions from './EventPostReaction'; 
+import { useSelector } from 'react-redux';
 
 const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
+  const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const [post, setPost] = useState(initialPost);
   const [likes, setLikes] = useState(initialPost?.likes ?? 0);
   const [liked, setLiked] = useState(false);
@@ -81,7 +83,7 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
         border: '1px solid #B4B4B4',
         borderRadius: 2,
         overflow: 'hidden',
-        bgcolor: '#fff',
+        bgcolor: theme === 'dark' ?"#272F4E" : '#fff',
         boxShadow: '0 6px 18px rgba(0,0,0,0.04)'
       }}>
         <input

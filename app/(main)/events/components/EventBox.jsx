@@ -22,7 +22,7 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
 
   const isClickable = !isParticularPage; 
   const handleNavigate = (e) => {
-    if (isClickable) return;
+    if (!isClickable) return;
     router.push(`/events/ParticularEvent/${id}`);
   };
   

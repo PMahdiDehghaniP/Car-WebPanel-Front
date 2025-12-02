@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+
 
 const MedalsBox = () => {
+  const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const Images = ['/first.png', '/second.png', '/third.png'];
   const prizes = ['3 میلیون تومان', '1 میلیون تومان', '500 هزار تومان'] 
   const display = [
@@ -17,7 +20,7 @@ const MedalsBox = () => {
       alignContent : 'center',
       borderRadius: 2,
       p: 2,
-      bgcolor: '#fff',
+      bgcolor: theme === 'dark' ? "#272F4E" : '#fff',
       width : '100%',
       height : 222 
     }}>

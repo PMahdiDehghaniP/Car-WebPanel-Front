@@ -5,7 +5,7 @@ import { Box, Button } from '@mui/material';
 import EventPostHeader from './EventPostHeader';
 import EventPostImageArea from './EventPostImageArea';
 import EventPostCaption from './EventPostCaption';
-import EventPostActions from './EventPostReaction'; 
+import EventPostActions from './EventPostReaction';
 import { useSelector } from 'react-redux';
 
 const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
@@ -30,7 +30,9 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (previewUrl) {
-      try { URL.revokeObjectURL(previewUrl); } catch {}
+      try {
+        URL.revokeObjectURL(previewUrl);
+      } catch {}
     }
     const url = URL.createObjectURL(file);
     setSelectedFile(file);
@@ -51,7 +53,9 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
   };
   const onDelete = () => {
     if (post && post.image && post.image.startsWith('blob:')) {
-      try { URL.revokeObjectURL(post.image); } catch {}
+      try {
+        URL.revokeObjectURL(post.image);
+      } catch {}
     }
     setPost(null);
     setLikes(0);
@@ -65,19 +69,21 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
     if (!post) return;
     setLiked((p) => {
       const next = !p;
-      setLikes((l) => l + (next ? 1 : -1)/2);
+      setLikes((l) => l + (next ? 1 : -1) / 2);
       return next;
     });
   };
   return (
-    <Box sx={{ width: '100%',  mx: 'auto', p: 1 , height: 500 }}>
-      <Box sx={{
-        border: '1px solid #B4B4B4',
-        borderRadius: 2,
-        overflow: 'hidden',
-        bgcolor: theme === 'dark' ?"#272F4E" : '#fff',
-        boxShadow: '0 6px 18px rgba(0,0,0,0.04)'
-      }}>
+    <Box sx={{ width: '100%', mx: 'auto', p: 1, height: 500 }}>
+      <Box
+        sx={{
+          border: '1px solid #B4B4B4',
+          borderRadius: 2,
+          overflow: 'hidden',
+          bgcolor: theme === 'dark' ? '#272F4E' : '#fff',
+          boxShadow: '0 6px 18px rgba(0,0,0,0.04)'
+        }}
+      >
         <input
           ref={fileRef}
           type="file"
@@ -93,16 +99,18 @@ const EventPostCard = ({ initialPost = null, maxWidth = 500 }) => {
           openFilePicker={openFilePicker}
         />
         <Box sx={{ px: 2, py: 1.25 }}>
-          <Box sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 2,
-            flexWrap: 'nowrap'
-            }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 2,
+              flexWrap: 'nowrap'
+            }}
+          >
             <EventPostCaption
               isHasPost={isHasPost}
-              caption={isHasPost ? post?.caption ?? '' : caption}
+              caption={isHasPost ? (post?.caption ?? '') : caption}
               onCaptionChange={(v) => setCaption(v)}
             />
             <EventPostActions

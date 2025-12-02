@@ -1,31 +1,40 @@
 'use client';
 
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
-const EventBox = ({ id , isMobile, isParticularPage , EventName, description, time , image }) => {
+const EventBox = ({
+  id,
+  isMobile,
+  isParticularPage,
+  EventName,
+  description,
+  time,
+  image
+}) => {
   const router = useRouter();
   const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const padding = isMobile ? 2 : 6;
   const titleFontSize = isMobile ? '1.4rem' : '5.4rem';
-  const titleParticularFontSize = isMobile ? '0.8rem' : '3.2rem' ;
+  const titleParticularFontSize = isMobile ? '0.8rem' : '3.2rem';
   const bodyFontSize = isMobile ? '0.22rem' : '0.95rem';
 
   const containerHeight = isMobile ? 220 : 500;
   const containerWidth = isMobile ? '100%' : '100%';
   const bgColor = theme === 'dark' ? '#272F4E' : '#F4F4F4';
-  const bgColorParticular = theme === 'dark' ? '#272F4E' : '#FFFFFF' ;
+  const bgColorParticular = theme === 'dark' ? '#272F4E' : '#FFFFFF';
   const textColor = theme === 'dark' ? '#E6E9F2' : '#111';
-  const titleColor = 'linear-gradient(180deg, #00ADCF 0%, #00D20B 46.35%, #047500 100%)';
+  const titleColor =
+    'linear-gradient(180deg, #00ADCF 0%, #00D20B 46.35%, #047500 100%)';
 
-  const isClickable = !isParticularPage; 
+  const isClickable = !isParticularPage;
   const handleNavigate = (e) => {
     if (!isClickable) return;
     router.push(`/events/ParticularEvent/${id}`);
   };
-  
+
   const handleKeyDown = (e) => {
     if (!isClickable) return;
     if (e.key === 'Enter' || e.key === ' ') {
@@ -41,19 +50,20 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
       role={isClickable ? 'button' : undefined}
       tabIndex={isClickable ? 0 : undefined}
       sx={{
-        position: 'relative',                    
-        '--pad': `${padding * 8}px`,             
-        display: "flex",
-        alignItems: "center",
+        position: 'relative',
+        '--pad': `${padding * 8}px`,
+        display: 'flex',
+        alignItems: 'center',
         height: containerHeight,
         width: containerWidth,
-        borderRadius: isParticularPage? 0 : isMobile ? '28px' : '50px',
-        bgcolor:  isParticularPage ? bgColorParticular : bgColor,
+        borderRadius: isParticularPage ? 0 : isMobile ? '28px' : '50px',
+        bgcolor: isParticularPage ? bgColorParticular : bgColor,
         overflow: 'hidden',
-        borderBottom: theme === 'dark' ? '0.98px solid #363F5F' : '0.23px solid #CECECE',
-        px: 'var(--pad)',                       
+        borderBottom:
+          theme === 'dark' ? '0.98px solid #363F5F' : '0.23px solid #CECECE',
+        px: 'var(--pad)',
         py: isMobile ? 2 : 4,
-        boxSizing: 'border-box',
+        boxSizing: 'border-box'
       }}
     >
       <Box
@@ -63,30 +73,32 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
           display: 'flex',
           justifyContent: isMobile ? 'center' : 'flex-end',
           alignItems: 'start',
-          height: '100%',
+          height: '100%'
         }}
       >
         <svg width="0" height="0">
           <defs>
             <clipPath id="eventCurveMask" clipPathUnits="objectBoundingBox">
-              {(isMobile ? <path
-                d="
+              {isMobile ? (
+                <path
+                  d="
                   M 0 0.6
                   C 0.8 0.1, 0.0 0, 1 0.1
                   L 1 1
                   L 0 1
                   Z 
                 "
-              /> : 
-              <path
-                d="
+                />
+              ) : (
+                <path
+                  d="
                   M 0 0.6
                   C 0.6 0.0, 0.0 0, 1 0
                   L 1 1
                   L 0 1
                   Z 
                 "
-              />
+                />
               )}
             </clipPath>
           </defs>
@@ -97,9 +109,9 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
           alt="event banner"
           sx={{
             position: 'absolute',
-            top: 'calc(-1 * var(--pad))',    
-            right: 'calc(-1 * var(--pad))',  
-            height: isMobile ? '80%' : '90%' ,
+            top: 'calc(-1 * var(--pad))',
+            right: 'calc(-1 * var(--pad))',
+            height: isMobile ? '80%' : '90%',
             width: '60%',
             maxWidth: isMobile ? '92%' : '90%',
             objectFit: 'cover',
@@ -107,7 +119,7 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
             filter: theme === 'dark' ? 'brightness(0.9)' : 'none',
             clipPath: 'url(#eventCurveMask)',
             WebkitClipPath: 'url(#eventCurveMask)',
-            zIndex: 0,
+            zIndex: 0
           }}
         />
         <Box
@@ -124,7 +136,7 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
             height: 'auto',
             borderRadius: 2,
             transform: 'scaleX(-1)',
-            zIndex: 1,
+            zIndex: 1
           }}
         />
       </Box>
@@ -137,7 +149,7 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
           justifyContent: 'flex-start',
           pr: 4,
           boxSizing: 'border-box',
-          height: '100%', 
+          height: '100%'
         }}
       >
         <Box
@@ -145,26 +157,28 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
             flexBasis: '50%',
             height: '40%',
             display: 'flex',
-            alignItems: 'center',    
-            justifyContent: 'flex-start', 
+            alignItems: 'center',
+            justifyContent: 'flex-start',
             boxSizing: 'border-box',
-            mr :isMobile ? 0 :20
+            mr: isMobile ? 0 : 20
           }}
         >
           <Typography
             component="h1"
             sx={{
               fontWeight: 800,
-              fontSize: isParticularPage? titleParticularFontSize : titleFontSize,
+              fontSize: isParticularPage
+                ? titleParticularFontSize
+                : titleFontSize,
               color: titleColor,
               lineHeight: 1.32,
-              textAlign: 'right',    
+              textAlign: 'right',
               display: 'block',
-              width: '100%',
+              width: '100%'
             }}
           >
             {!isParticularPage && (EventName || 'رویداد سبزتازان')}
-            {isParticularPage && (` به ${EventName} خوش امدید`)}
+            {isParticularPage && ` به ${EventName} خوش امدید`}
           </Typography>
         </Box>
         <Box
@@ -172,13 +186,13 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
             flexBasis: '50%',
             height: '50%',
             display: 'flex',
-            alignItems: 'flex-start',   
+            alignItems: 'flex-start',
             flexDirection: 'column',
             justifyContent: 'flex-start',
-            pt: isMobile ? 1 : 5,       
-            px: isMobile ? 1.5 : 0,     
+            pt: isMobile ? 1 : 5,
+            px: isMobile ? 1.5 : 0,
             boxSizing: 'border-box',
-            gap: isMobile ? 4 : 2,
+            gap: isMobile ? 4 : 2
           }}
         >
           <Typography
@@ -187,20 +201,21 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
               color: textColor,
               fontSize: bodyFontSize,
               maxWidth: isMobile ? '85%' : '100%',
-              textAlign: 'justify-end',       
+              textAlign: 'justify-end',
               display: 'block',
-              mr :isMobile ? 10 :60
+              mr: isMobile ? 10 : 60
             }}
           >
-            {description || 'این رویداد برای انتخاب بهترین ماشینِ سبز رنگ برگزار شده. میتونی هم جزو برنده‌ها باشی یا انتخاب برنده سهمت باشه!'}
+            {description ||
+              'این رویداد برای انتخاب بهترین ماشینِ سبز رنگ برگزار شده. میتونی هم جزو برنده‌ها باشی یا انتخاب برنده سهمت باشه!'}
           </Typography>
           <Box
             sx={{
               width: '100%',
               display: 'flex',
               justifyContent: 'flex-end',
-              mt: isMobile ? 2 : 5,      
-              boxSizing: 'border-box',
+              mt: isMobile ? 2 : 5,
+              boxSizing: 'border-box'
             }}
           >
             <Box
@@ -210,17 +225,30 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
                 borderRadius: 3,
                 px: isMobile ? 3 : 4,
                 py: isMobile ? 1.5 : 2,
-                boxShadow: theme === 'dark' ? '0 6px 18px rgba(0,0,0,0.35)' : '0 6px 18px rgba(0,0,0,0.08)',
+                boxShadow:
+                  theme === 'dark'
+                    ? '0 6px 18px rgba(0,0,0,0.35)'
+                    : '0 6px 18px rgba(0,0,0,0.08)',
                 textAlign: 'center',
-                minWidth: isMobile ? '80%' : 300, 
+                minWidth: isMobile ? '80%' : 300,
                 maxWidth: isMobile ? '92%' : '80%',
-                ml :isMobile ? 0 : 15
+                ml: isMobile ? 0 : 15
               }}
             >
-              <Typography sx={{ fontSize: isMobile ? '7px' : '22px', fontWeight: 800 }}>
+              <Typography
+                sx={{ fontSize: isMobile ? '7px' : '22px', fontWeight: 800 }}
+              >
                 {time || '15 روز و 12 ساعت و 45 دقیقه'}
               </Typography>
-              <Typography variant="caption" sx={{ fontSize: isMobile ? '5px' : '12px', display: 'block', color: '#777', mt: 1 }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  fontSize: isMobile ? '5px' : '12px',
+                  display: 'block',
+                  color: '#777',
+                  mt: 1
+                }}
+              >
                 تا اتمام رویداد
               </Typography>
             </Box>
@@ -228,30 +256,31 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
           {isParticularPage && (
             <Box
               sx={{
-                width :  isMobile ? '40%' :'80%' ,
-                display : 'flex' ,
-                justifyItems : 'center',
-                justifyContent : 'flex-end',
+                width: isMobile ? '40%' : '80%',
+                display: 'flex',
+                justifyItems: 'center',
+                justifyContent: 'flex-end',
                 alignItems: 'center',
-                mr : isMobile ? 13.5 : 6 ,
+                mr: isMobile ? 13.5 : 6
               }}
             >
               <Box
                 sx={{
-                  width :  isMobile ?'100%' : '40%',
-                  height : isMobile ? '40%' : '60%' ,
-                  mt : isMobile ? -4 : 2 ,
-                  backgroundColor : '#2A78ED',
-                  border: '1px solid var(--Miscellaneous-Sidebar-Text---Selected, #0088FF)',
+                  width: isMobile ? '100%' : '40%',
+                  height: isMobile ? '40%' : '60%',
+                  mt: isMobile ? -4 : 2,
+                  backgroundColor: '#2A78ED',
+                  border:
+                    '1px solid var(--Miscellaneous-Sidebar-Text---Selected, #0088FF)',
                   alignItems: 'center',
-                  display : 'flex' ,
-                  justifyContent : 'center' ,
-                  justifyItems : 'center' ,
-                  py : 2 ,
-                  borderRadius : 0.5
+                  display: 'flex',
+                  justifyContent: 'center',
+                  justifyItems: 'center',
+                  py: 2,
+                  borderRadius: 0.5
                 }}
               >
-                <Typography sx={{ fontSize : isMobile ? '0.5rem' : '1rem' ,}}>
+                <Typography sx={{ fontSize: isMobile ? '0.5rem' : '1rem' }}>
                   ثبت نام
                 </Typography>
               </Box>
@@ -261,5 +290,5 @@ const EventBox = ({ id , isMobile, isParticularPage , EventName, description, ti
       </Box>
     </Box>
   );
-}
+};
 export default EventBox;

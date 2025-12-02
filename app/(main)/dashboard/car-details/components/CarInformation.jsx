@@ -10,9 +10,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ShieldIcon from '@mui/icons-material/Shield';
 import StarIcon from '@mui/icons-material/Star';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
+import { useRouter } from 'next/navigation';
 
 const CarInformation = ({ carInfoData }) => {
   const theme = useTheme();
+  const router = useRouter();
 
   const mockData = [
     {
@@ -107,6 +109,7 @@ const CarInformation = ({ carInfoData }) => {
           }}
           variant="outlined"
           size="medium"
+          onClick={() => router.push('/dashboard/compare-page')}
         >
           مقایسه
         </Button>

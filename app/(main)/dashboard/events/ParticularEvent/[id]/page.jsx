@@ -38,12 +38,16 @@ export default function Page({ params }) {
 
   const rootRef = useRef(null);
   const [bgTopPx, setBgTopPx] = useState(null);
-  const placementFactor = isMobile ? 0.62 : 0.7; 
+  const placementFactor = isMobile ? 0.62 : 0.7;
 
   const computeBgTop = () => {
     const el = rootRef.current;
     if (!el) return;
-    const totalHeight = Math.max(el.scrollHeight, el.offsetHeight, window.innerHeight);
+    const totalHeight = Math.max(
+      el.scrollHeight,
+      el.offsetHeight,
+      window.innerHeight
+    );
     const topPx = Math.round(totalHeight * placementFactor);
     const clamped = Math.max(100, Math.min(topPx, totalHeight - 50));
     setBgTopPx(clamped);
@@ -59,7 +63,11 @@ export default function Page({ params }) {
       mo = new MutationObserver(() => {
         window.requestAnimationFrame(computeBgTop);
       });
-      mo.observe(roTarget, { childList: true, subtree: true, characterData: true });
+      mo.observe(roTarget, {
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
     }
 
     return () => {
@@ -73,7 +81,10 @@ export default function Page({ params }) {
   }, []);
 
   return (
-    <Box ref={rootRef} sx={{ position: 'relative', p: 2, boxSizing: 'border-box', gap: 5 }}>
+    <Box
+      ref={rootRef}
+      sx={{ position: 'relative', p: 2, boxSizing: 'border-box', gap: 5 }}
+    >
       {bgTopPx !== null && (
         <Box
           component="img"
@@ -87,10 +98,10 @@ export default function Page({ params }) {
             width: '100vw',
             height: 'auto',
             objectFit: 'cover',
-            zIndex: 0, 
+            zIndex: 0,
             pointerEvents: 'none',
             opacity: 0.12,
-            userSelect: 'none',
+            userSelect: 'none'
           }}
         />
       )}
@@ -131,7 +142,14 @@ export default function Page({ params }) {
                 pt: 4
               }}
             >
-              <Box sx={{ width: '100%', maxWidth: 760, display: 'flex', justifyContent: 'center' }}>
+              <Box
+                sx={{
+                  width: '100%',
+                  maxWidth: 760,
+                  display: 'flex',
+                  justifyContent: 'center'
+                }}
+              >
                 <SharedEventPostCard
                   avatar="/sample-avatar-1.jpg"
                   username="کاربر ویژه"

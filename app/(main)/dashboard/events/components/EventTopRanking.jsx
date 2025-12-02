@@ -8,17 +8,48 @@ const TopThreeItem = ({ item, position }) => {
   const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const isCenter = position === 'center';
   return (
-    <Box sx={{ width: isCenter ? 140 : 100, textAlign: 'center', position: 'relative' }}>
+    <Box
+      sx={{
+        width: isCenter ? 140 : 100,
+        textAlign: 'center',
+        position: 'relative'
+      }}
+    >
       {isCenter && (
-        <Box sx={{ position: 'absolute', left: '50%', transform: 'translateX(-50%) translateY(-15px)', zIndex: 3 }}>
+        <Box
+          sx={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%) translateY(-15px)',
+            zIndex: 3
+          }}
+        >
           <FaCrown size={25} color="#0b79ff" />
         </Box>
       )}
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: isCenter ? 0.5 : 0 }}>
-        <Avatar src={item.src} sx={{ width: isCenter ? 86 : 62, height: isCenter ? 86 : 62, boxShadow: isCenter ? '0 6px 18px rgba(11,121,255,0.12)' : 'none', border: '3px solid #2A78ED' }} />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mt: isCenter ? 0.5 : 0
+        }}
+      >
+        <Avatar
+          src={item.src}
+          sx={{
+            width: isCenter ? 86 : 62,
+            height: isCenter ? 86 : 62,
+            boxShadow: isCenter ? '0 6px 18px rgba(11,121,255,0.12)' : 'none',
+            border: '3px solid #2A78ED'
+          }}
+        />
       </Box>
-      <Typography sx={{ mt: 1, fontWeight: 800, fontSize: isCenter ? 15 : 13 }}>{item.name}</Typography>
-      <Typography sx={{ fontSize: 13, color: '#666' }}>{item.likes} لایک</Typography>
+      <Typography sx={{ mt: 1, fontWeight: 800, fontSize: isCenter ? 15 : 13 }}>
+        {item.name}
+      </Typography>
+      <Typography sx={{ fontSize: 13, color: '#666' }}>
+        {item.likes} لایک
+      </Typography>
     </Box>
   );
 };
@@ -31,15 +62,26 @@ const TopThreeBox = ({ topThree = [] }) => {
   return (
     <Box
       sx={{
-        bgcolor: theme === 'dark' ? "#272F4E" : '#fff',
+        bgcolor: theme === 'dark' ? '#272F4E' : '#fff',
         borderRadius: 2,
         p: 2,
         boxShadow: '0 6px 18px rgba(0,0,0,0.04)',
-        width: '100%',
+        width: '100%'
       }}
     >
-      <Typography sx={{ textAlign: 'center', fontWeight: 900, mb: 1.5 }}>جدول برترین‌ها</Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4,  alignItems: 'flex-end', position: 'relative', mt:4}}>
+      <Typography sx={{ textAlign: 'center', fontWeight: 900, mb: 1.5 }}>
+        جدول برترین‌ها
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: 4,
+          alignItems: 'flex-end',
+          position: 'relative',
+          mt: 4
+        }}
+      >
         <TopThreeItem item={left} position="left" />
         <TopThreeItem item={center} position="center" />
         <TopThreeItem item={right} position="right" />
@@ -49,37 +91,82 @@ const TopThreeBox = ({ topThree = [] }) => {
 };
 const RankRow = ({ row, highlight = false }) => {
   const { theme } = useSelector((s) => s.theme || { theme: 'light' });
-  const bubbleColor = highlight ? theme==='dark' ? "#272F4E"  :  '#fff' : '#666';
+  const bubbleColor = highlight
+    ? theme === 'dark'
+      ? '#272F4E'
+      : '#fff'
+    : '#666';
   return (
-    <ListItem sx={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      bgcolor: highlight ? '#1976d2' : theme==='dark' ? "#272F4E"  :  '#fff', 
-      color: highlight ? '#fff' : 'inherit',
-      borderRadius: 8,
-      mb: 1.25,
-      py: 1.25,
-      px: 0.5,
-      boxShadow: '0 2px 6px rgba(0,0,0,0.04)'
-    }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, minWidth: 0 }}>
-        <Box sx={{ width: 30, height: 30, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: bubbleColor, fontWeight: 700, flexShrink: 0 }}>
+    <ListItem
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        bgcolor: highlight ? '#1976d2' : theme === 'dark' ? '#272F4E' : '#fff',
+        color: highlight ? '#fff' : 'inherit',
+        borderRadius: 8,
+        mb: 1.25,
+        py: 1.25,
+        px: 0.5,
+        boxShadow: '0 2px 6px rgba(0,0,0,0.04)'
+      }}
+    >
+      <Box
+        sx={{ display: 'flex', alignItems: 'center', gap: 1.25, minWidth: 0 }}
+      >
+        <Box
+          sx={{
+            width: 30,
+            height: 30,
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: bubbleColor,
+            fontWeight: 700,
+            flexShrink: 0
+          }}
+        >
           {row.rank}
         </Box>
         <Avatar src={row.src} sx={{ width: 36, height: 36, flexShrink: 0 }} />
         <Box sx={{ overflow: 'hidden', textAlign: 'right' }}>
-          <Typography sx={{ fontWeight: 700, fontSize: 14, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{row.name}</Typography>
+          <Typography
+            sx={{
+              fontWeight: 700,
+              fontSize: 14,
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden'
+            }}
+          >
+            {row.name}
+          </Typography>
         </Box>
       </Box>
-      <Typography sx={{ fontSize: 13, color: highlight ? '#fff' : '#666', fontWeight: 700 }}>{row.likes} لایک</Typography>
+      <Typography
+        sx={{
+          fontSize: 13,
+          color: highlight ? '#fff' : '#666',
+          fontWeight: 700
+        }}
+      >
+        {row.likes} لایک
+      </Typography>
     </ListItem>
   );
 };
 const BottomList = ({ others = [] }) => {
   const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   return (
-    <Box sx={{ mt: 2, bgcolor:  theme === 'dark' ?  '#363F5F': '#F1F5E8', borderRadius: 2, p: 1.5 }}>
+    <Box
+      sx={{
+        mt: 2,
+        bgcolor: theme === 'dark' ? '#363F5F' : '#F1F5E8',
+        borderRadius: 2,
+        p: 1.5
+      }}
+    >
       <List disablePadding>
         {others.map((r, idx) => (
           <RankRow key={r.rank ?? idx} row={r} highlight={r.highlight} />
@@ -90,7 +177,14 @@ const BottomList = ({ others = [] }) => {
 };
 const EventTopRanking = ({ topThree = [], others = [] }) => {
   return (
-    <Box  sx={{ width: '100%', minWidth: 280 , border : '1px solid #BEBEBE', borderRadius: 2 }}>
+    <Box
+      sx={{
+        width: '100%',
+        minWidth: 280,
+        border: '1px solid #BEBEBE',
+        borderRadius: 2
+      }}
+    >
       <TopThreeBox topThree={topThree} />
       <BottomList others={others} />
     </Box>

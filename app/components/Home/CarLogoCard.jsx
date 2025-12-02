@@ -17,8 +17,8 @@ const CarLogoCard = ({ logoSrc, carName }) => {
         border: `1px solid ${theme.palette?.carLogoCard?.borderColor}`
       }}
     >
-      <Box width="90px" height="90px" sx={{ ...perfectCentering }}>
-        <img src="https://raw.githubusercontent.com/abolfazlshahsavaryyy/ItsAll200StaticData/main/porche.jpeg" />
+      <Box width="110px" height="110px" sx={{ ...perfectCentering }}>
+        <img width={90} height={90} src={logoSrc} />
       </Box>
 
       <Typography sx={{ fontSize: '18px', fontWeight: 500 }}>

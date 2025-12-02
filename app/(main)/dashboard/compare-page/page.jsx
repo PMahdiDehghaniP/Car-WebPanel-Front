@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Box,
   Grid,
@@ -28,23 +28,13 @@ export default function ComparePage() {
   const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
   const reduxTheme = useSelector((state) => state.theme.theme);
+  const [winner, setWinner] = useState(null);
 
   const [
     getComparePage,
     { data: getComparePageData, loading: getComparePageLoading }
   ] = useLazyQuery(
-    COMPARE_TWO_PAGES(`    cheaperMaintenanceCar
-    economicalCar
-    fasterCar
-    morePowerfulEngineCar
-    heavyCar
-    newerCar
-    quickerCar
-    saferCar
-    silandrCar
-    spaciousCar
-    strongerCar
-    torqueCar
+    COMPARE_TWO_PAGES(`
     car2 {
     acceleration0100
     availableColors
@@ -53,6 +43,10 @@ export default function ComparePage() {
     description
     dimensionsMm
     fuelType
+          brand {
+        name
+        logoUrl
+      }
     engine
     id
     multimediaSystem
@@ -74,6 +68,10 @@ export default function ComparePage() {
     availableColors
     combinedFuelConsumption
     curbWeightKg
+          brand {
+        name
+        logoUrl
+      }
     description
     pictureUrl
     dimensionsMm
@@ -92,7 +90,27 @@ export default function ComparePage() {
     torqueNm
     trunkVolumeL
     wheelbaseMm
-    }`)
+    }
+    chart {
+      car1Chart {
+        averageRate
+        torqueNmRate
+        topSpeedRate
+        powerHpRate
+        finalRate
+        cylinderRate
+        annualCostRate
+      }
+      car2Chart {
+        annualCostRate
+        averageRate
+        cylinderRate
+        finalRate
+        topSpeedRate
+        powerHpRate
+        torqueNmRate
+    }}
+    `)
   );
   useEffect(() => {
     getComparePage({
@@ -102,6 +120,29 @@ export default function ComparePage() {
       }
     });
   }, []);
+  useEffect(() => {
+    if (getComparePageData) {
+      const car1Rate =
+        getComparePageData?.compareTwoCarsWithChart?.chart?.car1Chart
+          ?.finalRate;
+      const car2Rate =
+        getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart
+          ?.finalRate;
+      if (car1Rate > car2Rate) {
+        setWinner({
+          name: `${getComparePageData?.compareTwoCarsWithChart?.car1?.brand?.name} ${getComparePageData?.compareTwoCarsWithChart?.car1?.name}`,
+          rate: car1Rate?.toFixed(2)
+        });
+      } else if (car2Rate > car1Rate) {
+        setWinner({
+          name: `${getComparePageData?.compareTwoCarsWithChart?.car2?.brand?.name} ${getComparePageData?.compareTwoCarsWithChart?.car2?.name}`,
+          rate: car2Rate?.toFixed(2)
+        });
+      } else {
+        setWinner(null);
+      }
+    }
+  }, [getComparePageData]);
   const labels = [
     'نوع سوخت',
     'مصرف ترکیبی',
@@ -119,54 +160,111 @@ export default function ComparePage() {
 
   const left = useMemo(
     () => [
-      getComparePageData?.compareTwoCars?.car2?.fuelType,
-      `${getComparePageData?.compareTwoCars?.car2?.combinedFuelConsumption} در  هر  100 کیلومتر `,
-      `${getComparePageData?.compareTwoCars?.car2?.curbWeightKg} کیلوگرم`,
-      `${getComparePageData?.compareTwoCars?.car2?.dimensionsMm} میلی متر`,
-      `${getComparePageData?.compareTwoCars?.car2?.wheelbaseMm}  میلی متر `,
-      `${getComparePageData?.compareTwoCars?.car2?.trunkVolumeL}  لیتر `,
-      `${getComparePageData?.compareTwoCars?.car2?.seatingCapacity} نفر `,
-      `${getComparePageData?.compareTwoCars?.car2?.multimediaSystem}`,
-      `${getComparePageData?.compareTwoCars?.car2?.safetyAssistFeatures || 'Nothing'}`,
-      `${getComparePageData?.compareTwoCars?.car2?.safetyRating} ستاره Euro NCAP`,
+      getComparePageData?.compareTwoCarsWithChart?.car2?.fuelType,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.combinedFuelConsumption} در  هر  100 کیلومتر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.curbWeightKg} کیلوگرم`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.dimensionsMm} میلی متر`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.wheelbaseMm}  میلی متر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.trunkVolumeL}  لیتر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.seatingCapacity} نفر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.multimediaSystem}`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.safetyAssistFeatures || 'Nothing'}`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.safetyRating} ستاره Euro NCAP`,
       'مشکی متالیک (Obsidian Black Metallic)',
-      `${getComparePageData?.compareTwoCars?.car2?.price} دلار `
+      `${getComparePageData?.compareTwoCarsWithChart?.car2?.price} دلار `
     ],
-    [getComparePageData?.compareTwoCars?.car2]
+    [getComparePageData?.compareTwoCarsWithChart?.car2]
   );
 
   const right = useMemo(
     () => [
-      getComparePageData?.compareTwoCars?.car1?.fuelType,
-      `${getComparePageData?.compareTwoCars?.car1?.combinedFuelConsumption} در  هر  100 کیلومتر `,
-      `${getComparePageData?.compareTwoCars?.car1?.curbWeightKg} کیلوگرم`,
-      `${getComparePageData?.compareTwoCars?.car1?.dimensionsMm} میلی متر`,
-      `${getComparePageData?.compareTwoCars?.car1?.wheelbaseMm}  میلی متر `,
-      `${getComparePageData?.compareTwoCars?.car1?.trunkVolumeL}  لیتر `,
-      `${getComparePageData?.compareTwoCars?.car1?.seatingCapacity} نفر `,
-      `${getComparePageData?.compareTwoCars?.car1?.multimediaSystem}`,
-      `${getComparePageData?.compareTwoCars?.car1?.safetyAssistFeatures || 'Nothing'}`,
-      `${getComparePageData?.compareTwoCars?.car1?.safetyRating} ستاره Euro NCAP`,
+      getComparePageData?.compareTwoCarsWithChart?.car1?.fuelType,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.combinedFuelConsumption} در  هر  100 کیلومتر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.curbWeightKg} کیلوگرم`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.dimensionsMm} میلی متر`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.wheelbaseMm}  میلی متر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.trunkVolumeL}  لیتر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.seatingCapacity} نفر `,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.multimediaSystem}`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.safetyAssistFeatures || 'Nothing'}`,
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.safetyRating} ستاره Euro NCAP`,
       'مشکی متالیک (Obsidian Black Metallic)',
-      `${getComparePageData?.compareTwoCars?.car1?.price} دلار `
+      `${getComparePageData?.compareTwoCarsWithChart?.car1?.price} دلار `
     ],
-    [getComparePageData?.compareTwoCars?.car1]
+    [getComparePageData?.compareTwoCarsWithChart?.car1]
   );
 
-  const radarLeft = [
-    { subject: 'قدرت', A: 80 },
-    { subject: 'شتاب', A: 55 },
-    { subject: 'هندلینگ', A: 85 },
-    { subject: 'کیفیت', A: 80 },
-    { subject: 'مصرف', A: 10 }
-  ];
-  const radarRight = [
-    { subject: 'قدرت', A: 82 },
-    { subject: 'شتاب', A: 75 },
-    { subject: 'هندلینگ', A: 80 },
-    { subject: 'کیفیت', A: 88 },
-    { subject: 'مصرف', A: 70 }
-  ];
+  const radarLeft = useMemo(
+    () => [
+      {
+        subject: 'قدرت',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart
+            ?.powerHpRate * 100
+      },
+      {
+        subject: 'شتاب',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart
+            ?.cylinderRate * 100
+      },
+      {
+        subject: 'هندلینگ',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart
+            ?.torqueNmRate * 100
+      },
+      {
+        subject: 'کیفیت',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart
+            ?.topSpeedRate * 100
+      },
+      {
+        subject: 'مصرف',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart
+            ?.annualCostRate * 100
+      }
+    ],
+    [getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart]
+  );
+
+  const radarRight = useMemo(
+    () => [
+      {
+        subject: 'قدرت',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car1Chart
+            ?.powerHpRate * 100
+      },
+      {
+        subject: 'شتاب',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car1Chart
+            ?.cylinderRate * 100
+      },
+      {
+        subject: 'هندلینگ',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car1Chart
+            ?.torqueNmRate * 100
+      },
+      {
+        subject: 'کیفیت',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car1Chart
+            ?.topSpeedRate * 100
+      },
+      {
+        subject: 'مصرف',
+        A:
+          getComparePageData?.compareTwoCarsWithChart?.chart?.car1Chart
+            ?.annualCostRate * 100
+      }
+    ],
+    [getComparePageData?.compareTwoCarsWithChart?.chart?.car2Chart]
+  );
 
   const TOP_IMG_WIDTH = isXs ? 100 : isSm ? 160 : 350;
   const TOP_IMG_HEIGHT = Math.round(TOP_IMG_WIDTH * 0.56);
@@ -223,7 +321,6 @@ export default function ComparePage() {
     </Box>
   ) : (
     <>
-      {' '}
       <Box
         sx={{
           width: '100%',
@@ -305,7 +402,10 @@ export default function ComparePage() {
                 }}
               >
                 <Image
-                  src={getComparePageData?.compareTwoCars?.car1}
+                  src={
+                    getComparePageData?.compareTwoCarsWithChart?.car1
+                      ?.pictureUrl
+                  }
                   alt="car1"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -319,7 +419,7 @@ export default function ComparePage() {
                   fontSize={isXs ? 10 : isSm ? 13 : 18}
                   noWrap
                 >
-                  Mercedes-Benz C300 AMG Line
+                  {`${getComparePageData?.compareTwoCarsWithChart?.car1?.brand?.name} ${getComparePageData?.compareTwoCarsWithChart?.car1?.name}`}
                 </Typography>
               </Box>
             </Box>
@@ -358,7 +458,10 @@ export default function ComparePage() {
                 }}
               >
                 <Image
-                  src={getComparePageData?.compareTwoCars?.car2}
+                  src={
+                    getComparePageData?.compareTwoCarsWithChart?.car2
+                      ?.pictureUrl
+                  }
                   alt="Car2"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -372,7 +475,7 @@ export default function ComparePage() {
                   fontSize={isXs ? 10 : isSm ? 13 : 18}
                   noWrap
                 >
-                  BMW M5 Competition
+                  {`${getComparePageData?.compareTwoCarsWithChart?.car2?.brand?.name} ${getComparePageData?.compareTwoCarsWithChart?.car2?.name}`}
                 </Typography>
               </Box>
             </Box>
@@ -478,8 +581,22 @@ export default function ComparePage() {
               }}
             >
               {[
-                { data: radarLeft, color: '#0ea5e9', score: 4.2, votes: 238 },
-                { data: radarRight, color: '#ef4444', score: 4.9, votes: 456 }
+                {
+                  data: radarLeft,
+                  color: '#0ea5e9',
+                  score:
+                    getComparePageData?.compareTwoCarsWithChart?.chart
+                      ?.car2Chart?.averageRate,
+                  votes: 238
+                },
+                {
+                  data: radarRight,
+                  color: '#ef4444',
+                  score:
+                    getComparePageData?.compareTwoCarsWithChart?.chart
+                      ?.car1Chart?.averageRate,
+                  votes: 456
+                }
               ].map((item, idx) => (
                 <Grid
                   item
@@ -587,7 +704,7 @@ export default function ComparePage() {
                 fontWeight="600"
                 sx={{ mb: 1 }}
               >
-                Mercedes-Benz C300 AMG Line
+            {winner ?  winner?.name:"مساوی" }
               </Typography>
 
               <Typography
@@ -596,7 +713,7 @@ export default function ComparePage() {
                 fontWeight="700"
                 color="#333"
               >
-                با امتیاز: 77
+             با امتیاز   {winner?.rate}
               </Typography>
             </Box>
           </Box>

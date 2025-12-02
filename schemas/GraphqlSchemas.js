@@ -73,8 +73,8 @@ query BasecarsHomePage($page:Int,$pageSize:Int,$sortBy:SortByEnum) {
 `;
 
 export const COMPARE_TWO_PAGES = (items) => gql`
-query CompareTwoCars($id1:ID!,$id2:ID!) {
-  compareTwoCars(id1: $id1, id2: $id2) {
+query  CompareTwoCarsWithChart($id1:ID!,$id2:ID!) {
+  compareTwoCarsWithChart(id1: $id1, id2: $id2) {
     ${items}
   }
 }

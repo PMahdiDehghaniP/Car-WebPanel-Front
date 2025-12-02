@@ -8,7 +8,7 @@ const samplePosts = Array.from({ length: 12 }).map((_, i) => ({
   username: `کاربر ${i + 1}`,
   caption: `این یک پست نمونه شماره ${i + 1} است. متن طولانی هم باشه برای تست.`,
   image: `/sample-post-${(i % 3) + 1}.jpg`,
-  createdAt: Date.now() - (1000 * 60 * (i + 10)),
+  createdAt: Date.now() - 1000 * 60 * (i + 10),
   initialLikes: Math.floor(Math.random() * 300)
 }));
 import {
@@ -55,8 +55,9 @@ const SharedEventPostCard = ({
   initialLikes = 0,
   initiallyLiked = false,
   onReport = () => {},
-  onMore = () => {},           
-  avatarSize = 56,}) => {
+  onMore = () => {},
+  avatarSize = 56
+}) => {
   const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const [likes, setLikes] = React.useState(initialLikes);
   const [liked, setLiked] = React.useState(Boolean(initiallyLiked));
@@ -64,34 +65,66 @@ const SharedEventPostCard = ({
 
   const timeText = React.useMemo(() => remainingTime(createdAt), [createdAt]);
   const handleLikeToggle = () => {
-    setLiked(prev => {
+    setLiked((prev) => {
       const next = !prev;
-      setLikes(l => l + (next ? 1 : -1));
+      setLikes((l) => l + (next ? 1 : -1));
       return next;
     });
   };
   const openMenu = (e) => setAnchorEl(e.currentTarget);
   const closeMenu = () => setAnchorEl(null);
-  const handleReport = () => { closeMenu(); onReport(); };
-  const handleMore = () => { closeMenu(); onMore(); };
+  const handleReport = () => {
+    closeMenu();
+    onReport();
+  };
+  const handleMore = () => {
+    closeMenu();
+    onMore();
+  };
   return (
-    <Card sx={{
-      width: 700,
-      maxWidth: '100%',
-      height : 680,
-      mx: 0,
-      borderRadius: 1,
-      boxShadow: '0 6px 18px rgba(0,0,0,0.04)',
-      overflow: 'hidden',
-      bgcolor: theme === 'dark' ? '#272F4E' :'#fff' 
-    }}>
-
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',   py: 1 }}>
-        <Stack direction="row" spacing={12} gap={3} alignItems="center" sx={{ minWidth: 0 }}>
+    <Card
+      sx={{
+        width: 700,
+        maxWidth: '100%',
+        height: 680,
+        mx: 0,
+        borderRadius: 1,
+        boxShadow: '0 6px 18px rgba(0,0,0,0.04)',
+        overflow: 'hidden',
+        bgcolor: theme === 'dark' ? '#272F4E' : '#fff'
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          py: 1
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing={12}
+          gap={3}
+          alignItems="center"
+          sx={{ minWidth: 0 }}
+        >
           <Avatar src={avatar} sx={{ width: avatarSize, height: avatarSize }} />
-          <Box sx={{ minWidth: 0}}>
-            <Typography sx={{ fontSize: 15, fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{username}</Typography>
-            <Typography sx={{ fontSize: 12, color: '#757575' }}>{timeText}</Typography>
+          <Box sx={{ minWidth: 0 }}>
+            <Typography
+              sx={{
+                fontSize: 15,
+                fontWeight: 700,
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+              }}
+            >
+              {username}
+            </Typography>
+            <Typography sx={{ fontSize: 12, color: '#757575' }}>
+              {timeText}
+            </Typography>
           </Box>
         </Stack>
         <Box>
@@ -137,7 +170,9 @@ const SharedEventPostCard = ({
           {caption ?? ''}
         </Typography>
       </CardContent>
-      <CardActions sx={{ display: 'flex', justifyContent: 'space-between', px: 2, pb: 1 }}>
+      <CardActions
+        sx={{ display: 'flex', justifyContent: 'space-between', px: 2, pb: 1 }}
+      >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <IconButton
             aria-label="like"
@@ -145,30 +180,40 @@ const SharedEventPostCard = ({
             sx={{
               borderRadius: 2,
               bgcolor: liked ? 'rgba(0,173,207,0.12)' : 'transparent',
-              '&:hover': { bgcolor: liked ? 'rgba(0,173,207,0.16)' : 'rgba(0,0,0,0.04)' }
+              '&:hover': {
+                bgcolor: liked ? 'rgba(0,173,207,0.16)' : 'rgba(0,0,0,0.04)'
+              }
             }}
             size="large"
           >
-            <MdOutlineThumbUpAlt style={{ width: 20, height: 20, color: liked ? '#00ADCF' : '#1976d2' }} />
+            <MdOutlineThumbUpAlt
+              style={{
+                width: 20,
+                height: 20,
+                color: liked ? '#00ADCF' : '#1976d2'
+              }}
+            />
           </IconButton>
           <Typography sx={{ fontSize: 13, color: '#1976d2', fontWeight: 700 }}>
             {likes} لایک
           </Typography>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-          <IconButton aria-label="report" onClick={handleReport} size="large" sx={{ '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
+          <IconButton
+            aria-label="report"
+            onClick={handleReport}
+            size="large"
+            sx={{ '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
+          >
             <GoReport style={{ width: 18, height: 18, color: '#FF3B30' }} />
           </IconButton>
-          <Typography sx={{ fontSize: 12 }}>
-            گزارش دادن
-          </Typography>
+          <Typography sx={{ fontSize: 12 }}>گزارش دادن</Typography>
         </Box>
       </CardActions>
     </Card>
   );
 };
-const  PostsList =({
-})  =>{
+const PostsList = ({}) => {
   const isMobile = useMediaQuery('(max-width:720px)');
   return (
     <Box
@@ -185,7 +230,7 @@ const  PostsList =({
         sx={{
           width: '100%',
           maxWidth: '100%',
-          height: '1330px'  ,
+          height: '1330px',
           overflowY: 'auto',
           overscrollBehavior: 'contain',
           WebkitOverflowScrolling: 'touch',
@@ -208,8 +253,8 @@ const  PostsList =({
         }}
         aria-label="Event posts list"
       >
-        <Box sx={{ display: 'grid', gap: 3, justifyContent: 'center',}}>
-          {samplePosts.map((p, i) =>(
+        <Box sx={{ display: 'grid', gap: 3, justifyContent: 'center' }}>
+          {samplePosts.map((p, i) => (
             <SharedEventPostCard
               key={i}
               avatar={p.avatar}
@@ -218,7 +263,7 @@ const  PostsList =({
               image={p.image}
               createdAt={p.createdAt}
               initialLikes={p.initialLikes}
-              maxWidth='100%'
+              maxWidth="100%"
               imageHeight={isMobile ? 180 : 280}
               compact={true}
             />
@@ -227,5 +272,5 @@ const  PostsList =({
       </Box>
     </Box>
   );
-}
-export default PostsList
+};
+export default PostsList;

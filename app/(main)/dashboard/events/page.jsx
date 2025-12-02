@@ -1,17 +1,17 @@
 'use client';
 
-import React, { useRef, useState, useEffect, useMemo } from "react";
-import { Box, useMediaQuery } from "@mui/material";
-import { useSelector } from "react-redux";
-import SearchBar from "@/app/components/Home/SearchBar";
-import GarajinoPagination from "@/app/components/GarajinoPagination";
-import EventBox from "./components/EventBox";
-import FilterButton from "@/app/components/FilterButton";
+import React, { useRef, useState, useEffect, useMemo } from 'react';
+import { Box, useMediaQuery } from '@mui/material';
+import { useSelector } from 'react-redux';
+import SearchBar from '@/app/components/Home/SearchBar';
+import GarajinoPagination from '@/app/components/GarajinoPagination';
+import EventBox from './components/EventBox';
+import FilterButton from '@/app/components/FilterButton';
 
 const EventsPage = () => {
-  const isMobile = useMediaQuery("(max-width:900px)");
+  const isMobile = useMediaQuery('(max-width:900px)');
   const { theme } = useSelector((state) => state.theme || { theme: 'light' });
-  const bgPage = theme === "dark" ? "#20263C" : "#FFFFFF";
+  const bgPage = theme === 'dark' ? '#20263C' : '#FFFFFF';
   const anchorRef = useRef(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -37,11 +37,17 @@ const EventsPage = () => {
   useEffect(() => {
     setPage(1);
   }, [itemsPerPage]);
-  const totalPages = Math.max(1, Math.ceil(defaultEvents.length / itemsPerPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(defaultEvents.length / itemsPerPage)
+  );
   const start = (page - 1) * itemsPerPage;
   const end = start + itemsPerPage;
   const paginatedEvents = defaultEvents.slice(start, end);
-  const syntheticItemsForPager = useMemo(() => Array.from({ length: totalPages * 20 }), [totalPages]);
+  const syntheticItemsForPager = useMemo(
+    () => Array.from({ length: totalPages * 20 }),
+    [totalPages]
+  );
 
   const handlePageChange = (_, value) => {
     const v = Math.max(1, Math.min(value, totalPages));
@@ -51,15 +57,15 @@ const EventsPage = () => {
   return (
     <Box
       sx={{
-        width: "100%",
-        minHeight: "100vh",
-        padding: isMobile ? "1rem" : "3rem",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "5rem",
+        width: '100%',
+        minHeight: '100vh',
+        padding: isMobile ? '1rem' : '3rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '5rem',
         backgroundColor: bgPage,
-        transition: "background-color 0.3s"
+        transition: 'background-color 0.3s'
       }}
     >
       {!isMobile && (
@@ -93,14 +99,14 @@ const EventsPage = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'flex-start',
-          flexDirection: "column",
+          flexDirection: 'column',
           gap: 5
         }}
       >
         {paginatedEvents.map((ev) => (
           <EventBox
             key={ev.id}
-            id = {ev.id}
+            id={ev.id}
             isMobile={isMobile}
             isParticularPage={false}
             EventName={ev.EventName}

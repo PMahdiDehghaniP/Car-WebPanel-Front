@@ -43,11 +43,19 @@ const nextConfig = {
     }
 
     return config;
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**'
+      },
+      {
+        protocol: 'http',
+        hostname: '**'
+      }
+    ]
   }
-  // domains for image optimization
-  //   images: {
-  //     domains : {}
-  //   }
 };
 
 export default nextConfig;

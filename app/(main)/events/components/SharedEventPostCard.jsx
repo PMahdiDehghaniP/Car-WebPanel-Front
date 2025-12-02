@@ -175,7 +175,6 @@ const SharedEventPostCard = ({
 export default function PostsList({
 }) {
   const isMobile = useMediaQuery('(max-width:720px)');
-
   return (
     <Box
       component="section"
@@ -197,11 +196,9 @@ export default function PostsList({
           WebkitOverflowScrolling: 'touch',
           py: 0,
           boxSizing: 'border-box',
-
           border: '1px solid #E0E0E0',
           borderRadius: 2,
           px: 1,
-
           '&::-webkit-scrollbar': {
             width: 12,
             background: 'transparent'

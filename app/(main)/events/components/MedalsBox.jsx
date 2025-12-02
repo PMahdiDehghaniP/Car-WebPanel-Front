@@ -3,8 +3,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-
-
 const MedalsBox = () => {
   const { theme } = useSelector((s) => s.theme || { theme: 'light' });
   const Images = ['/first.png', '/second.png', '/third.png'];
